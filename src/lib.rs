@@ -85,7 +85,7 @@ pub struct GameModeStats {
 
 #[derive(Deserialize)]
 #[serde(rename_all = "snake_case")]
-pub struct ProfileStats {
+pub struct Player {
     pub name: String,
     pub profile_id: u32,
     pub steam_id: String,
@@ -100,10 +100,10 @@ mod tests {
     use super::*;
     use serde_json::from_str;
 
-    const PROFILE_JSON: &str = include_str!("../testdata/profile.json");
+    const PLAYER_JSON: &str = include_str!("../testdata/profile.json");
 
     #[test]
     fn profile_deserialize_smoke() {
-        let _: ProfileStats = from_str(PROFILE_JSON).expect("should deserialize");
+        let _: Player = from_str(PLAYER_JSON).expect("should deserialize");
     }
 }
