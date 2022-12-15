@@ -1,0 +1,110 @@
+{
+  "name": "[DEBILS] HousedHorse",
+  "profile_id": 3176,
+  "steam_id": "76561198094298920",
+  "site_url": "http://aoe4world.com/players/3176",
+  "avatars": {
+    "small": "https://avatars.akamai.steamstatic.com/220b1f84a5204c3e79087cfa0a197045ec0fb0f2.jpg",
+    "medium": "https://avatars.akamai.steamstatic.com/220b1f84a5204c3e79087cfa0a197045ec0fb0f2_medium.jpg",
+    "full": "https://avatars.akamai.steamstatic.com/220b1f84a5204c3e79087cfa0a197045ec0fb0f2_full.jpg"
+  },
+  "social": {
+    "twitch": "https://www.twitch.tv/housedhorse"
+  },
+  "modes": {
+    "rm_team": {
+      "rating": 1742,
+      "max_rating": 1742,
+      "max_rating_7d": 1742,
+      "max_rating_1m": 1742,
+      "rank": 27,
+      "streak": 5,
+      "games_count": 123,
+      "wins_count": 109,
+      "losses_count": 14,
+      "drops_count": 0,
+      "last_game_at": "2022-12-14T03:10:20.000Z",
+      "win_rate": 88.6,
+      "rank_level": "conqueror_3",
+      "rating_history": {
+        "1669316350": {
+          "rating": 1678,
+          "streak": 7,
+          "wins_count": 100,
+          "drops_count": 0,
+          "games_count": 113
+        },
+        "1669317710": {
+          "rating": 1687,
+          "streak": 8,
+          "wins_count": 101,
+          "drops_count": 0,
+          "games_count": 114
+        },
+        "1669325297": {
+          "rating": 1697,
+          "streak": 9,
+          "wins_count": 102,
+          "drops_count": 0,
+          "games_count": 115
+        },
+        "1669419363": {
+          "rating": 1715,
+          "streak": 10,
+          "wins_count": 103,
+          "drops_count": 0,
+          "games_count": 116
+        },
+        "1669420489": {
+          "rating": 1731,
+          "streak": 11,
+          "wins_count": 104,
+          "drops_count": 0,
+          "games_count": 117
+        },
+        "1669471603": {
+          "rating": 1708,
+          "streak": -1,
+          "wins_count": 104,
+          "drops_count": 0,
+          "games_count": 118
+        },
+        "1670108125": {
+          "rating": 1709,
+          "streak": 1,
+          "wins_count": 105,
+          "drops_count": 0,
+          "games_count": 119
+        },
+        "1670110151": {
+          "rating": 1718,
+          "streak": 2,
+          "wins_count": 106,
+          "drops_count": 0,
+          "games_count": 120
+        },
+        "1670112063": {
+          "rating": 1719,
+          "streak": 3,
+          "wins_count": 107,
+          "drops_count": 0,
+          "games_count": 121
+        },
+        "1670290359": {
+          "rating": 1729,
+          "streak": 4,
+          "wins_count": 108,
+          "drops_count": 0,
+          "games_count": 122
+        },
+        "1670987420": {
+          "rating": 1742,
+          "streak": 5,
+          "wins_count": 109,
+          "drops_count": 0,
+          "games_count": 123
+        }
+      }
+    }
+  }
+}
