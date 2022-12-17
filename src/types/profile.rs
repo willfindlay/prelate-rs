@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+
 //! API response types for player and profile stats.
 
 use std::collections::HashMap;

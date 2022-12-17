@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+
 //! prelate-rs is an async-ready library wrapper around the [aoe4world] API.
 //!
 //! Use it to retrieve game statistics, player information, and general awesomeness from

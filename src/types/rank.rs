@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+
 //! Types related to a player's rank league.
 
 use serde::{de, Deserialize};
