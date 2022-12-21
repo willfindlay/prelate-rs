@@ -10,10 +10,12 @@ pub mod civilization;
 pub mod games;
 pub mod profile;
 pub mod rank;
+pub mod search;
 
 /// Wraps a [`reqwest::Url`] and implements [`serde::Deserialize`].
 ///
 /// Derefs into a bare `Url` struct for convenience.
+#[derive(Debug)]
 pub struct Url {
     /// The inner URL.
     url: reqwest::Url,

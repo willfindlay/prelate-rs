@@ -9,7 +9,7 @@ use serde::Deserialize;
 use crate::types::{rank::RankLeague, Url};
 
 /// Player profile and statistics.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Profile {
     /// Name of the player.
@@ -24,12 +24,15 @@ pub struct Profile {
     pub avatars: Option<Avatars>,
     /// Social information.
     pub social: Option<Social>,
+    /// When the last game was played.
+    pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Statistics per game mode.
+    #[serde(alias = "leaderboards")]
     pub modes: Option<GameModes>,
 }
 
 /// Links to avatars used by the player.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Avatars {
     /// Small size.
@@ -41,7 +44,7 @@ pub struct Avatars {
 }
 
 /// Social information.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Social {
     /// URL to the player's Twitch.
@@ -59,7 +62,7 @@ pub struct Social {
 }
 
 /// Statistics per game mode.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct GameModes {
     /// Solo ranked stats. Rating is ranked points.
@@ -82,10 +85,12 @@ pub struct GameModes {
     pub qm_3v3: Option<GameModeStats>,
     /// 4v4 quick match stats. Rating is ELO.
     pub qm_4v4: Option<GameModeStats>,
+    /// Custom games. Rating is ELO.
+    pub custom: Option<GameModeStats>,
 }
 
 /// Statistics for a game mode.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct GameModeStats {
     /// Rating points or ELO.
@@ -121,7 +126,7 @@ pub struct GameModeStats {
 }
 
 /// An entry in the player's rating history.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct RatingHistoryEntry {
     /// Rating points or ELO.
