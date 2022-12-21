@@ -1,0 +1,2908 @@
+{
+  "total_count": 1267,
+  "page": 1,
+  "per_page": 50,
+  "count": 50,
+  "offset": 0,
+  "filters": {
+    "leaderboard": null,
+    "since": null,
+    "profile_ids": [
+      4635035
+    ],
+    "opponent_profile_id": null,
+    "opponent_profile_ids": null
+  },
+  "games": [
+    {
+      "game_id": 56783543,
+      "started_at": "2022-12-20T14:10:13.000Z",
+      "updated_at": "2022-12-20T14:45:55.713Z",
+      "duration": 1450,
+      "map": "Forest Ponds",
+      "kind": "rm_4v4",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 148,
+      "average_rating": 1632,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 106457,
+              "name": "Kyo",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1875,
+              "rating_diff": 21
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6961598,
+              "name": "(✧ᴗ✧) CDSG.MeomaikA",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1613,
+              "rating_diff": 20
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10438052,
+              "name": "[TLCT] Nhà Cái Từ Châu Âu",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1588,
+              "rating_diff": 22
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11395443,
+              "name": "Nyako~",
+              "result": "win",
+              "civilization": "abbasid_dynasty",
+              "rating": 1060,
+              "rating_diff": 27
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11658402,
+              "name": "布偶",
+              "result": "loss",
+              "civilization": "abbasid_dynasty",
+              "rating": 1545,
+              "rating_diff": -35
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10019352,
+              "name": "A catty cat",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1805,
+              "rating_diff": -36
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": 1785,
+              "rating_diff": -48
+            }
+          },
+          {
+            "player": {
+              "profile_id": 7304568,
+              "name": "T r ico",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1783,
+              "rating_diff": -33
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56781782,
+      "started_at": "2022-12-20T13:51:21.000Z",
+      "updated_at": "2022-12-20T14:35:22.066Z",
+      "duration": 1052,
+      "map": "The Pit",
+      "kind": "rm_4v4",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "India",
+      "patch": 148,
+      "average_rating": 1475,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 941124,
+              "name": "DireSnow6711262",
+              "result": "loss",
+              "civilization": "abbasid_dynasty",
+              "rating": 1041,
+              "rating_diff": -4
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11583597,
+              "name": "felix.moosbauer",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1375,
+              "rating_diff": -12
+            }
+          },
+          {
+            "player": {
+              "profile_id": 9637923,
+              "name": "东倒西歪",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1408,
+              "rating_diff": -12
+            }
+          },
+          {
+            "player": {
+              "profile_id": 938016,
+              "name": "PotatoKimz",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1070,
+              "rating_diff": -5
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1784,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 7304568,
+              "name": "T r ico",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1773,
+              "rating_diff": 10
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10019352,
+              "name": "A catty cat",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1803,
+              "rating_diff": 2
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11658402,
+              "name": "布偶",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1542,
+              "rating_diff": 3
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56778111,
+      "started_at": "2022-12-20T13:09:51.000Z",
+      "updated_at": "2022-12-20T13:46:13.404Z",
+      "duration": 1507,
+      "map": "Forest Ponds",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 148,
+      "average_rating": 1610,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1762,
+              "rating_diff": 22
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11658402,
+              "name": "布偶",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1520,
+              "rating_diff": 22
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 8475809,
+              "name": "State",
+              "result": "loss",
+              "civilization": "delhi_sultanate",
+              "rating": 1706,
+              "rating_diff": -23
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4492346,
+              "name": "Poopa",
+              "result": "loss",
+              "civilization": "rus",
+              "rating": 1450,
+              "rating_diff": -23
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56775668,
+      "started_at": "2022-12-20T12:41:31.000Z",
+      "updated_at": "2022-12-20T13:07:20.741Z",
+      "duration": 847,
+      "map": "Forest Ponds",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 148,
+      "average_rating": 1424,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 11864300,
+              "name": ".深海鱼",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1220,
+              "rating_diff": -6
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11864104,
+              "name": "铁骨铮铮",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1215,
+              "rating_diff": -6
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11658402,
+              "name": "布偶",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1511,
+              "rating_diff": 9
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "holy_roman_empire",
+              "rating": 1748,
+              "rating_diff": 14
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56773043,
+      "started_at": "2022-12-20T12:07:40.000Z",
+      "updated_at": "2022-12-20T12:46:08.497Z",
+      "duration": 1624,
+      "map": "Hideout",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 148,
+      "average_rating": 1540,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1761,
+              "rating_diff": -13
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11658402,
+              "name": "布偶",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1499,
+              "rating_diff": 12
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9299594,
+              "name": "NothingSpecial",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1422,
+              "rating_diff": -18
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11051767,
+              "name": "즐겜용아이디",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1477,
+              "rating_diff": -18
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56770748,
+      "started_at": "2022-12-20T11:34:15.000Z",
+      "updated_at": "2022-12-20T12:09:16.513Z",
+      "duration": 1401,
+      "map": "Wetlands",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Australia",
+      "patch": 148,
+      "average_rating": 1824,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1810,
+              "rating_diff": 24
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4492346,
+              "name": "Poopa",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1838,
+              "rating_diff": -20
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56769064,
+      "started_at": "2022-12-20T11:09:20.000Z",
+      "updated_at": "2022-12-20T11:47:09.276Z",
+      "duration": 1344,
+      "map": "Lipany",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Australia",
+      "patch": 148,
+      "average_rating": 1822,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1835,
+              "rating_diff": -25
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4492346,
+              "name": "Poopa",
+              "result": "win",
+              "civilization": "ottomans",
+              "rating": 1808,
+              "rating_diff": 30
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56768462,
+      "started_at": "2022-12-20T11:00:08.000Z",
+      "updated_at": "2022-12-20T11:26:07.165Z",
+      "duration": 385,
+      "map": "Dry Arabia",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Australia",
+      "patch": 148,
+      "average_rating": 1822,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": 1868,
+              "rating_diff": -33
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4492346,
+              "name": "Poopa",
+              "result": "win",
+              "civilization": "ottomans",
+              "rating": 1776,
+              "rating_diff": 32
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56767381,
+      "started_at": "2022-12-20T10:41:07.000Z",
+      "updated_at": "2022-12-20T11:05:21.568Z",
+      "duration": 760,
+      "map": "French Pass",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "UK",
+      "patch": 148,
+      "average_rating": 1711,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1861,
+              "rating_diff": 7
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6989434,
+              "name": "TTVHatsimale",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1560,
+              "rating_diff": -9
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56496614,
+      "started_at": "2022-12-17T17:23:08.000Z",
+      "updated_at": "2022-12-17T17:53:18.540Z",
+      "duration": 1133,
+      "map": "Wetlands",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 148,
+      "average_rating": 1827,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": 1893,
+              "rating_diff": -32
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11873317,
+              "name": "___",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1761,
+              "rating_diff": 32
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56492523,
+      "started_at": "2022-12-17T16:41:01.000Z",
+      "updated_at": "2022-12-17T17:26:21.916Z",
+      "duration": 2047,
+      "map": "Lipany",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 148,
+      "average_rating": 1808,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1879,
+              "rating_diff": 14
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11873317,
+              "name": "___",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1737,
+              "rating_diff": -15
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56488916,
+      "started_at": "2022-12-17T16:02:48.000Z",
+      "updated_at": "2022-12-17T16:48:08.411Z",
+      "duration": 2026,
+      "map": "Prairie",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 148,
+      "average_rating": 1809,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1864,
+              "rating_diff": 15
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11873317,
+              "name": "___",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": 1753,
+              "rating_diff": -16
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56486797,
+      "started_at": "2022-12-17T15:41:31.000Z",
+      "updated_at": "2022-12-17T16:10:26.277Z",
+      "duration": 1055,
+      "map": "Lipany",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 148,
+      "average_rating": 1919,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": 1891,
+              "rating_diff": -27
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11838904,
+              "name": "SmellyDelhi",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1946,
+              "rating_diff": 26
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56088296,
+      "started_at": "2022-12-13T12:52:56.000Z",
+      "updated_at": "2022-12-13T13:28:40.505Z",
+      "duration": 1420,
+      "map": "French Pass",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "India",
+      "patch": 148,
+      "average_rating": 1771,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1880,
+              "rating_diff": 11
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 7656598,
+              "name": "llllllllll8985",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1661,
+              "rating_diff": -12
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56073434,
+      "started_at": "2022-12-13T08:42:56.000Z",
+      "updated_at": "2022-12-13T09:12:19.955Z",
+      "duration": 1093,
+      "map": "Dry Arabia",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Korea",
+      "patch": 148,
+      "average_rating": 1824,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 1079379,
+              "name": "Giggles",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1782,
+              "rating_diff": -16
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "abbasid_dynasty",
+              "rating": 1866,
+              "rating_diff": 14
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56069667,
+      "started_at": "2022-12-13T07:15:39.000Z",
+      "updated_at": "2022-12-13T07:55:37.439Z",
+      "duration": 1706,
+      "map": "Wetlands",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Korea",
+      "patch": 148,
+      "average_rating": 1845,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 1079379,
+              "name": "Giggles",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1846,
+              "rating_diff": -18
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1844,
+              "rating_diff": 22
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 56068932,
+      "started_at": "2022-12-13T06:57:42.000Z",
+      "updated_at": "2022-12-13T07:24:08.519Z",
+      "duration": 912,
+      "map": "Prairie",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 148,
+      "average_rating": 1833,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 3592906,
+              "name": "The Biggest Noob",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1829,
+              "rating_diff": -23
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1836,
+              "rating_diff": 8
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53255722,
+      "started_at": "2022-11-16T15:31:12.000Z",
+      "updated_at": "2022-11-16T16:02:10.587Z",
+      "duration": 1220,
+      "map": "Dry Arabia",
+      "kind": "rm_3v3",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1451,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 6533726,
+              "name": "akutoku",
+              "result": "loss",
+              "civilization": "abbasid_dynasty",
+              "rating": 1240,
+              "rating_diff": -18
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6681501,
+              "name": "smile",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1118,
+              "rating_diff": -18
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6938316,
+              "name": "yuukisisaku4787",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1375,
+              "rating_diff": -18
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "holy_roman_empire",
+              "rating": 1331,
+              "rating_diff": 8
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "holy_roman_empire",
+              "rating": 1825,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 8354416,
+              "name": "loueMT",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1815,
+              "rating_diff": 6
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53254236,
+      "started_at": "2022-11-16T15:14:35.000Z",
+      "updated_at": "2022-11-16T15:30:12.224Z",
+      "duration": 880,
+      "map": "Mediterranean",
+      "kind": "rm_3v3",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": null,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 8354416,
+              "name": "loueMT",
+              "result": "win",
+              "civilization": "holy_roman_empire",
+              "rating": null,
+              "rating_diff": null
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9032680,
+              "name": "king991120",
+              "result": "loss",
+              "civilization": "french",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 8526855,
+              "name": "图书馆的老鼠",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6565524,
+              "name": "{幽灵}im.van 学生♂",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": null,
+              "rating_diff": null
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53252368,
+      "started_at": "2022-11-16T14:55:04.000Z",
+      "updated_at": "2022-11-16T15:20:24.447Z",
+      "duration": 815,
+      "map": "Forest Ponds",
+      "kind": "rm_3v3",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1614,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 419803,
+              "name": "saymyname",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1399,
+              "rating_diff": -29
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11395443,
+              "name": "Nyako~",
+              "result": "loss",
+              "civilization": "english",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 106457,
+              "name": "Kyo",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": 1729,
+              "rating_diff": -24
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1823,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 8354416,
+              "name": "loueMT",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1803,
+              "rating_diff": 11
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "rus",
+              "rating": 1317,
+              "rating_diff": 13
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53250967,
+      "started_at": "2022-11-16T14:39:30.000Z",
+      "updated_at": "2022-11-16T15:08:13.164Z",
+      "duration": 804,
+      "map": "Dry Arabia",
+      "kind": "rm_3v3",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1462,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 3607016,
+              "name": "manmiku",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1194,
+              "rating_diff": -21
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6533726,
+              "name": "akutoku",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1267,
+              "rating_diff": -27
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6938316,
+              "name": "yuukisisaku4787",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1402,
+              "rating_diff": -27
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "holy_roman_empire",
+              "rating": 1822,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "abbasid_dynasty",
+              "rating": 1301,
+              "rating_diff": 16
+            }
+          },
+          {
+            "player": {
+              "profile_id": 8354416,
+              "name": "loueMT",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1788,
+              "rating_diff": 15
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53248319,
+      "started_at": "2022-11-16T14:11:50.000Z",
+      "updated_at": "2022-11-16T14:43:50.667Z",
+      "duration": 1185,
+      "map": "The Pit",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1240,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 456973,
+              "name": "Hahn",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 941,
+              "rating_diff": -1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11327611,
+              "name": "Achen",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 910,
+              "rating_diff": -1
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1819,
+              "rating_diff": 3
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1290,
+              "rating_diff": 11
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53245483,
+      "started_at": "2022-11-16T13:42:42.000Z",
+      "updated_at": "2022-11-16T14:12:13.447Z",
+      "duration": 1090,
+      "map": "Forest Ponds",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Australia",
+      "patch": 26139,
+      "average_rating": 1404,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1810,
+              "rating_diff": 9
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "rus",
+              "rating": 1272,
+              "rating_diff": 18
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6136162,
+              "name": "News_",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1104,
+              "rating_diff": -10
+            }
+          },
+          {
+            "player": {
+              "profile_id": 419803,
+              "name": "saymyname",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 1428,
+              "rating_diff": -10
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53243429,
+      "started_at": "2022-11-16T13:20:59.000Z",
+      "updated_at": "2022-11-16T13:48:15.053Z",
+      "duration": 963,
+      "map": "Altai",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1268,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "rus",
+              "rating": 1804,
+              "rating_diff": 6
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "ottomans",
+              "rating": 1257,
+              "rating_diff": 15
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 8828230,
+              "name": "胡桃",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1154,
+              "rating_diff": -1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11625990,
+              "name": "蜂蜜柚子茶",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 858,
+              "rating_diff": -1
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53240017,
+      "started_at": "2022-11-16T12:42:24.000Z",
+      "updated_at": "2022-11-16T13:20:21.996Z",
+      "duration": 1573,
+      "map": "Dry Arabia",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 26139,
+      "average_rating": 1411,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 419803,
+              "name": "saymyname",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1469,
+              "rating_diff": -12
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6136162,
+              "name": "News_",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1145,
+              "rating_diff": -12
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1794,
+              "rating_diff": 10
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1237,
+              "rating_diff": 20
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53237495,
+      "started_at": "2022-11-16T12:12:44.000Z",
+      "updated_at": "2022-11-16T12:48:14.552Z",
+      "duration": 1471,
+      "map": "Lipany",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "India",
+      "patch": 26139,
+      "average_rating": 1631,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1815,
+              "rating_diff": -21
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1248,
+              "rating_diff": -11
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 7090781,
+              "name": "king coRe the third",
+              "result": "win",
+              "civilization": "holy_roman_empire",
+              "rating": 1792,
+              "rating_diff": 13
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6924135,
+              "name": "Stone Wall Enjoyer",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1669,
+              "rating_diff": 20
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 53235723,
+      "started_at": "2022-11-16T11:50:24.000Z",
+      "updated_at": "2022-11-16T12:22:09.622Z",
+      "duration": 1250,
+      "map": "Altai",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1516,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1801,
+              "rating_diff": 14
+            }
+          },
+          {
+            "player": {
+              "profile_id": 6075202,
+              "name": "810975",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1224,
+              "rating_diff": 24
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9298419,
+              "name": "Numudan",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1283,
+              "rating_diff": -11
+            }
+          },
+          {
+            "player": {
+              "profile_id": 106457,
+              "name": "Kyo",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1756,
+              "rating_diff": -30
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52921516,
+      "started_at": "2022-11-13T12:43:54.000Z",
+      "updated_at": "2022-11-13T13:10:12.438Z",
+      "duration": 937,
+      "map": "Lipany",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 26139,
+      "average_rating": 1550,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 3589360,
+              "name": "El Pollo Guapo",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1548,
+              "rating_diff": -18
+            }
+          },
+          {
+            "player": {
+              "profile_id": 7403424,
+              "name": "MizuUmi",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1468,
+              "rating_diff": -18
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1784,
+              "rating_diff": 17
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1400,
+              "rating_diff": 17
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52919593,
+      "started_at": "2022-11-13T12:29:40.000Z",
+      "updated_at": "2022-11-13T13:06:10.951Z",
+      "duration": 690,
+      "map": "Mediterranean",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 26139,
+      "average_rating": 1602,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 620274,
+              "name": "Bum9",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1638,
+              "rating_diff": -27
+            }
+          },
+          {
+            "player": {
+              "profile_id": 620454,
+              "name": "czczcz",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": 1637,
+              "rating_diff": -27
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1758,
+              "rating_diff": 26
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "rus",
+              "rating": 1374,
+              "rating_diff": 26
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52917037,
+      "started_at": "2022-11-13T12:06:21.000Z",
+      "updated_at": "2022-11-13T12:36:24.322Z",
+      "duration": 1100,
+      "map": "Forest Ponds",
+      "kind": "rm_3v3",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 26139,
+      "average_rating": 1525,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 749191,
+              "name": "Alice Cartelet",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": 1486,
+              "rating_diff": -20
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1799,
+              "rating_diff": -41
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "loss",
+              "civilization": "rus",
+              "rating": 1402,
+              "rating_diff": -28
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 5676549,
+              "name": "VI VON ZULUL",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1424,
+              "rating_diff": 11
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10990713,
+              "name": "Jongun",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1646,
+              "rating_diff": 11
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11248086,
+              "name": "sghan1102",
+              "result": "win",
+              "civilization": "rus",
+              "rating": 1391,
+              "rating_diff": 11
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52915357,
+      "started_at": "2022-11-13T11:51:02.000Z",
+      "updated_at": "2022-11-13T12:04:04.115Z",
+      "duration": 739,
+      "map": "Hideout",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "UK",
+      "patch": 26139,
+      "average_rating": null,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4209345,
+              "name": "Panooh",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 7683326,
+              "name": "Feliciano Creadoros",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": null,
+              "rating_diff": null
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": null,
+              "rating_diff": null
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "english",
+              "rating": null,
+              "rating_diff": null
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52913387,
+      "started_at": "2022-11-13T11:32:34.000Z",
+      "updated_at": "2022-11-13T12:03:17.922Z",
+      "duration": 521,
+      "map": "Mediterranean",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 26139,
+      "average_rating": 1607,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 620274,
+              "name": "Bum9",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1645,
+              "rating_diff": -29
+            }
+          },
+          {
+            "player": {
+              "profile_id": 620454,
+              "name": "czczcz",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": 1644,
+              "rating_diff": -29
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1769,
+              "rating_diff": 29
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1368,
+              "rating_diff": 29
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52911539,
+      "started_at": "2022-11-13T11:13:32.000Z",
+      "updated_at": "2022-11-13T11:42:09.828Z",
+      "duration": 885,
+      "map": "Altai",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Asia (SE)",
+      "patch": 26139,
+      "average_rating": 1607,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 620274,
+              "name": "Bum9",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1678,
+              "rating_diff": -33
+            }
+          },
+          {
+            "player": {
+              "profile_id": 620454,
+              "name": "czczcz",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1677,
+              "rating_diff": -33
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1737,
+              "rating_diff": 32
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1336,
+              "rating_diff": 32
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52869418,
+      "started_at": "2022-11-13T02:14:54.000Z",
+      "updated_at": "2022-11-13T02:50:21.665Z",
+      "duration": 1480,
+      "map": "Altai",
+      "kind": "rm_4v4",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 26139,
+      "average_rating": 1223,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 749191,
+              "name": "Alice Cartelet",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1480,
+              "rating_diff": 6
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1736,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 7203765,
+              "name": "天启骑士",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1180,
+              "rating_diff": 19
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1276,
+              "rating_diff": 14
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4282330,
+              "name": "雲彩的詭異",
+              "result": "loss",
+              "civilization": "abbasid_dynasty",
+              "rating": 1082,
+              "rating_diff": -15
+            }
+          },
+          {
+            "player": {
+              "profile_id": 8655259,
+              "name": "Pat",
+              "result": "loss",
+              "civilization": "mongols",
+              "rating": 838,
+              "rating_diff": -1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11259499,
+              "name": "GodSavethaQueen",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 986,
+              "rating_diff": -7
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11382378,
+              "name": "Skadi the Corrupting Heart",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1205,
+              "rating_diff": -15
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52867407,
+      "started_at": "2022-11-13T01:46:51.000Z",
+      "updated_at": "2022-11-13T02:15:22.255Z",
+      "duration": 1061,
+      "map": "Lipany",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1416,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1716,
+              "rating_diff": 20
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1256,
+              "rating_diff": 20
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 7250163,
+              "name": "CertainZach",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1355,
+              "rating_diff": -21
+            }
+          },
+          {
+            "player": {
+              "profile_id": 3901430,
+              "name": "tips_aoe.ttv",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1337,
+              "rating_diff": -21
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52866225,
+      "started_at": "2022-11-13T01:30:41.000Z",
+      "updated_at": "2022-11-13T01:58:09.957Z",
+      "duration": 854,
+      "map": "The Pit",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "India",
+      "patch": 26139,
+      "average_rating": 1319,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1698,
+              "rating_diff": 18
+            }
+          },
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1238,
+              "rating_diff": 18
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4927615,
+              "name": "SkWizZ_Mugulito",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1189,
+              "rating_diff": -13
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10291240,
+              "name": "Lunatic",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1149,
+              "rating_diff": -12
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52865043,
+      "started_at": "2022-11-13T01:13:49.000Z",
+      "updated_at": "2022-11-13T01:37:17.532Z",
+      "duration": 763,
+      "map": "Mediterranean",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "India",
+      "patch": 26139,
+      "average_rating": 1317,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4927615,
+              "name": "SkWizZ_Mugulito",
+              "result": "loss",
+              "civilization": "holy_roman_empire",
+              "rating": 1205,
+              "rating_diff": -16
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10291240,
+              "name": "Lunatic",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1164,
+              "rating_diff": -15
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 11337627,
+              "name": "不要远离敌人更不要 远离阴影",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1223,
+              "rating_diff": 15
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1677,
+              "rating_diff": 21
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52713110,
+      "started_at": "2022-11-11T21:27:46.000Z",
+      "updated_at": "2022-11-11T21:53:35.776Z",
+      "duration": 294,
+      "map": "Altai",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "UK",
+      "patch": 26139,
+      "average_rating": 1504,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 450837,
+              "name": "Shiki丶",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1707,
+              "rating_diff": 5
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "mongols",
+              "rating": 1667,
+              "rating_diff": 10
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 7572480,
+              "name": "jtpastor",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1308,
+              "rating_diff": -12
+            }
+          },
+          {
+            "player": {
+              "profile_id": 7956848,
+              "name": "venkteinflo",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1332,
+              "rating_diff": -12
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52710239,
+      "started_at": "2022-11-11T21:02:44.000Z",
+      "updated_at": "2022-11-11T21:32:16.740Z",
+      "duration": 1099,
+      "map": "The Pit",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "UK",
+      "patch": 26139,
+      "average_rating": 1381,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 450837,
+              "name": "Shiki丶",
+              "result": "win",
+              "civilization": "rus",
+              "rating": 1706,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1662,
+              "rating_diff": 5
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 694859,
+              "name": "XQQQXQX",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1133,
+              "rating_diff": -7
+            }
+          },
+          {
+            "player": {
+              "profile_id": 5865721,
+              "name": "LanceV17830",
+              "result": "loss",
+              "civilization": "delhi_sultanate",
+              "rating": 1022,
+              "rating_diff": -2
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52707846,
+      "started_at": "2022-11-11T20:40:42.000Z",
+      "updated_at": "2022-11-11T21:05:33.369Z",
+      "duration": 713,
+      "map": "Hill and Dale",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "UK",
+      "patch": 26139,
+      "average_rating": 1452,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1653,
+              "rating_diff": 9
+            }
+          },
+          {
+            "player": {
+              "profile_id": 450837,
+              "name": "Shiki丶",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1702,
+              "rating_diff": 4
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 7257770,
+              "name": "DarkonFK",
+              "result": "loss",
+              "civilization": "abbasid_dynasty",
+              "rating": 1226,
+              "rating_diff": -6
+            }
+          },
+          {
+            "player": {
+              "profile_id": 2809844,
+              "name": "IamVid",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1226,
+              "rating_diff": -6
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52704908,
+      "started_at": "2022-11-11T20:13:18.000Z",
+      "updated_at": "2022-11-11T20:44:27.440Z",
+      "duration": 1180,
+      "map": "Dry Arabia",
+      "kind": "rm_2v2",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "UK",
+      "patch": 26139,
+      "average_rating": 1407,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 450837,
+              "name": "Shiki丶",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1701,
+              "rating_diff": 1
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1647,
+              "rating_diff": 6
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9583873,
+              "name": "NeV",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1237,
+              "rating_diff": -8
+            }
+          },
+          {
+            "player": {
+              "profile_id": 9606444,
+              "name": "RoBeurthe",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1044,
+              "rating_diff": -1
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52641684,
+      "started_at": "2022-11-11T09:02:23.000Z",
+      "updated_at": "2022-11-11T09:42:08.556Z",
+      "duration": 1715,
+      "map": "Dry Arabia",
+      "kind": "rm_3v3",
+      "leaderboard": "rm_team",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1313,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 334107,
+              "name": "D_D",
+              "result": "loss",
+              "civilization": "french",
+              "rating": 1170,
+              "rating_diff": -20
+            }
+          },
+          {
+            "player": {
+              "profile_id": 861412,
+              "name": "christinayo",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1290,
+              "rating_diff": -25
+            }
+          },
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1688,
+              "rating_diff": -41
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 1705614,
+              "name": "阿浩.",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1471,
+              "rating_diff": 19
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10581204,
+              "name": "Singledog IV",
+              "result": "win",
+              "civilization": "english",
+              "rating": 1037,
+              "rating_diff": 24
+            }
+          },
+          {
+            "player": {
+              "profile_id": 10830395,
+              "name": "几天不见这么拉了",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1224,
+              "rating_diff": 19
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52640322,
+      "started_at": "2022-11-11T08:37:05.000Z",
+      "updated_at": "2022-11-11T09:16:08.352Z",
+      "duration": 1074,
+      "map": "Dry Arabia",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "India",
+      "patch": 26139,
+      "average_rating": 1869,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1883,
+              "rating_diff": 18
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6924135,
+              "name": "Stone Wall Enjoyer",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": 1854,
+              "rating_diff": -19
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52638851,
+      "started_at": "2022-11-11T08:09:50.000Z",
+      "updated_at": "2022-11-11T08:55:17.982Z",
+      "duration": 1408,
+      "map": "Altai",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "India",
+      "patch": 26139,
+      "average_rating": 1869,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "loss",
+              "civilization": "chinese",
+              "rating": 1914,
+              "rating_diff": -31
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6924135,
+              "name": "Stone Wall Enjoyer",
+              "result": "win",
+              "civilization": "malians",
+              "rating": 1824,
+              "rating_diff": 30
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52637479,
+      "started_at": "2022-11-11T07:42:36.000Z",
+      "updated_at": "2022-11-11T08:14:20.534Z",
+      "duration": 1246,
+      "map": "Lipany",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "India",
+      "patch": 26139,
+      "average_rating": 1770,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 647658,
+              "name": "Wolllolo",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1634,
+              "rating_diff": -10
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1906,
+              "rating_diff": 8
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52636119,
+      "started_at": "2022-11-11T07:15:21.000Z",
+      "updated_at": "2022-11-11T07:47:15.241Z",
+      "duration": 1247,
+      "map": "Altai",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1798,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "french",
+              "rating": 1897,
+              "rating_diff": 9
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6905721,
+              "name": "Armeria",
+              "result": "loss",
+              "civilization": "malians",
+              "rating": 1698,
+              "rating_diff": -11
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52634819,
+      "started_at": "2022-11-11T06:50:11.000Z",
+      "updated_at": "2022-11-11T07:21:10.943Z",
+      "duration": 1181,
+      "map": "Dry Arabia",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "Korea",
+      "patch": 26139,
+      "average_rating": 1790,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1885,
+              "rating_diff": 12
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9642048,
+              "name": "ArmyCore",
+              "result": "loss",
+              "civilization": "ottomans",
+              "rating": 1695,
+              "rating_diff": -13
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52633843,
+      "started_at": "2022-11-11T06:30:21.000Z",
+      "updated_at": "2022-11-11T06:55:28.438Z",
+      "duration": 832,
+      "map": "The Pit",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (W)",
+      "patch": 26139,
+      "average_rating": 1852,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1864,
+              "rating_diff": 21
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9030482,
+              "name": "Deo Favente Perennis",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1839,
+              "rating_diff": -18
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52601814,
+      "started_at": "2022-11-10T21:40:30.000Z",
+      "updated_at": "2022-11-10T22:17:42.335Z",
+      "duration": 1560,
+      "map": "Ancient Spires",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "USA (E)",
+      "patch": 26139,
+      "average_rating": 1652,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1854,
+              "rating_diff": 10
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 6494912,
+              "name": "Borg-",
+              "result": "loss",
+              "civilization": "english",
+              "rating": 1450,
+              "rating_diff": -7
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "game_id": 52598163,
+      "started_at": "2022-11-10T21:00:26.000Z",
+      "updated_at": "2022-11-10T21:43:20.981Z",
+      "duration": 1908,
+      "map": "Forest Ponds",
+      "kind": "rm_1v1",
+      "leaderboard": "rm_solo",
+      "season": 3,
+      "server": "UK",
+      "patch": 26139,
+      "average_rating": 1823,
+      "ongoing": false,
+      "just_finished": false,
+      "teams": [
+        [
+          {
+            "player": {
+              "profile_id": 4635035,
+              "name": "neptune",
+              "result": "win",
+              "civilization": "chinese",
+              "rating": 1818,
+              "rating_diff": 36
+            }
+          }
+        ],
+        [
+          {
+            "player": {
+              "profile_id": 9172224,
+              "name": "LucifroN",
+              "result": "loss",
+              "civilization": "rus",
+              "rating": 1828,
+              "rating_diff": -20
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}
