@@ -9,9 +9,16 @@
 
 pub mod types;
 
-use anyhow::Result;
+mod pagination;
 
-use types::profile::ProfileStatsResponse;
+use anyhow::Result;
+use futures::Stream;
+
+use pagination::{PaginatedRequest, PaginationClient};
+use types::{
+    games::{self, Game, GamesPlayed},
+    profile::ProfileStatsResponse,
+};
 
 /// Get profile stats for a player.
 pub async fn profile_stats(profile_id: u64) -> Result<ProfileStatsResponse> {
@@ -25,29 +32,51 @@ pub async fn profile_stats(profile_id: u64) -> Result<ProfileStatsResponse> {
     .map_err(anyhow::Error::from)
 }
 
+/// Get games for a player.
+pub async fn games(
+    profile_id: u64,
+    filter: Option<games::Filters>,
+) -> Result<impl Stream<Item = Result<Game>>> {
+    let client = PaginationClient::<GamesPlayed, Game>::default();
+    let url = format!("https://aoe4world.com/api/v0/players/{}/games", profile_id).parse()?;
+    let url = if let Some(filter) = filter {
+        filter.query_params(url)
+    } else {
+        url
+    };
+    let pages = client
+        .into_pages_concurrent(PaginatedRequest::new(url))
+        .await?;
+    Ok(pages.items())
+}
+
 #[cfg(test)]
 mod tests {
-    use serde_json::from_str;
+    use futures::StreamExt;
 
-    use crate::{profile_stats, types::profile::ProfileStatsResponse};
+    use crate::{games, profile_stats};
 
     const ONLY_CAMS_ID: u64 = 10433860;
 
-    const NEPTUNE_JSON: &str = include_str!("../testdata/neptune.json");
-    const HOUSEDHORSE_JSON: &str = include_str!("../testdata/housedhorse.json");
-
-    #[test]
-    fn profile_deserialize_smoke() {
-        let _: ProfileStatsResponse = from_str(NEPTUNE_JSON).expect("neptune should deserialize");
-        let _: ProfileStatsResponse =
-            from_str(HOUSEDHORSE_JSON).expect("housedhorse should deserialize");
-    }
-
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test]
-    async fn profile_deserialize_api() {
+    async fn profile_api_smoke() {
         profile_stats(ONLY_CAMS_ID.into())
             .await
             .expect("API call should succeed");
+    }
+
+    #[cfg_attr(not(feature = "test-api"), ignore)]
+    #[tokio::test(flavor = "multi_thread")]
+    async fn games_api_smoke() {
+        let games: Vec<_> = games(ONLY_CAMS_ID.into(), None)
+            .await
+            .expect("API call should succeed")
+            .collect()
+            .await;
+        for (i, game) in games.iter().enumerate() {
+            assert!(game.is_ok(), "game {} not ok: {:?}", i, game)
+        }
+        println!("{:?}", games);
     }
 }

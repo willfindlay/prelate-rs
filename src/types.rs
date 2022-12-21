@@ -6,6 +6,8 @@ use std::ops::{Deref, DerefMut};
 
 use serde::{de, Deserialize};
 
+pub mod civilization;
+pub mod games;
 pub mod profile;
 pub mod rank;
 

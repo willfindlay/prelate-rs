@@ -13,19 +13,19 @@ use crate::types::{rank::RankLeague, Url};
 #[serde(rename_all = "snake_case")]
 pub struct ProfileStatsResponse {
     /// Name of the player.
-    pub name: String,
-    /// Profile ID of the player on aeo4world.
-    pub profile_id: u64,
+    pub name: Option<String>,
+    /// Profile ID of the player on aoe4world.
+    pub profile_id: Option<u64>,
     /// Steam ID of the player.
-    pub steam_id: String,
+    pub steam_id: Option<String>,
     /// URL of the profile on aoe4world.
-    pub site_url: Url,
+    pub site_url: Option<Url>,
     /// Links to avatars used by the player.
-    pub avatars: Avatars,
+    pub avatars: Option<Avatars>,
     /// Social information.
-    pub social: Social,
+    pub social: Option<Social>,
     /// Statistics per game mode.
-    pub modes: GameModes,
+    pub modes: Option<GameModes>,
 }
 
 /// Links to avatars used by the player.
@@ -33,11 +33,11 @@ pub struct ProfileStatsResponse {
 #[serde(rename_all = "snake_case")]
 pub struct Avatars {
     /// Small size.
-    pub small: Url,
+    pub small: Option<Url>,
     /// Medium size.
-    pub medium: Url,
+    pub medium: Option<Url>,
     /// Full size.
-    pub full: Url,
+    pub full: Option<Url>,
 }
 
 /// Social information.
@@ -74,6 +74,14 @@ pub struct GameModes {
     pub rm_3v3: Option<GameModeStats>,
     /// 4v4 ranked stats. Rating is ELO.
     pub rm_4v4: Option<GameModeStats>,
+    /// 1v1 quick match stats. Rating is ELO.
+    pub qm_1v1: Option<GameModeStats>,
+    /// 2v2 quick match stats. Rating is ELO.
+    pub qm_2v2: Option<GameModeStats>,
+    /// 3v3 quick match stats. Rating is ELO.
+    pub qm_3v3: Option<GameModeStats>,
+    /// 4v4 quick match stats. Rating is ELO.
+    pub qm_4v4: Option<GameModeStats>,
 }
 
 /// Statistics for a game mode.
@@ -81,32 +89,33 @@ pub struct GameModes {
 #[serde(rename_all = "snake_case")]
 pub struct GameModeStats {
     /// Rating points or ELO.
-    pub rating: u32,
+    pub rating: Option<u32>,
     /// Max rating of all time.
-    pub max_rating: u32,
+    pub max_rating: Option<u32>,
     /// Max rating within the last 7 days.
-    pub max_rating_7d: u32,
+    pub max_rating_7d: Option<u32>,
     /// Max rating within the last month.
-    pub max_rating_1m: u32,
+    pub max_rating_1m: Option<u32>,
     /// Position on the leaderboard.
-    pub rank: u32,
+    pub rank: Option<u32>,
     /// How many games have been won or lost in a row.
-    pub streak: i32,
+    pub streak: Option<i32>,
     /// How many games have been played.
-    pub games_count: u32,
+    pub games_count: Option<u32>,
     /// How many games have been won.
-    pub wins_count: u32,
+    pub wins_count: Option<u32>,
     /// How many games have been lost.
-    pub losses_count: u32,
+    pub losses_count: Option<u32>,
     /// How many games have been dropped.
-    pub drops_count: u32,
+    pub drops_count: Option<u32>,
     /// When the last game was played.
-    pub last_game_at: chrono::DateTime<chrono::Utc>,
+    pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Win rate as a percentage out of 100.
-    pub win_rate: f64,
+    pub win_rate: Option<f64>,
     /// The player's league and division.
     pub rank_level: Option<RankLeague>,
     /// The player's rating history. Maps Game ID to RatingHistoryEntry.
+    #[serde(default)]
     pub rating_history: HashMap<String, RatingHistoryEntry>,
     // TODO: add civilization entries, see neptune.json for an example.
 }
@@ -116,13 +125,30 @@ pub struct GameModeStats {
 #[serde(rename_all = "snake_case")]
 pub struct RatingHistoryEntry {
     /// Rating points or ELO.
-    pub rating: u32,
+    pub rating: Option<u32>,
     /// How many games have been won or lost in a row.
-    pub streak: i32,
+    pub streak: Option<i32>,
     /// How many games have been played.
-    pub games_count: u32,
+    pub games_count: Option<u32>,
     /// How many games have been won.
-    pub wins_count: u32,
+    pub wins_count: Option<u32>,
     /// How many games have been dropped.
-    pub drops_count: u32,
+    pub drops_count: Option<u32>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    use serde_json::from_str;
+
+    const NEPTUNE_JSON: &str = include_str!("../../testdata/neptune.json");
+    const HOUSEDHORSE_JSON: &str = include_str!("../../testdata/housedhorse.json");
+
+    #[test]
+    fn profile_examples_deserialize_smoke() {
+        let _: ProfileStatsResponse = from_str(NEPTUNE_JSON).expect("neptune should deserialize");
+        let _: ProfileStatsResponse =
+            from_str(HOUSEDHORSE_JSON).expect("housedhorse should deserialize");
+    }
 }

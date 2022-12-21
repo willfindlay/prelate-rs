@@ -10,10 +10,14 @@ test-api = []
 
 [dependencies]
 anyhow = "1.0.66"
+async-trait = "0.1.60"
 chrono = { version = "0.4.23", features = ["serde"] }
+derive-new = "0.5.9"
+futures = "0.3.25"
+page-turner = "0.8.2"
 reqwest = { version = "0.11.13", features = ["json"] }
 serde = { version = "1.0.150", features = ["derive"] }
 serde_json = "1.0.89"
 
 [dev-dependencies]
-tokio = { version = "1.23.0", features = ["test-util", "macros"] }
+tokio = { version = "1.23.0", features = ["test-util", "macros", "rt-multi-thread"] }
