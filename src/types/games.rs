@@ -20,7 +20,7 @@ use super::profile::Profile;
 #[derive(Deserialize, Debug)]
 pub struct Filters {
     /// Filter by leaderboard category.
-    pub leaderboard: Option<GameKindOrLeaderboard>,
+    pub leaderboard: Option<Leaderboard>,
     /// Filter over an opponent's profile ID.
     #[serde(default)]
     pub opponent_profile_ids: Vec<u64>,
@@ -102,7 +102,8 @@ pub struct Game {
     pub teams: Vec<Vec<Player>>,
 }
 
-/// Type of game being played.
+/// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
+/// `RmTeam`.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum GameKind {
     /// 1v1 ranked.
@@ -141,7 +142,8 @@ impl Display for GameKind {
     }
 }
 
-/// Which leaderboard a game was played on.
+/// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
+/// addition of `RmSolo` and `RmTeam`.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum Leaderboard {
     /// Solo ranked.
@@ -150,6 +152,18 @@ pub enum Leaderboard {
     /// Team ranked.
     #[serde(rename = "rm_team")]
     RmTeam,
+    /// 1v1 ranked.
+    #[serde(rename = "rm_1v1")]
+    Rm1v1,
+    /// 2v2 ranked.
+    #[serde(rename = "rm_2v2")]
+    Rm2v2,
+    /// 3v3 ranked.
+    #[serde(rename = "rm_3v3")]
+    Rm3v3,
+    /// 4v4 ranked.
+    #[serde(rename = "rm_4v4")]
+    Rm4v4,
     /// 1v1 quick match.
     #[serde(rename = "qm_1v1")]
     Qm1v1,
@@ -171,26 +185,6 @@ impl Display for Leaderboard {
             "{}",
             &serde_json::to_string(self).map_err(|_| std::fmt::Error)?
         )
-    }
-}
-
-/// Either a GameKind or Leaderboard.
-///
-/// Some aoe4world API types use this for backward compatibility after the team ranked
-/// changes.
-#[derive(Deserialize, Debug, Clone, Copy)]
-#[serde(untagged)]
-pub enum GameKindOrLeaderboard {
-    GameKind(GameKind),
-    Leaderboard(Leaderboard),
-}
-
-impl Display for GameKindOrLeaderboard {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            GameKindOrLeaderboard::GameKind(game_kind) => write!(f, "{}", game_kind),
-            GameKindOrLeaderboard::Leaderboard(leaderboard) => write!(f, "{}", leaderboard),
-        }
     }
 }
 
