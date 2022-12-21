@@ -18,6 +18,7 @@ use pagination::{PaginatedRequest, PaginationClient};
 use types::{
     games::{self, Game, GamesPlayed, Leaderboard},
     profile::Profile,
+    search::{self, SearchResults},
 };
 
 // Rexports
@@ -66,6 +67,25 @@ pub async fn games(
     Ok(pages.items())
 }
 
+/// Search for a player. Results returned as an async stream.
+///
+/// # Params
+/// - `query` the player name to search for.
+/// - `exact` determines whether the search should exactly match the player name.
+pub async fn search(query: &str, exact: bool) -> Result<impl Stream<Item = Result<Profile>>> {
+    let client = PaginationClient::<SearchResults, Profile>::default();
+    let url = "https://aoe4world.com/api/v0/players/search".parse()?;
+    let filter = search::Filter {
+        query: Some(query.to_owned()),
+        exact: Some(exact),
+    };
+    let url = filter.query_params(url);
+    let pages = client
+        .into_pages_concurrent(PaginatedRequest::new(url))
+        .await?;
+    Ok(pages.items())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -73,6 +93,8 @@ mod tests {
     use futures::StreamExt;
 
     const ONLY_CAMS_ID: u64 = 10433860;
+    const ONLY_CAMS_NAME: &str = "🐪🐪🐪OnlyCams🐪🐪🐪";
+    const DEBILS_NAME: &str = "DEBILS";
 
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test]
@@ -94,5 +116,29 @@ mod tests {
             assert!(game.is_ok(), "game {} not ok: {:?}", i, game)
         }
         println!("{:?}", games);
+    }
+
+    #[cfg_attr(not(feature = "test-api"), ignore)]
+    #[tokio::test(flavor = "multi_thread")]
+    async fn search_api_smoke() {
+        let profiles: Vec<_> = search(ONLY_CAMS_NAME.into(), true)
+            .await
+            .expect("API call should succeed")
+            .collect()
+            .await;
+        for (i, profile) in profiles.iter().enumerate() {
+            assert!(profile.is_ok(), "profile {} not ok: {:?}", i, profile)
+        }
+        println!("{:?}", profiles);
+
+        let profiles: Vec<_> = search(DEBILS_NAME.into(), false)
+            .await
+            .expect("API call should succeed")
+            .collect()
+            .await;
+        for (i, profile) in profiles.iter().enumerate() {
+            assert!(profile.is_ok(), "profile {} not ok: {:?}", i, profile)
+        }
+        println!("{:?}", profiles);
     }
 }

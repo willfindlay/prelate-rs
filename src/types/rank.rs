@@ -5,6 +5,7 @@
 use serde::{de, Deserialize};
 
 /// A player's rank league and division (e.g. Conq III).
+#[derive(Debug)]
 pub enum RankLeague {
     /// No rank.
     Unranked,
@@ -65,6 +66,7 @@ impl<'de> Deserialize<'de> for RankLeague {
 }
 
 /// A player's division within their rank league.
+#[derive(Debug)]
 pub enum RankDivision {
     /// The lowest division within a league (e.g. Conqueror I).
     One,

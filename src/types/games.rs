@@ -18,6 +18,7 @@ use super::profile::Profile;
 
 /// Filters for games returned by the API.
 #[derive(Deserialize, Debug)]
+#[serde(rename_all = "snake_case")]
 pub struct Filter {
     /// Filter by leaderboard category.
     pub leaderboard: Option<Leaderboard>,
@@ -130,6 +131,9 @@ pub enum GameKind {
     /// 4v4 quick match.
     #[serde(rename = "qm_4v4")]
     Qm4v4,
+    /// A custom game.
+    #[serde(rename = "custom")]
+    Custom,
 }
 
 impl Display for GameKind {
@@ -176,6 +180,9 @@ pub enum Leaderboard {
     /// 4v4 quick match.
     #[serde(rename = "qm_4v4")]
     Qm4v4,
+    /// A custom game.
+    #[serde(rename = "custom")]
+    Custom,
 }
 
 impl Display for Leaderboard {

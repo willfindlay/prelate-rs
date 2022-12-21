@@ -1,0 +1,1208 @@
+{
+  "total_count": 28,
+  "page": 1,
+  "per_page": 50,
+  "count": 28,
+  "offset": 0,
+  "filters": {
+    "query": "barbecue",
+    "exact": false
+  },
+  "players": [
+    {
+      "name": "barbecue",
+      "profile_id": 8588750,
+      "steam_id": "76561199223510047",
+      "avatars": {
+        "small": "https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg",
+        "medium": "https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg",
+        "full": "https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"
+      },
+      "social": {},
+      "last_game_at": "2022-12-18T09:25:56.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 1074,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 186,
+          "wins_count": 97,
+          "losses_count": 89,
+          "last_game_at": "2022-08-13T08:47:37.000Z",
+          "win_rate": 52.2
+        },
+        "qm_2v2": {
+          "rating": 1007,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 4,
+          "wins_count": 2,
+          "losses_count": 2,
+          "last_game_at": "2022-05-27T17:26:55.000Z",
+          "win_rate": 50
+        },
+        "qm_3v3": {
+          "rating": 965,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 3,
+          "wins_count": 1,
+          "losses_count": 2,
+          "last_game_at": "2022-05-25T12:28:15.000Z",
+          "win_rate": 33.3
+        },
+        "qm_4v4": {
+          "rating": 1124,
+          "rank": 6003,
+          "rank_level": null,
+          "streak": -2,
+          "games_count": 351,
+          "wins_count": 178,
+          "losses_count": 173,
+          "last_game_at": "2022-10-27T03:10:47.000Z",
+          "win_rate": 50.7
+        },
+        "rm_1v1": {
+          "rating": 1108,
+          "rank": 6660,
+          "rank_level": null,
+          "streak": 2,
+          "games_count": 143,
+          "wins_count": 75,
+          "losses_count": 68,
+          "last_game_at": "2022-10-23T09:54:42.000Z",
+          "win_rate": 52.4
+        },
+        "rm_2v2": {
+          "rating": 952,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-11-01T14:29:54.000Z",
+          "win_rate": 0
+        },
+        "rm_4v4": {
+          "rating": 1127,
+          "rank": 2656,
+          "rank_level": null,
+          "streak": -6,
+          "games_count": 231,
+          "wins_count": 119,
+          "losses_count": 112,
+          "last_game_at": "2022-12-18T09:25:56.000Z",
+          "win_rate": 51.5
+        },
+        "rm_solo": {
+          "rating": 1007,
+          "rank": 9697,
+          "rank_level": "platinum_1",
+          "streak": 2,
+          "games_count": 6,
+          "wins_count": 5,
+          "losses_count": 1,
+          "last_game_at": "2022-10-23T09:54:42.000Z",
+          "win_rate": 83.3
+        },
+        "rm_team": {
+          "rating": 1020,
+          "rank": 9451,
+          "rank_level": "platinum_1",
+          "streak": -6,
+          "games_count": 231,
+          "wins_count": 119,
+          "losses_count": 112,
+          "last_game_at": "2022-12-18T09:25:56.000Z",
+          "win_rate": 51.5
+        },
+        "custom": {
+          "rating": 976,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 17,
+          "wins_count": 5,
+          "losses_count": 12,
+          "last_game_at": "2022-05-30T15:24:37.000Z",
+          "win_rate": 29.4
+        }
+      }
+    },
+    {
+      "name": "barbecue",
+      "profile_id": 1019252,
+      "steam_id": "76561198300069770",
+      "avatars": {
+        "small": "https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb.jpg",
+        "medium": "https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg",
+        "full": "https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"
+      },
+      "social": {},
+      "last_game_at": "2022-11-19T21:17:39.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 1372,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 15,
+          "wins_count": 12,
+          "losses_count": 3,
+          "last_game_at": "2022-01-09T01:19:51.000Z",
+          "win_rate": 80
+        },
+        "qm_2v2": {
+          "rating": 1049,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 3,
+          "wins_count": 2,
+          "losses_count": 1,
+          "last_game_at": "2022-02-06T19:57:18.000Z",
+          "win_rate": 66.7
+        },
+        "rm_1v1": {
+          "rating": 1224,
+          "rank": 3287,
+          "rank_level": null,
+          "streak": 3,
+          "games_count": 13,
+          "wins_count": 9,
+          "losses_count": 4,
+          "last_game_at": "2022-11-03T02:39:04.000Z",
+          "win_rate": 69.2
+        },
+        "rm_solo": {
+          "rating": 1048,
+          "rank": 11378,
+          "rank_level": "platinum_1",
+          "streak": -3,
+          "games_count": 10,
+          "wins_count": 6,
+          "losses_count": 4,
+          "last_game_at": "2022-05-24T11:37:06.000Z",
+          "win_rate": 60
+        },
+        "custom": {
+          "rating": 1190,
+          "rank": 5097,
+          "rank_level": null,
+          "streak": 14,
+          "games_count": 155,
+          "wins_count": 146,
+          "losses_count": 9,
+          "last_game_at": "2022-11-19T21:17:39.000Z",
+          "win_rate": 94.2
+        }
+      }
+    },
+    {
+      "name": "WarmBarbecue10",
+      "profile_id": 10724075,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-08-22T12:47:24.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 904,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 2,
+          "wins_count": 0,
+          "losses_count": 2,
+          "last_game_at": "2022-07-22T23:14:21.000Z",
+          "win_rate": 0
+        },
+        "qm_2v2": {
+          "rating": 706,
+          "rank": 31185,
+          "rank_level": null,
+          "streak": -1,
+          "games_count": 12,
+          "wins_count": 2,
+          "losses_count": 10,
+          "last_game_at": "2022-08-22T12:47:24.000Z",
+          "win_rate": 16.7
+        },
+        "qm_3v3": {
+          "rating": 824,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 4,
+          "wins_count": 0,
+          "losses_count": 4,
+          "last_game_at": "2022-08-22T12:18:28.000Z",
+          "win_rate": 0
+        },
+        "qm_4v4": {
+          "rating": 887,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 8,
+          "wins_count": 3,
+          "losses_count": 5,
+          "last_game_at": "2022-08-11T11:40:47.000Z",
+          "win_rate": 37.5
+        },
+        "custom": {
+          "rating": 952,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-07-16T13:56:05.000Z",
+          "win_rate": 0
+        }
+      }
+    },
+    {
+      "name": "WhiterBarbecue8",
+      "profile_id": 9892376,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-05-02T18:36:27.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 899,
+          "rank": null,
+          "rank_level": null,
+          "streak": -2,
+          "games_count": 12,
+          "wins_count": 5,
+          "losses_count": 7,
+          "last_game_at": "2022-05-02T16:02:23.000Z",
+          "win_rate": 41.7
+        },
+        "qm_2v2": {
+          "rating": 947,
+          "rank": null,
+          "rank_level": null,
+          "streak": -4,
+          "games_count": 22,
+          "wins_count": 9,
+          "losses_count": 13,
+          "last_game_at": "2022-05-02T18:36:27.000Z",
+          "win_rate": 40.9
+        },
+        "qm_4v4": {
+          "rating": 950,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-04-30T08:04:54.000Z",
+          "win_rate": 0
+        },
+        "rm_solo": {
+          "rating": 714,
+          "rank": 33464,
+          "rank_level": "bronze_3",
+          "streak": -4,
+          "games_count": 9,
+          "wins_count": 3,
+          "losses_count": 6,
+          "last_game_at": "2022-04-30T18:05:55.000Z",
+          "win_rate": 33.3
+        },
+        "custom": {
+          "rating": 945,
+          "rank": 72014,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 54,
+          "wins_count": 20,
+          "losses_count": 34,
+          "last_game_at": "2022-05-01T21:06:48.000Z",
+          "win_rate": 37
+        }
+      }
+    },
+    {
+      "name": "CostBarbecue864",
+      "profile_id": 8294284,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-12-04T12:08:07.000Z",
+      "leaderboards": {
+        "qm_4v4": {
+          "rating": 1047,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 1,
+          "wins_count": 1,
+          "losses_count": 0,
+          "last_game_at": "2021-11-25T14:18:03.000Z",
+          "win_rate": 100
+        },
+        "custom": {
+          "rating": 1043,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 35,
+          "wins_count": 19,
+          "losses_count": 16,
+          "last_game_at": "2021-12-04T12:08:07.000Z",
+          "win_rate": 54.3
+        }
+      }
+    },
+    {
+      "name": "barbecue",
+      "profile_id": 7411425,
+      "steam_id": "76561198084020581",
+      "avatars": {
+        "small": "https://avatars.akamai.steamstatic.com/df7d1b5ebd32e65db2767dac73abdbc033ee1951.jpg",
+        "medium": "https://avatars.akamai.steamstatic.com/df7d1b5ebd32e65db2767dac73abdbc033ee1951_medium.jpg",
+        "full": "https://avatars.akamai.steamstatic.com/df7d1b5ebd32e65db2767dac73abdbc033ee1951_full.jpg"
+      },
+      "social": {},
+      "last_game_at": "2022-02-20T05:04:41.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 995,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 24,
+          "wins_count": 11,
+          "losses_count": 13,
+          "last_game_at": "2021-11-29T02:44:03.000Z",
+          "win_rate": 45.8
+        },
+        "qm_2v2": {
+          "rating": 1097,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 17,
+          "wins_count": 10,
+          "losses_count": 7,
+          "last_game_at": "2022-02-19T05:28:13.000Z",
+          "win_rate": 58.8
+        },
+        "custom": {
+          "rating": 1030,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 55,
+          "wins_count": 41,
+          "losses_count": 14,
+          "last_game_at": "2022-02-20T05:04:41.000Z",
+          "win_rate": 74.5
+        }
+      }
+    },
+    {
+      "name": "HurtBarbecue590",
+      "profile_id": 8079158,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-03-09T05:28:09.025Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 1053,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 278,
+          "wins_count": 140,
+          "losses_count": 138,
+          "last_game_at": "2022-03-09T05:28:09.025Z",
+          "win_rate": 50.4
+        },
+        "qm_2v2": {
+          "rating": 994,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 4,
+          "wins_count": 2,
+          "losses_count": 2,
+          "last_game_at": "2022-01-06T05:38:48.000Z",
+          "win_rate": 50
+        },
+        "qm_3v3": {
+          "rating": 957,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-01-31T06:55:10.000Z",
+          "win_rate": 0
+        },
+        "custom": {
+          "rating": 998,
+          "rank": null,
+          "rank_level": null,
+          "streak": 6,
+          "games_count": 175,
+          "wins_count": 61,
+          "losses_count": 114,
+          "last_game_at": "2022-03-09T01:14:49.000Z",
+          "win_rate": 34.9
+        }
+      }
+    },
+    {
+      "name": "ThinBarbecueSK",
+      "profile_id": 5806144,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-05-11T17:40:24.000Z",
+      "leaderboards": {
+        "qm_3v3": {
+          "rating": 1011,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 2,
+          "wins_count": 1,
+          "losses_count": 1,
+          "last_game_at": "2022-02-15T13:15:01.000Z",
+          "win_rate": 50
+        },
+        "qm_4v4": {
+          "rating": 938,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 15,
+          "wins_count": 6,
+          "losses_count": 9,
+          "last_game_at": "2022-05-06T20:30:58.000Z",
+          "win_rate": 40
+        },
+        "custom": {
+          "rating": 667,
+          "rank": null,
+          "rank_level": null,
+          "streak": 4,
+          "games_count": 29,
+          "wins_count": 9,
+          "losses_count": 20,
+          "last_game_at": "2022-05-11T17:40:24.000Z",
+          "win_rate": 31
+        }
+      }
+    },
+    {
+      "name": "BarbecueAiles89",
+      "profile_id": 9879471,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-04-06T23:57:49.000Z",
+      "leaderboards": {
+        "qm_4v4": {
+          "rating": 955,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-04-05T21:02:24.000Z",
+          "win_rate": 0
+        },
+        "custom": {
+          "rating": 967,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 11,
+          "wins_count": 6,
+          "losses_count": 5,
+          "last_game_at": "2022-04-06T23:57:49.000Z",
+          "win_rate": 54.5
+        }
+      }
+    },
+    {
+      "name": "BarbecuePython",
+      "profile_id": 5626,
+      "steam_id": "76561198036880088",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-12-04T17:48:22.000Z",
+      "leaderboards": {
+        "qm_3v3": {
+          "rating": 1048,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 1,
+          "wins_count": 1,
+          "losses_count": 0,
+          "last_game_at": "2021-12-19T14:32:33.000Z",
+          "win_rate": 100
+        },
+        "qm_4v4": {
+          "rating": 907,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 2,
+          "wins_count": 0,
+          "losses_count": 2,
+          "last_game_at": "2021-12-19T16:33:32.000Z",
+          "win_rate": 0
+        },
+        "custom": {
+          "rating": 1000,
+          "rank": 51078,
+          "rank_level": null,
+          "streak": 7,
+          "games_count": 18,
+          "wins_count": 15,
+          "losses_count": 3,
+          "last_game_at": "2022-12-04T17:48:22.000Z",
+          "win_rate": 83.3
+        }
+      }
+    },
+    {
+      "name": "MetroBarbecue73",
+      "profile_id": 7436231,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-11-21T04:55:16.000Z",
+      "leaderboards": {
+        "qm_3v3": {
+          "rating": 1000,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 4,
+          "wins_count": 2,
+          "losses_count": 2,
+          "last_game_at": "2021-11-21T04:55:16.000Z",
+          "win_rate": 50
+        },
+        "qm_4v4": {
+          "rating": 1047,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 1,
+          "wins_count": 1,
+          "losses_count": 0,
+          "last_game_at": "2021-11-07T23:22:49.000Z",
+          "win_rate": 100
+        },
+        "custom": {
+          "rating": 1000,
+          "rank": null,
+          "rank_level": null,
+          "streak": 7,
+          "games_count": 11,
+          "wins_count": 10,
+          "losses_count": 1,
+          "last_game_at": "2021-11-09T03:51:37.000Z",
+          "win_rate": 90.9
+        }
+      }
+    },
+    {
+      "name": "AltoBarbecue203",
+      "profile_id": 9060488,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-12-30T22:23:25.000Z",
+      "leaderboards": {
+        "custom": {
+          "rating": 1000,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 1,
+          "wins_count": 1,
+          "losses_count": 0,
+          "last_game_at": "2021-12-30T22:23:25.000Z",
+          "win_rate": 100
+        }
+      }
+    },
+    {
+      "name": "SpryBarbecue755",
+      "profile_id": 8145090,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-11-13T00:10:43.000Z",
+      "leaderboards": {
+        "custom": {
+          "rating": 1000,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 5,
+          "wins_count": 1,
+          "losses_count": 4,
+          "last_game_at": "2021-11-13T00:10:43.000Z",
+          "win_rate": 20
+        }
+      }
+    },
+    {
+      "name": "FeatBarbecue67",
+      "profile_id": 10863075,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-08-09T17:13:39.000Z",
+      "leaderboards": {
+        "qm_2v2": {
+          "rating": 953,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-08-09T17:13:39.000Z",
+          "win_rate": 0
+        },
+        "custom": {
+          "rating": 988,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 3,
+          "wins_count": 1,
+          "losses_count": 2,
+          "last_game_at": "2022-08-09T16:29:25.000Z",
+          "win_rate": 33.3
+        }
+      }
+    },
+    {
+      "name": "FakeBarbecue667",
+      "profile_id": 9306656,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-09-04T03:41:14.000Z",
+      "leaderboards": {
+        "qm_2v2": {
+          "rating": 1045,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 3,
+          "wins_count": 2,
+          "losses_count": 1,
+          "last_game_at": "2022-08-27T16:47:14.000Z",
+          "win_rate": 66.7
+        },
+        "qm_3v3": {
+          "rating": 1048,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 3,
+          "wins_count": 2,
+          "losses_count": 1,
+          "last_game_at": "2022-09-01T17:36:39.000Z",
+          "win_rate": 66.7
+        },
+        "qm_4v4": {
+          "rating": 972,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 5,
+          "wins_count": 2,
+          "losses_count": 3,
+          "last_game_at": "2022-09-01T00:03:00.000Z",
+          "win_rate": 40
+        },
+        "custom": {
+          "rating": 1066,
+          "rank": 15938,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 32,
+          "wins_count": 18,
+          "losses_count": 14,
+          "last_game_at": "2022-09-04T03:41:14.000Z",
+          "win_rate": 56.3
+        }
+      }
+    },
+    {
+      "name": "AquaBarbecue94",
+      "profile_id": 11255564,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-10-16T15:29:32.000Z",
+      "leaderboards": {
+        "custom": {
+          "rating": 1000,
+          "rank": 45307,
+          "rank_level": null,
+          "streak": 5,
+          "games_count": 32,
+          "wins_count": 24,
+          "losses_count": 8,
+          "last_game_at": "2022-10-16T15:29:32.000Z",
+          "win_rate": 75
+        }
+      }
+    },
+    {
+      "name": "BashfulBarbecue",
+      "profile_id": 7500726,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-11-07T13:08:40.000Z",
+      "leaderboards": {
+        "custom": {
+          "rating": 992,
+          "rank": 63389,
+          "rank_level": null,
+          "streak": 3,
+          "games_count": 33,
+          "wins_count": 31,
+          "losses_count": 2,
+          "last_game_at": "2022-11-07T13:08:40.000Z",
+          "win_rate": 93.9
+        }
+      }
+    },
+    {
+      "name": "UncleBarbecue",
+      "profile_id": 4681859,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-11-26T17:49:49.000Z",
+      "leaderboards": {
+        "qm_2v2": {
+          "rating": 951,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2021-11-27T04:29:09.000Z",
+          "win_rate": 0
+        },
+        "qm_3v3": {
+          "rating": 1140,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 5,
+          "wins_count": 4,
+          "losses_count": 1,
+          "last_game_at": "2021-11-11T22:49:09.000Z",
+          "win_rate": 80
+        },
+        "qm_4v4": {
+          "rating": 1035,
+          "rank": null,
+          "rank_level": null,
+          "streak": 4,
+          "games_count": 16,
+          "wins_count": 9,
+          "losses_count": 7,
+          "last_game_at": "2021-11-14T06:21:47.000Z",
+          "win_rate": 56.3
+        },
+        "custom": {
+          "rating": 1036,
+          "rank": 21173,
+          "rank_level": null,
+          "streak": 4,
+          "games_count": 53,
+          "wins_count": 42,
+          "losses_count": 11,
+          "last_game_at": "2022-11-26T17:49:49.000Z",
+          "win_rate": 79.2
+        }
+      }
+    },
+    {
+      "name": "Barbecue Chicken",
+      "profile_id": 10050239,
+      "steam_id": "76561197973501895",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-04-21T02:15:37.000Z",
+      "leaderboards": {
+        "custom": {
+          "rating": 952,
+          "rank": null,
+          "rank_level": null,
+          "streak": 2,
+          "games_count": 3,
+          "wins_count": 2,
+          "losses_count": 1,
+          "last_game_at": "2022-04-21T02:15:37.000Z",
+          "win_rate": 66.7
+        }
+      }
+    },
+    {
+      "name": "DatBarbecueBoi",
+      "profile_id": 10105418,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-05-06T04:46:18.000Z",
+      "leaderboards": {
+        "custom": {
+          "rating": 1000,
+          "rank": null,
+          "rank_level": null,
+          "streak": 5,
+          "games_count": 5,
+          "wins_count": 5,
+          "losses_count": 0,
+          "last_game_at": "2022-05-06T04:46:18.000Z",
+          "win_rate": 100
+        }
+      }
+    },
+    {
+      "name": "AiryBarbecue795",
+      "profile_id": 8498106,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-02-02T11:28:45.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 1004,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 2,
+          "wins_count": 1,
+          "losses_count": 1,
+          "last_game_at": "2021-12-27T08:40:53.000Z",
+          "win_rate": 50
+        },
+        "qm_3v3": {
+          "rating": 924,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 6,
+          "wins_count": 2,
+          "losses_count": 4,
+          "last_game_at": "2022-01-20T08:21:09.000Z",
+          "win_rate": 33.3
+        },
+        "qm_4v4": {
+          "rating": 777,
+          "rank": null,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 45,
+          "wins_count": 20,
+          "losses_count": 25,
+          "last_game_at": "2022-02-02T11:28:45.000Z",
+          "win_rate": 44.4
+        }
+      }
+    },
+    {
+      "name": "GlibBarbecue568",
+      "profile_id": 7611074,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-11-16T21:06:18.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 860,
+          "rank": null,
+          "rank_level": null,
+          "streak": 2,
+          "games_count": 7,
+          "wins_count": 2,
+          "losses_count": 5,
+          "last_game_at": "2021-11-16T21:06:18.000Z",
+          "win_rate": 28.6
+        },
+        "qm_2v2": {
+          "rating": 928,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 26,
+          "wins_count": 12,
+          "losses_count": 14,
+          "last_game_at": "2021-11-09T16:17:51.000Z",
+          "win_rate": 46.2
+        },
+        "qm_3v3": {
+          "rating": 1045,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 5,
+          "wins_count": 3,
+          "losses_count": 2,
+          "last_game_at": "2021-11-06T15:33:40.000Z",
+          "win_rate": 60
+        }
+      }
+    },
+    {
+      "name": "PlumBarbecue484",
+      "profile_id": 8429339,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-11-22T19:26:56.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 950,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2021-11-22T19:26:56.000Z",
+          "win_rate": 0
+        }
+      }
+    },
+    {
+      "name": "AngryBarbecue36",
+      "profile_id": 4185801,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-11-04T22:53:07.000Z",
+      "leaderboards": {
+        "qm_2v2": {
+          "rating": 952,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2021-11-04T22:53:07.000Z",
+          "win_rate": 0
+        }
+      }
+    },
+    {
+      "name": "AgateBarbecue92",
+      "profile_id": 2157984,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2021-12-14T03:11:59.000Z",
+      "leaderboards": {
+        "qm_3v3": {
+          "rating": 953,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2021-12-14T03:11:59.000Z",
+          "win_rate": 0
+        }
+      }
+    },
+    {
+      "name": "TestyBarbecue29",
+      "profile_id": 9119922,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": null,
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": null,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": null,
+          "wins_count": null,
+          "losses_count": null,
+          "last_game_at": null,
+          "win_rate": null
+        }
+      }
+    },
+    {
+      "name": "BaseBarbecue172",
+      "profile_id": 11741050,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-11-27T12:58:50.000Z",
+      "leaderboards": {
+        "qm_1v1": {
+          "rating": 955,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-11-27T12:58:50.000Z",
+          "win_rate": 0
+        }
+      }
+    },
+    {
+      "name": "FastBarbecue648",
+      "profile_id": 10252820,
+      "steam_id": "",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "social": {},
+      "last_game_at": "2022-05-27T13:16:18.000Z",
+      "leaderboards": {
+        "qm_4v4": {
+          "rating": 956,
+          "rank": null,
+          "rank_level": null,
+          "streak": null,
+          "games_count": 1,
+          "wins_count": 0,
+          "losses_count": 1,
+          "last_game_at": "2022-05-27T13:16:18.000Z",
+          "win_rate": 0
+        }
+      }
+    }
+  ]
+}
