@@ -25,6 +25,9 @@ pub use chrono;
 pub use futures;
 
 /// Get profile stats for a player.
+///
+/// # Params
+/// - `profile_id` is aoe4world the ID of the player whose games should be searched.
 pub async fn profile(profile_id: u64) -> Result<Profile> {
     reqwest::get(format!(
         "https://aoe4world.com/api/v0/players/{}",
@@ -36,7 +39,7 @@ pub async fn profile(profile_id: u64) -> Result<Profile> {
     .map_err(anyhow::Error::from)
 }
 
-/// Get games for a player.
+/// Get games for a player. Games as returned as an async stream.
 ///
 /// # Params
 /// - `profile_id` is aoe4world the ID of the player whose games should be searched.
