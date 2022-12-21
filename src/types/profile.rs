@@ -11,7 +11,7 @@ use crate::types::{rank::RankLeague, Url};
 /// Player profile and statistics.
 #[derive(Deserialize)]
 #[serde(rename_all = "snake_case")]
-pub struct ProfileStatsResponse {
+pub struct Profile {
     /// Name of the player.
     pub name: Option<String>,
     /// Profile ID of the player on aoe4world.
@@ -147,8 +147,7 @@ mod tests {
 
     #[test]
     fn profile_examples_deserialize_smoke() {
-        let _: ProfileStatsResponse = from_str(NEPTUNE_JSON).expect("neptune should deserialize");
-        let _: ProfileStatsResponse =
-            from_str(HOUSEDHORSE_JSON).expect("housedhorse should deserialize");
+        let _: Profile = from_str(NEPTUNE_JSON).expect("neptune should deserialize");
+        let _: Profile = from_str(HOUSEDHORSE_JSON).expect("housedhorse should deserialize");
     }
 }

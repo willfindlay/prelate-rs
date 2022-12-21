@@ -17,11 +17,11 @@ use futures::Stream;
 use pagination::{PaginatedRequest, PaginationClient};
 use types::{
     games::{self, Game, GamesPlayed},
-    profile::ProfileStatsResponse,
+    profile::Profile,
 };
 
 /// Get profile stats for a player.
-pub async fn profile_stats(profile_id: u64) -> Result<ProfileStatsResponse> {
+pub async fn profile(profile_id: u64) -> Result<Profile> {
     reqwest::get(format!(
         "https://aoe4world.com/api/v0/players/{}",
         profile_id
@@ -52,16 +52,16 @@ pub async fn games(
 
 #[cfg(test)]
 mod tests {
-    use futures::StreamExt;
+    use super::*;
 
-    use crate::{games, profile_stats};
+    use futures::StreamExt;
 
     const ONLY_CAMS_ID: u64 = 10433860;
 
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test]
     async fn profile_api_smoke() {
-        profile_stats(ONLY_CAMS_ID.into())
+        profile(ONLY_CAMS_ID.into())
             .await
             .expect("API call should succeed");
     }
