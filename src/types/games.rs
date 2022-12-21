@@ -4,13 +4,17 @@
 
 use std::fmt::Display;
 
+use anyhow::Result;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
 
 use crate::{
     pagination::{Paginated, Pagination},
+    profile,
     types::civilization::Civilization,
 };
+
+use super::profile::Profile;
 
 /// Filters for games returned by the API.
 #[derive(Deserialize, Debug)]
@@ -217,6 +221,16 @@ pub struct Player {
     pub rating: Option<u32>,
     /// Rating points or ELO gained or lost.
     pub rating_diff: Option<i32>,
+}
+
+impl Player {
+    /// Fetch the profile information for this player, if it exists.
+    pub async fn profile(&self) -> Result<Option<Profile>> {
+        match self.profile_id {
+            Some(id) => profile(id).await.map(|p| Some(p)),
+            None => Ok(None),
+        }
+    }
 }
 
 #[cfg(test)]
