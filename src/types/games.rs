@@ -221,7 +221,7 @@ impl Player {
     /// Fetch the profile information for this player, if it exists.
     pub async fn profile(&self) -> Result<Option<Profile>> {
         match self.profile_id {
-            Some(id) => profile(id).await.map(|p| Some(p)),
+            Some(id) => Ok(Some(profile(id).await?)),
             None => Ok(None),
         }
     }
