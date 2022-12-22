@@ -54,7 +54,7 @@ pub async fn games(
 ) -> Result<impl Stream<Item = Result<Game>>> {
     let client = PaginationClient::<GamesPlayed, Game>::default();
     let url = format!("https://aoe4world.com/api/v0/players/{}/games", profile_id).parse()?;
-    let filter = games::Filters {
+    let filter = games::Filter {
         leaderboard,
         opponent_profile_ids: opponent_ids.map(|ids| ids.to_vec()).unwrap_or_default(),
         since,
