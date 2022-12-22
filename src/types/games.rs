@@ -23,7 +23,7 @@ pub struct Filter {
     pub leaderboard: Option<Leaderboard>,
     /// Filter over an opponent's profile ID.
     #[serde(default)]
-    pub opponent_profile_ids: Vec<u64>,
+    pub opponent_profile_id: Option<u64>,
     /// Filter by time played since a specific date.
     pub since: Option<chrono::DateTime<chrono::Utc>>,
 }
@@ -34,9 +34,9 @@ impl Filter {
             url.query_pairs_mut()
                 .extend_pairs(&[("leaderboard", leaderboard.to_string())]);
         }
-        for id in &self.opponent_profile_ids {
+        if let Some(id) = self.opponent_profile_id {
             url.query_pairs_mut()
-                .extend_pairs(&[("opponent_profile_id[]", id.to_string())]);
+                .extend_pairs(&[("opponent_profile_id", id.to_string())]);
         }
         if let Some(since) = self.since {
             url.query_pairs_mut()
