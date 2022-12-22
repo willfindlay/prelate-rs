@@ -18,7 +18,7 @@ use super::profile::Profile;
 
 /// Filters for games returned by the API.
 #[derive(Deserialize, Debug)]
-pub struct Filters {
+pub struct Filter {
     /// Filter by leaderboard category.
     pub leaderboard: Option<Leaderboard>,
     /// Filter over an opponent's profile ID.
@@ -28,7 +28,7 @@ pub struct Filters {
     pub since: Option<chrono::DateTime<chrono::Utc>>,
 }
 
-impl Filters {
+impl Filter {
     pub(crate) fn query_params(&self, mut url: Url) -> Url {
         if let Some(ref leaderboard) = self.leaderboard {
             url.query_pairs_mut()
