@@ -213,6 +213,7 @@ impl Display for Leaderboard {
 pub enum GameResult {
     Win,
     Loss,
+    Unknown,
 }
 
 /// Wrapper around a Player who is a member of a team.
