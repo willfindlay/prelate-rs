@@ -5,7 +5,7 @@
 use serde::{de, Deserialize, Serialize};
 
 /// A player's rank league and division (e.g. Conq III).
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum RankLeague {
     /// No rank.
@@ -84,13 +84,13 @@ impl Serialize for RankLeague {
             "{}_{}",
             league,
             serde_json::to_string(div)
-                .map_err(|_| serde::ser::Error::custom(format!("invalid division")))?
+                .map_err(|_| serde::ser::Error::custom("invalid division"))?
         ))
     }
 }
 
 /// A player's division within their rank league.
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum RankDivision {
     /// The lowest division within a league (e.g. Conqueror I).

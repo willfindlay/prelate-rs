@@ -5,7 +5,7 @@
 use serde::{Deserialize, Serialize};
 
 /// A civilization in AoEIV.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum Civilization {
