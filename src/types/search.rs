@@ -11,7 +11,7 @@ use crate::{
 };
 
 /// Filters for players returned by the API.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Filter {
@@ -35,7 +35,7 @@ impl Filter {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct SearchResults {
@@ -58,6 +58,9 @@ impl Paginated<Profile> for SearchResults {
 mod tests {
     use super::*;
 
+    use crate::testutils::assert_serde_roundtrip;
+
+    use arbitrary::Arbitrary;
     use serde_json::from_str;
 
     const SEARCH_RESULTS_JSON: &str = include_str!("../../testdata/search-results.json");
@@ -70,5 +73,15 @@ mod tests {
             from_str(SEARCH_RESULTS_JSON).expect("search results should deserialize");
         let _: SearchResults = from_str(ONLYCAMS_SEARCH_RESULTS_JSON)
             .expect("OnlyCams search results should deserialize");
+    }
+
+    #[test]
+    fn search_serde_rountrip() {
+        fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
+            let obj = SearchResults::arbitrary(u)?;
+            assert_serde_roundtrip(obj);
+            Ok(())
+        }
+        arbtest::builder().run(prop);
     }
 }

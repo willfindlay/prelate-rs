@@ -21,7 +21,7 @@ const DEFAULT_COUNT_PER_PAGE: usize = 50;
 ///
 /// This is used as part of the transparent pagination streaming logic.
 /// Should be embedded into paginated data using `#[serde(flatten)]`.
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[allow(dead_code)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]

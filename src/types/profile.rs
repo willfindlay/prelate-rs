@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 use crate::types::{rank::RankLeague, Url};
 
 /// Player profile and statistics.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Profile {
@@ -34,7 +34,7 @@ pub struct Profile {
 }
 
 /// Links to avatars used by the player.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Avatars {
@@ -47,7 +47,7 @@ pub struct Avatars {
 }
 
 /// Social information.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Social {
@@ -66,7 +66,7 @@ pub struct Social {
 }
 
 /// Statistics per game mode.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct GameModes {
@@ -95,7 +95,7 @@ pub struct GameModes {
 }
 
 /// Statistics for a game mode.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct GameModeStats {
@@ -133,7 +133,7 @@ pub struct GameModeStats {
 }
 
 /// An entry in the player's rating history.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct RatingHistoryEntry {
@@ -153,6 +153,9 @@ pub struct RatingHistoryEntry {
 mod tests {
     use super::*;
 
+    use crate::testutils::assert_serde_roundtrip;
+
+    use arbitrary::Arbitrary;
     use serde_json::from_str;
 
     const NEPTUNE_JSON: &str = include_str!("../../testdata/neptune.json");
@@ -162,5 +165,15 @@ mod tests {
     fn profile_examples_deserialize_smoke() {
         let _: Profile = from_str(NEPTUNE_JSON).expect("neptune should deserialize");
         let _: Profile = from_str(HOUSEDHORSE_JSON).expect("housedhorse should deserialize");
+    }
+
+    #[test]
+    fn profile_serde_rountrip() {
+        fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
+            let obj = Profile::arbitrary(u)?;
+            assert_serde_roundtrip(obj);
+            Ok(())
+        }
+        arbtest::builder().run(prop);
     }
 }
