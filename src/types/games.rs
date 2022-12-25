@@ -106,7 +106,7 @@ pub struct Game {
     pub just_finished: Option<bool>,
     /// The teams in the game.
     #[serde(default)]
-    pub teams: Vec<Vec<Player>>,
+    pub teams: Vec<Vec<TeamMember>>,
 }
 
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
@@ -213,6 +213,14 @@ impl Display for Leaderboard {
 pub enum GameResult {
     Win,
     Loss,
+}
+
+/// Wrapper around a Player who is a member of a team.
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
+pub struct TeamMember {
+    pub player: Option<Player>,
 }
 
 /// A player in the game.
