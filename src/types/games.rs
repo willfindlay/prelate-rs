@@ -19,6 +19,7 @@ use super::profile::Profile;
 /// Filters for games returned by the API.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Filter {
     /// Filter by leaderboard category.
     pub leaderboard: Option<Leaderboard>,
@@ -26,6 +27,7 @@ pub struct Filter {
     #[serde(default)]
     pub opponent_profile_id: Option<u64>,
     /// Filter by time played since a specific date.
+    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub since: Option<chrono::DateTime<chrono::Utc>>,
 }
 
@@ -50,6 +52,7 @@ impl Filter {
 /// Games played and related statistics.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct GamesPlayed {
     #[serde(flatten)]
     pagination: Pagination,
@@ -69,12 +72,15 @@ impl Paginated<Game> for GamesPlayed {
 /// Information on a specific game.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Game {
     /// The ID of the game on aoe4world.
     pub game_id: Option<u32>,
     /// When the game was started.
+    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub started_at: Option<chrono::DateTime<chrono::Utc>>,
     /// When the state of the game was last updated.
+    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub updated_at: Option<chrono::DateTime<chrono::Utc>>,
     /// How long the game lasted in seconds.
     pub duration: Option<u32>,
@@ -106,6 +112,7 @@ pub struct Game {
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
 /// `RmTeam`.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum GameKind {
     /// 1v1 ranked.
     #[serde(rename = "rm_1v1")]
@@ -149,6 +156,7 @@ impl Display for GameKind {
 /// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
 /// addition of `RmSolo` and `RmTeam`.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum Leaderboard {
     /// Solo ranked.
     #[serde(rename = "rm_solo")]
@@ -201,6 +209,7 @@ impl Display for Leaderboard {
 /// change in the future.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum GameResult {
     Win,
     Loss,
@@ -209,6 +218,7 @@ pub enum GameResult {
 /// A player in the game.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {
     /// Name of the player.
     pub name: Option<String>,

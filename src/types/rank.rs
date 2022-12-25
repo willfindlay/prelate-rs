@@ -6,6 +6,7 @@ use serde::{de, Deserialize, Serialize};
 
 /// A player's rank league and division (e.g. Conq III).
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum RankLeague {
     /// No rank.
     Unranked,
@@ -90,6 +91,7 @@ impl Serialize for RankLeague {
 
 /// A player's division within their rank league.
 #[derive(Debug, Clone, Copy)]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum RankDivision {
     /// The lowest division within a league (e.g. Conqueror I).
     One,

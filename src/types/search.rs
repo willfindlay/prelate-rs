@@ -13,6 +13,7 @@ use crate::{
 /// Filters for players returned by the API.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Filter {
     /// Search query.
     pub query: Option<String>,
@@ -36,6 +37,7 @@ impl Filter {
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct SearchResults {
     #[serde(flatten)]
     pagination: Pagination,
