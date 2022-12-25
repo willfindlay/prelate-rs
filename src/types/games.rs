@@ -17,7 +17,7 @@ use crate::{
 use super::profile::Profile;
 
 /// Filters for games returned by the API.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Filter {
@@ -50,7 +50,7 @@ impl Filter {
 }
 
 /// Games played and related statistics.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct GamesPlayed {
@@ -70,7 +70,7 @@ impl Paginated<Game> for GamesPlayed {
 }
 
 /// Information on a specific game.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Game {
@@ -111,7 +111,7 @@ pub struct Game {
 
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
 /// `RmTeam`.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum GameKind {
     /// 1v1 ranked.
@@ -155,7 +155,7 @@ impl Display for GameKind {
 
 /// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
 /// addition of `RmSolo` and `RmTeam`.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum Leaderboard {
     /// Solo ranked.
@@ -207,7 +207,7 @@ impl Display for Leaderboard {
 ///
 /// No-Result outcomes are not currently supported by the aoe4world API, but this may
 /// change in the future.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum GameResult {
@@ -216,7 +216,7 @@ pub enum GameResult {
 }
 
 /// A player in the game.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {
@@ -248,6 +248,9 @@ impl Player {
 mod tests {
     use super::*;
 
+    use crate::testutils::assert_serde_roundtrip;
+
+    use arbitrary::Arbitrary;
     use serde_json::from_str;
 
     const NEPTUNE_GAMES_JSON: &str = include_str!("../../testdata/neptune-games.json");
@@ -256,5 +259,15 @@ mod tests {
     fn game_examples_deserialize_smoke() {
         let _: GamesPlayed =
             from_str(NEPTUNE_GAMES_JSON).expect("neptune games should deserialize");
+    }
+
+    #[test]
+    fn game_serde_rountrip() {
+        fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
+            let obj = GamesPlayed::arbitrary(u)?;
+            assert_serde_roundtrip(obj);
+            Ok(())
+        }
+        arbtest::builder().run(prop);
     }
 }

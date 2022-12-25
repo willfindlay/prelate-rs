@@ -11,6 +11,9 @@ pub mod types;
 
 mod pagination;
 
+#[cfg(test)]
+mod testutils;
+
 use anyhow::Result;
 use futures::Stream;
 
