@@ -9,7 +9,7 @@ use async_trait::async_trait;
 use derive_new::new;
 use page_turner::prelude::*;
 use reqwest::Url;
-use serde::{de::DeserializeOwned, Deserialize};
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 /// Default concurrency to use when making paginated requests.
 const DEFAULT_PAGES_CONCURRENCY: usize = 8;
@@ -21,7 +21,7 @@ const DEFAULT_COUNT_PER_PAGE: usize = 50;
 ///
 /// This is used as part of the transparent pagination streaming logic.
 /// Should be embedded into paginated data using `#[serde(flatten)]`.
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "snake_case")]
 #[allow(dead_code)]
 pub(crate) struct Pagination {

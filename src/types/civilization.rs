@@ -2,10 +2,10 @@
 
 //! Definitions for civilizations in AoEIV.
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 /// A civilization in AoEIV.
-#[derive(Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 #[serde(rename_all = "snake_case")]
 pub enum Civilization {
     English,

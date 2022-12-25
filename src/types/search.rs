@@ -3,7 +3,7 @@
 //! Search for players.
 
 use reqwest::Url;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 use crate::{
     pagination::{Paginated, Pagination},
@@ -11,7 +11,7 @@ use crate::{
 };
 
 /// Filters for players returned by the API.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Filter {
     /// Search query.
@@ -34,7 +34,7 @@ impl Filter {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub(crate) struct SearchResults {
     #[serde(flatten)]

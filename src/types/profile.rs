@@ -4,12 +4,12 @@
 
 use std::collections::HashMap;
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 use crate::types::{rank::RankLeague, Url};
 
 /// Player profile and statistics.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Profile {
     /// Name of the player.
@@ -32,7 +32,7 @@ pub struct Profile {
 }
 
 /// Links to avatars used by the player.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Avatars {
     /// Small size.
@@ -44,7 +44,7 @@ pub struct Avatars {
 }
 
 /// Social information.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Social {
     /// URL to the player's Twitch.
@@ -62,7 +62,7 @@ pub struct Social {
 }
 
 /// Statistics per game mode.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct GameModes {
     /// Solo ranked stats. Rating is ranked points.
@@ -90,7 +90,7 @@ pub struct GameModes {
 }
 
 /// Statistics for a game mode.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct GameModeStats {
     /// Rating points or ELO.
@@ -126,7 +126,7 @@ pub struct GameModeStats {
 }
 
 /// An entry in the player's rating history.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct RatingHistoryEntry {
     /// Rating points or ELO.
