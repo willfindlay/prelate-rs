@@ -17,7 +17,7 @@ use crate::{
 use super::profile::Profile;
 
 /// Filters for games returned by the API.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Filter {
     /// Filter by leaderboard category.
@@ -48,7 +48,7 @@ impl Filter {
 }
 
 /// Games played and related statistics.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub(crate) struct GamesPlayed {
     #[serde(flatten)]
@@ -67,7 +67,7 @@ impl Paginated<Game> for GamesPlayed {
 }
 
 /// Information on a specific game.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Game {
     /// The ID of the game on aoe4world.
@@ -199,7 +199,7 @@ impl Display for Leaderboard {
 ///
 /// No-Result outcomes are not currently supported by the aoe4world API, but this may
 /// change in the future.
-#[derive(Deserialize, Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 #[serde(rename_all = "snake_case")]
 pub enum GameResult {
     Win,
@@ -207,7 +207,7 @@ pub enum GameResult {
 }
 
 /// A player in the game.
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub struct Player {
     /// Name of the player.

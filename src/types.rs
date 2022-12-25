@@ -4,7 +4,7 @@
 
 use std::ops::{Deref, DerefMut};
 
-use serde::{de, Deserialize};
+use serde::{de, Deserialize, Serialize};
 
 pub mod civilization;
 pub mod games;
@@ -30,6 +30,16 @@ impl<'de> Deserialize<'de> for Url {
         let url = reqwest::Url::parse(&s)
             .map_err(|e| de::Error::custom(format!("unable to parse URL: {}", e)))?;
         Ok(Self { url })
+    }
+}
+
+impl Serialize for Url {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        let s = self.url.as_str();
+        serializer.serialize_str(s)
     }
 }
 

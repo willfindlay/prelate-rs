@@ -2,10 +2,10 @@
 
 //! Types related to a player's rank league.
 
-use serde::{de, Deserialize};
+use serde::{de, Deserialize, Serialize};
 
 /// A player's rank league and division (e.g. Conq III).
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum RankLeague {
     /// No rank.
     Unranked,
@@ -65,8 +65,31 @@ impl<'de> Deserialize<'de> for RankLeague {
     }
 }
 
+impl Serialize for RankLeague {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        let (league, div) = match self {
+            RankLeague::Unranked => return serializer.serialize_str("unranked"),
+            RankLeague::Bronze(div) => ("bronze", div),
+            RankLeague::Silver(div) => ("silver", div),
+            RankLeague::Gold(div) => ("gold", div),
+            RankLeague::Platinum(div) => ("platinum", div),
+            RankLeague::Diamond(div) => ("diamond", div),
+            RankLeague::Conqueror(div) => ("conqueror", div),
+        };
+        serializer.serialize_str(&format!(
+            "{}_{}",
+            league,
+            serde_json::to_string(div)
+                .map_err(|_| serde::ser::Error::custom(format!("invalid division")))?
+        ))
+    }
+}
+
 /// A player's division within their rank league.
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum RankDivision {
     /// The lowest division within a league (e.g. Conqueror I).
     One,
@@ -83,6 +106,16 @@ impl<'de> Deserialize<'de> for RankDivision {
     {
         let n = u32::deserialize(deserializer)?;
         RankDivision::try_from(n).map_err(de::Error::custom)
+    }
+}
+
+impl Serialize for RankDivision {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        let n: u32 = u32::from(*self);
+        serializer.serialize_u32(n)
     }
 }
 
