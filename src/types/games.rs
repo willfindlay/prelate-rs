@@ -17,7 +17,7 @@ use crate::{
 use super::profile::Profile;
 
 /// Filters for games returned by the API.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Filter {
@@ -111,7 +111,7 @@ pub struct Game {
 
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
 /// `RmTeam`.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum GameKind {
     /// 1v1 ranked.
@@ -155,7 +155,7 @@ impl Display for GameKind {
 
 /// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
 /// addition of `RmSolo` and `RmTeam`.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum Leaderboard {
     /// Solo ranked.
@@ -207,7 +207,7 @@ impl Display for Leaderboard {
 ///
 /// No-Result outcomes are not currently supported by the aoe4world API, but this may
 /// change in the future.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub enum GameResult {
@@ -216,7 +216,7 @@ pub enum GameResult {
 }
 
 /// A player in the game.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {

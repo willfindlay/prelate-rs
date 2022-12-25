@@ -15,7 +15,7 @@ pub mod search;
 /// Wraps a [`reqwest::Url`] and implements [`serde::Deserialize`].
 ///
 /// Derefs into a bare `Url` struct for convenience.
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub struct Url {
     /// The inner URL.
     url: reqwest::Url,

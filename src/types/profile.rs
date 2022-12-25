@@ -34,7 +34,7 @@ pub struct Profile {
 }
 
 /// Links to avatars used by the player.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Avatars {
@@ -47,7 +47,7 @@ pub struct Avatars {
 }
 
 /// Social information.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Social {
@@ -133,7 +133,7 @@ pub struct GameModeStats {
 }
 
 /// An entry in the player's rating history.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct RatingHistoryEntry {
