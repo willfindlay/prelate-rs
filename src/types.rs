@@ -56,3 +56,13 @@ impl DerefMut for Url {
         &mut self.url
     }
 }
+
+#[cfg(test)]
+impl<'a> arbitrary::Arbitrary<'a> for Url {
+    fn arbitrary(_: &mut arbitrary::Unstructured<'a>) -> arbitrary::Result<Self> {
+        Ok(Url {
+            url: reqwest::Url::parse("https://www.example.com")
+                .map_err(|_| arbitrary::Error::IncorrectFormat)?,
+        })
+    }
+}

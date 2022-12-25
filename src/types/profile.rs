@@ -11,6 +11,7 @@ use crate::types::{rank::RankLeague, Url};
 /// Player profile and statistics.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Profile {
     /// Name of the player.
     pub name: Option<String>,
@@ -25,6 +26,7 @@ pub struct Profile {
     /// Social information.
     pub social: Option<Social>,
     /// When the last game was played.
+    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Statistics per game mode.
     #[serde(alias = "leaderboards")]
@@ -34,6 +36,7 @@ pub struct Profile {
 /// Links to avatars used by the player.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Avatars {
     /// Small size.
     pub small: Option<Url>,
@@ -46,6 +49,7 @@ pub struct Avatars {
 /// Social information.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Social {
     /// URL to the player's Twitch.
     pub twitch: Option<Url>,
@@ -64,6 +68,7 @@ pub struct Social {
 /// Statistics per game mode.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct GameModes {
     /// Solo ranked stats. Rating is ranked points.
     pub rm_solo: Option<GameModeStats>,
@@ -92,6 +97,7 @@ pub struct GameModes {
 /// Statistics for a game mode.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct GameModeStats {
     /// Rating points or ELO.
     pub rating: Option<u32>,
@@ -114,6 +120,7 @@ pub struct GameModeStats {
     /// How many games have been dropped.
     pub drops_count: Option<u32>,
     /// When the last game was played.
+    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Win rate as a percentage out of 100.
     pub win_rate: Option<f64>,
@@ -128,6 +135,7 @@ pub struct GameModeStats {
 /// An entry in the player's rating history.
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct RatingHistoryEntry {
     /// Rating points or ELO.
     pub rating: Option<u32>,

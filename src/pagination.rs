@@ -24,6 +24,7 @@ const DEFAULT_COUNT_PER_PAGE: usize = 50;
 #[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "snake_case")]
 #[allow(dead_code)]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct Pagination {
     page: u32,
     per_page: u32,
