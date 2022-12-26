@@ -27,6 +27,7 @@ use types::{
 // Rexports
 pub use chrono;
 pub use futures;
+pub use url;
 
 /// Get profile stats for a player.
 ///
