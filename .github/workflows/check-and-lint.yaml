@@ -17,44 +17,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@e645b0cf01249a964ec099494d38d2da0f0b349f
         with:
-          profile: minimal
           toolchain: stable
-          override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: check
-          args: --all --all-targets --all-features
+      - run: cargo check --all --all-targets --all-features
 
   fmt:
     name: Rustfmt
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@e645b0cf01249a964ec099494d38d2da0f0b349f
         with:
-          profile: minimal
           toolchain: nightly
-          override: true
       - run: rustup component add rustfmt
-      - uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
+      - run: cargo fmt --all -- --check
 
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@e645b0cf01249a964ec099494d38d2da0f0b349f
         with:
           toolchain: stable
-          components: clippy
-          override: true
-      - uses: actions-rs/clippy-check@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features -- -D warnings
-          name: Clippy Output
+      - run: cargo clippy --all-features -- -D warnings
