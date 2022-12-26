@@ -123,6 +123,7 @@ pub struct GameModeStats {
     #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Win rate as a percentage out of 100.
+    #[cfg_attr(test, arbitrary(with = crate::testutils::some_clamped_arbitrary_f64(0.0, 100.0)))]
     pub win_rate: Option<f64>,
     /// The player's league and division.
     pub rank_level: Option<RankLeague>,

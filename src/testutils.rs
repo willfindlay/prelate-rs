@@ -18,3 +18,16 @@ where
     println!("struct: {:?}", obj_de);
     assert_eq!(obj, obj_de, "serialization should be idempotent");
 }
+
+pub fn some_clamped_arbitrary_f64(
+    min: f64,
+    max: f64,
+) -> impl Fn(&mut arbitrary::Unstructured) -> arbitrary::Result<Option<f64>> {
+    move |u: &mut arbitrary::Unstructured| -> arbitrary::Result<Option<f64>> {
+        let steps = u32::MAX;
+        let factor = (max - min) as f64 / (steps as f64);
+        let random_int: u32 = u.int_in_range(0..=steps)?;
+        let random = min as f64 + factor * (random_int as f64);
+        Ok(Some(random))
+    }
+}
