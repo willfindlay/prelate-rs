@@ -97,7 +97,7 @@ pub struct Game {
     /// Patch on which the game was played.
     pub patch: Option<u32>,
     /// Average ELO rating of the game.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::some_clamped_arbitrary_f64(0.0, 100.0)))]
+    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
     pub average_rating: Option<f64>,
     /// Whether the match is still ongoing.
     /// True if and only if the match is still being played.
