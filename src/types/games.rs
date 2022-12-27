@@ -9,7 +9,10 @@ use serde::{Deserialize, Serialize};
 
 use crate::{
     pagination::{Paginated, Pagination},
-    types::{civilization::Civilization, profile::ProfileId},
+    types::{
+        civilization::Civilization,
+        profile::{Profile, ProfileId},
+    },
 };
 
 /// Filters for games returned by the API.
@@ -214,7 +217,7 @@ pub enum GameResult {
 }
 
 /// Wrapper around a Player who is a member of a team.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct TeamMember {
@@ -236,14 +239,23 @@ impl From<TeamMember> for Player {
 }
 
 /// A player in the game.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {
-    /// Name of the player.
-    pub name: String,
-    /// Profile ID of the player on aoe4world.
-    pub profile_id: ProfileId,
+    /// Profile information for the player.
+    #[serde(flatten)]
+    pub profile: Profile,
+    /// Game information for the player.
+    #[serde(flatten)]
+    pub game_info: PlayerGameInfo,
+}
+
+/// A player in the game.
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
+pub struct PlayerGameInfo {
     /// Result of the game.
     pub result: Option<GameResult>,
     /// Civilization played in the game.
@@ -252,14 +264,6 @@ pub struct Player {
     pub rating: Option<u32>,
     /// Rating points or ELO gained or lost.
     pub rating_diff: Option<i32>,
-}
-
-impl Deref for Player {
-    type Target = ProfileId;
-
-    fn deref(&self) -> &Self::Target {
-        &self.profile_id
-    }
 }
 
 #[cfg(test)]
