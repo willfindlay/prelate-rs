@@ -313,7 +313,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -333,7 +332,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -353,7 +351,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -373,7 +370,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -395,7 +391,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -415,7 +410,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -435,7 +429,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
@@ -455,7 +448,6 @@ mod tests {
                                 site_url: None,
                                 avatars: None,
                                 social: None,
-                                last_game_at: None,
                                 modes: None,
                             },
                             game_info: PlayerGameInfo {
