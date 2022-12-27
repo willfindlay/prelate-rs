@@ -97,6 +97,7 @@ mod tests {
 
     use futures::StreamExt;
 
+    const HOUSEDHORSE_ID: u64 = 3176;
     const ONLY_CAMS_ID: u64 = 10433860;
     const ONLY_CAMS_NAME: &str = "🐪🐪🐪OnlyCams🐪🐪🐪";
     const DEBILS_NAME: &str = "DEBILS";
@@ -107,20 +108,32 @@ mod tests {
         profile(ONLY_CAMS_ID.into())
             .await
             .expect("API call should succeed");
+
+        profile(HOUSEDHORSE_ID.into())
+            .await
+            .expect("API call should succeed");
     }
 
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test(flavor = "multi_thread")]
     async fn games_api_smoke() {
-        let games: Vec<_> = games(ONLY_CAMS_ID.into(), None, None, None)
+        let g: Vec<_> = games(ONLY_CAMS_ID.into(), None, None, None)
             .await
             .expect("API call should succeed")
             .collect()
             .await;
-        for (i, game) in games.iter().enumerate() {
+        for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {} not ok: {:?}", i, game)
         }
-        println!("{:?}", games);
+
+        let g: Vec<_> = games(HOUSEDHORSE_ID.into(), None, None, None)
+            .await
+            .expect("API call should succeed")
+            .collect()
+            .await;
+        for (i, game) in g.iter().enumerate() {
+            assert!(game.is_ok(), "game {} not ok: {:?}", i, game)
+        }
     }
 
     #[cfg_attr(not(feature = "test-api"), ignore)]
@@ -134,7 +147,6 @@ mod tests {
         for (i, profile) in profiles.iter().enumerate() {
             assert!(profile.is_ok(), "profile {} not ok: {:?}", i, profile)
         }
-        println!("{:?}", profiles);
 
         let profiles: Vec<_> = search(DEBILS_NAME.into(), false)
             .await
@@ -144,6 +156,5 @@ mod tests {
         for (i, profile) in profiles.iter().enumerate() {
             assert!(profile.is_ok(), "profile {} not ok: {:?}", i, profile)
         }
-        println!("{:?}", profiles);
     }
 }
