@@ -2,19 +2,15 @@
 
 //! Games played.
 
-use std::fmt::Display;
+use std::{fmt::Display, ops::Deref};
 
-use anyhow::Result;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
 
 use crate::{
     pagination::{Paginated, Pagination},
-    profile,
-    types::civilization::Civilization,
+    types::{civilization::Civilization, profile::ProfileId},
 };
-
-use super::profile::Profile;
 
 /// Filters for games returned by the API.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
@@ -25,7 +21,7 @@ pub struct Filter {
     pub leaderboard: Option<Leaderboard>,
     /// Filter over an opponent's profile ID.
     #[serde(default)]
-    pub opponent_profile_id: Option<u64>,
+    pub opponent_profile_id: Option<ProfileId>,
     /// Filter by time played since a specific date.
     #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub since: Option<chrono::DateTime<chrono::Utc>>,
@@ -222,7 +218,21 @@ pub enum GameResult {
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct TeamMember {
-    pub player: Option<Player>,
+    pub player: Player,
+}
+
+impl Deref for TeamMember {
+    type Target = Player;
+
+    fn deref(&self) -> &Self::Target {
+        &self.player
+    }
+}
+
+impl From<TeamMember> for Player {
+    fn from(value: TeamMember) -> Self {
+        value.player
+    }
 }
 
 /// A player in the game.
@@ -231,9 +241,9 @@ pub struct TeamMember {
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {
     /// Name of the player.
-    pub name: Option<String>,
+    pub name: String,
     /// Profile ID of the player on aoe4world.
-    pub profile_id: Option<u64>,
+    pub profile_id: ProfileId,
     /// Result of the game.
     pub result: Option<GameResult>,
     /// Civilization played in the game.
@@ -244,13 +254,11 @@ pub struct Player {
     pub rating_diff: Option<i32>,
 }
 
-impl Player {
-    /// Fetch the profile information for this player, if it exists.
-    pub async fn profile(&self) -> Result<Option<Profile>> {
-        match self.profile_id {
-            Some(id) => Ok(Some(profile(id).await?)),
-            None => Ok(None),
-        }
+impl Deref for Player {
+    type Target = ProfileId;
+
+    fn deref(&self) -> &Self::Target {
+        &self.profile_id
     }
 }
 

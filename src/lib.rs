@@ -20,7 +20,7 @@ use futures::Stream;
 use pagination::{PaginatedRequest, PaginationClient};
 use types::{
     games::{self, Game, GamesPlayed, Leaderboard},
-    profile::Profile,
+    profile::{Profile, ProfileId},
     search::{self, SearchResults},
 };
 
@@ -44,13 +44,14 @@ pub async fn profile(profile_id: u64) -> Result<Profile> {
     .map_err(anyhow::Error::from)
 }
 
-/// Get games for a player. Games as returned as an async stream.
+/// Get games for a player. Games returned as an async stream.
 ///
 /// # Params
 /// - `profile_id` is aoe4world the ID of the player whose games should be searched.
 /// - `leaderboard` is an optional leaderboard to be searched against (e.g.
 /// [`Leaderboard::RmTeam`]).
 /// - `opponent_ids` is an optional opponent profile ID to search against.
+/// - `since` is an optional datetime to search after.
 pub async fn games(
     profile_id: u64,
     leaderboard: Option<Leaderboard>,
@@ -61,7 +62,7 @@ pub async fn games(
     let url = format!("https://aoe4world.com/api/v0/players/{}/games", profile_id).parse()?;
     let filter = games::Filter {
         leaderboard,
-        opponent_profile_id: opponent_id,
+        opponent_profile_id: opponent_id.map(ProfileId::from),
         since,
     };
     let url = filter.query_params(url);
