@@ -2,12 +2,72 @@
 
 //! API response types for player and profile stats.
 
-use std::collections::HashMap;
+use std::{
+    collections::HashMap,
+    ops::{Deref, DerefMut},
+};
 
+use anyhow::Result;
+use futures::Stream;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
-use crate::types::rank::RankLeague;
+use crate::{games, profile, types::rank::RankLeague, Game, Leaderboard};
+
+/// Player profile ID on aoe4world.
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Copy)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
+pub struct ProfileId(u64);
+
+impl Deref for ProfileId {
+    type Target = u64;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for ProfileId {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+
+impl From<u64> for ProfileId {
+    fn from(value: u64) -> Self {
+        ProfileId(value)
+    }
+}
+
+impl From<ProfileId> for u64 {
+    fn from(value: ProfileId) -> Self {
+        value.0
+    }
+}
+
+impl ProfileId {
+    /// Get the profile for this ProfileId.
+    pub async fn profile(&self) -> Result<Profile> {
+        profile(**self).await
+    }
+
+    /// Get games for this ProfileId. Games are returned as an async stream.
+    ///
+    /// # Params
+    /// - `leaderboard` is an optional leaderboard to be searched against (e.g.
+    /// [`Leaderboard::RmTeam`]).
+    /// - `opponent_ids` is an optional opponent profile ID to search against.
+    /// - `since` is an optional datetime to search after.
+    pub async fn games(
+        &self,
+        leaderboard: Option<Leaderboard>,
+        opponent_id: Option<u64>,
+        since: Option<chrono::DateTime<chrono::Utc>>,
+    ) -> Result<impl Stream<Item = Result<Game>>> {
+        games(**self, leaderboard, opponent_id, since).await
+    }
+}
 
 /// Player profile and statistics.
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
@@ -15,9 +75,9 @@ use crate::types::rank::RankLeague;
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Profile {
     /// Name of the player.
-    pub name: Option<String>,
+    pub name: String,
     /// Profile ID of the player on aoe4world.
-    pub profile_id: Option<u64>,
+    pub profile_id: ProfileId,
     /// Steam ID of the player.
     pub steam_id: Option<String>,
     /// URL of the profile on aoe4world.
@@ -33,6 +93,14 @@ pub struct Profile {
     /// Statistics per game mode.
     #[serde(alias = "leaderboards")]
     pub modes: Option<GameModes>,
+}
+
+impl Deref for Profile {
+    type Target = ProfileId;
+
+    fn deref(&self) -> &Self::Target {
+        &self.profile_id
+    }
 }
 
 /// Links to avatars used by the player.
