@@ -87,9 +87,6 @@ pub struct Profile {
     pub avatars: Option<Avatars>,
     /// Social information.
     pub social: Option<Social>,
-    /// When the last game was played.
-    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
-    pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Statistics per game mode.
     #[serde(alias = "leaderboards")]
     pub modes: Option<GameModes>,
@@ -267,7 +264,6 @@ mod tests {
                 reddit: None,
                 instagram: None
             }),
-            last_game_at: None,
             modes: Some(GameModes {
                 rm_solo: None,
                 rm_team: Some(GameModeStats {
