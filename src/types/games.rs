@@ -106,7 +106,7 @@ pub struct Game {
     pub just_finished: Option<bool>,
     /// The teams in the game.
     #[serde(default)]
-    pub teams: Vec<Vec<TeamMember>>,
+    pub teams: Vec<Vec<PlayerWrapper>>,
 }
 
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
@@ -216,15 +216,16 @@ pub enum GameResult {
     Unknown,
 }
 
-/// Wrapper around a Player who is a member of a team.
+/// Wrapper around a Player. This is unfortunately needed due to the schema of the
+/// aoe4world API.
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
-pub struct TeamMember {
+pub struct PlayerWrapper {
     pub player: Player,
 }
 
-impl Deref for TeamMember {
+impl Deref for PlayerWrapper {
     type Target = Player;
 
     fn deref(&self) -> &Self::Target {
@@ -232,8 +233,8 @@ impl Deref for TeamMember {
     }
 }
 
-impl From<TeamMember> for Player {
-    fn from(value: TeamMember) -> Self {
+impl From<PlayerWrapper> for Player {
+    fn from(value: PlayerWrapper) -> Self {
         value.player
     }
 }
