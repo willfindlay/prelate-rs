@@ -269,19 +269,209 @@ pub struct PlayerGameInfo {
 
 #[cfg(test)]
 mod tests {
+    use std::str::FromStr;
+
     use super::*;
 
     use crate::testutils::assert_serde_roundtrip;
 
     use arbitrary::Arbitrary;
+    use pretty_assertions::assert_eq;
     use serde_json::from_str;
 
     const NEPTUNE_GAMES_JSON: &str = include_str!("../../testdata/neptune-games.json");
 
     #[test]
     fn game_examples_deserialize_smoke() {
-        let _: GamesPlayed =
+        let games: GamesPlayed =
             from_str(NEPTUNE_GAMES_JSON).expect("neptune games should deserialize");
+        assert_eq!(games.games.len(), 50);
+
+        let game = games.games.get(0).expect("first game should be present");
+        let game_expected = Game {
+            game_id: Some(56783543),
+            started_at: Some(chrono::DateTime::from_str("2022-12-20T14:10:13.000Z").unwrap()),
+            updated_at: Some(chrono::DateTime::from_str("2022-12-20T14:45:55.713Z").unwrap()),
+            duration: Some(1450),
+            map: Some("Forest Ponds".into()),
+            kind: Some(GameKind::Rm4v4),
+            leaderboard: Some(Leaderboard::RmTeam),
+            season: Some(3),
+            server: Some("Korea".into()),
+            patch: Some(148),
+            average_rating: Some(1632f64),
+            ongoing: Some(false),
+            just_finished: Some(false),
+            teams: vec![
+                vec![
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "Kyo".into(),
+                                profile_id: 106457.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Win),
+                                civilization: Some(Civilization::Chinese),
+                                rating: Some(1875),
+                                rating_diff: Some(21),
+                            },
+                        },
+                    },
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "(✧ᴗ✧) CDSG.MeomaikA".into(),
+                                profile_id: 6961598.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Win),
+                                civilization: Some(Civilization::Mongols),
+                                rating: Some(1613),
+                                rating_diff: Some(20),
+                            },
+                        },
+                    },
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "[TLCT] Nhà Cái Từ Châu Âu".into(),
+                                profile_id: 10438052.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Win),
+                                civilization: Some(Civilization::French),
+                                rating: Some(1588),
+                                rating_diff: Some(22),
+                            },
+                        },
+                    },
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "Nyako~".into(),
+                                profile_id: 11395443.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Win),
+                                civilization: Some(Civilization::AbbasidDynasty),
+                                rating: Some(1060),
+                                rating_diff: Some(27),
+                            },
+                        },
+                    },
+                ],
+                vec![
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "布偶".into(),
+                                profile_id: 11658402.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Loss),
+                                civilization: Some(Civilization::AbbasidDynasty),
+                                rating: Some(1545),
+                                rating_diff: Some(-35),
+                            },
+                        },
+                    },
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "A catty cat".into(),
+                                profile_id: 10019352.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Loss),
+                                civilization: Some(Civilization::Mongols),
+                                rating: Some(1805),
+                                rating_diff: Some(-36),
+                            },
+                        },
+                    },
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "neptune".into(),
+                                profile_id: 4635035.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Loss),
+                                civilization: Some(Civilization::Malians),
+                                rating: Some(1785),
+                                rating_diff: Some(-48),
+                            },
+                        },
+                    },
+                    PlayerWrapper {
+                        player: Player {
+                            profile: Profile {
+                                name: "T r ico".into(),
+                                profile_id: 7304568.into(),
+                                steam_id: None,
+                                site_url: None,
+                                avatars: None,
+                                social: None,
+                                last_game_at: None,
+                                modes: None,
+                            },
+                            game_info: PlayerGameInfo {
+                                result: Some(GameResult::Loss),
+                                civilization: Some(Civilization::English),
+                                rating: Some(1783),
+                                rating_diff: Some(-33),
+                            },
+                        },
+                    },
+                ],
+            ],
+        };
+
+        assert_eq!(game, &game_expected);
+        assert_serde_roundtrip(game_expected);
     }
 
     #[test]
