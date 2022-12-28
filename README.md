@@ -2,10 +2,13 @@
 
 `prelate-rs` is an idiomatic, asynchronous Rust wrapper around the [aoe4world API][api]. Very much a WIP at this stage.
 
+[![Repository][crates-badge]][crates-url]
 [![Dual Apache-2.0 and MIT licensed][mit-apache-badge]][copyright-url]
 [![Checks and lints][check-and-lint-badge]][check-and-lint-url]
 [![Unit tests][unit-tests-badge]][unit-tests-url]
 
+[crates-badge]: https://img.shields.io/crates/v/prelate-rs.svg
+[crates-url]: https://crates.io/crates/prelate-rs
 [mit-apache-badge]: https://img.shields.io/badge/license-MIT%2FApache--2.0-blue
 [copyright-url]: https://github.com/willfindlay/prelate-rs/blob/main/COPYRIGHT.md
 [check-and-lint-badge]: https://github.com/willfindlay/prelate-rs/actions/workflows/check-and-lint.yaml/badge.svg
