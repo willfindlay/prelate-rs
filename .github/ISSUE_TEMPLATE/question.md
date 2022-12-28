@@ -1,6 +1,6 @@
 ---
 name: "🤔 Ask a Question"
-about: ""
+about: "Ask a question"
 title: "[QUESTION] <title>"
 labels: ["kind/question"]
 assignees: ["willfindlay"]
