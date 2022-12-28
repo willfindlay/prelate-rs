@@ -1,0 +1,72 @@
+name: "🐛 Bug Report"
+description: Create a new ticket for a bug.
+title: "[BUG] <title>"
+labels: [
+  "kind/bug"
+]
+assignees:
+  - willfindlay
+body:
+  - type: input
+    id: rust-toolchain
+    attributes:
+      label: "Rust Toolchain"
+      description: Please enter your rust toolchain as reported by `rustup default`.
+      placeholder: e.g. stable-x86_64-unknown-linux-gnu (default)
+    validations:
+      required: true
+  - type: input
+    id: rustc-version
+    attributes:
+      label: "Rustc Version"
+      description: Please enter your version of rustc as reported by `rustc --version`.
+      placeholder: e.g. rustc 1.66.0 (69f9c33d7 2022-12-12)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: An explicit description of your issue.
+      placeholder: Short and explicit description of the issue...
+    validations:
+      required: true
+  - type: textarea
+    id: reprod
+    attributes:
+      label: "Reproduction steps"
+      description: Steps to reproduce the bug.
+      value: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+      render: bash
+    validations:
+      required: true
+  - type: input
+    id: reprod-url
+    attributes:
+      label: "Reproduction URL"
+      description: If applicable, GitHub URL to provide a reproduction of the issue.
+      placeholder: e.g. https://github.com/USERNAME/REPO-NAME
+    validations:
+      required: false
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: "Screenshots"
+      description: If applicable, screenshots to help explain the bug.
+      value: |
+        ![DESCRIPTION](LINK.png)
+      render: bash
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs"
+      description: Any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: bash
+    validations:
+      required: false
