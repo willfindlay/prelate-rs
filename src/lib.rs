@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: Apache-2.0 or MIT
 
 //! prelate-rs is an async-ready library wrapper around the [aoe4world] API.
 //!

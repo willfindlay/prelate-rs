@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: Apache-2.0 or MIT
 
 //! Definitions for civilizations in AoEIV.
 
