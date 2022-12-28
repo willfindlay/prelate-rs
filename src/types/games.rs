@@ -160,13 +160,11 @@ impl Display for GameKind {
 pub enum Leaderboard {
     /// Solo ranked.
     #[serde(rename = "rm_solo")]
+    #[serde(alias = "rm_1v1")]
     RmSolo,
     /// Team ranked.
     #[serde(rename = "rm_team")]
     RmTeam,
-    /// 1v1 ranked.
-    #[serde(rename = "rm_1v1")]
-    Rm1v1,
     /// 2v2 ranked.
     #[serde(rename = "rm_2v2")]
     Rm2v2,
@@ -191,6 +189,12 @@ pub enum Leaderboard {
     /// A custom game.
     #[serde(rename = "custom")]
     Custom,
+}
+
+impl Leaderboard {
+    /// Alias for [`Leaderboard::RmSolo`].
+    #[allow(non_upper_case_globals)]
+    pub const Rm1v1: Leaderboard = Leaderboard::RmSolo;
 }
 
 impl Display for Leaderboard {
