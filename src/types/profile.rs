@@ -150,14 +150,6 @@ pub struct GameModes {
     pub rm_solo: Option<GameModeStats>,
     /// Team ranked stats. Rating is ranked points.
     pub rm_team: Option<GameModeStats>,
-    /// 1v1 ranked stats. Rating is ELO.
-    pub rm_1v1: Option<GameModeStats>,
-    /// 2v2 ranked stats. Rating is ELO.
-    pub rm_2v2: Option<GameModeStats>,
-    /// 3v3 ranked stats. Rating is ELO.
-    pub rm_3v3: Option<GameModeStats>,
-    /// 4v4 ranked stats. Rating is ELO.
-    pub rm_4v4: Option<GameModeStats>,
     /// 1v1 quick match stats. Rating is ELO.
     pub qm_1v1: Option<GameModeStats>,
     /// 2v2 quick match stats. Rating is ELO.
@@ -166,8 +158,6 @@ pub struct GameModes {
     pub qm_3v3: Option<GameModeStats>,
     /// 4v4 quick match stats. Rating is ELO.
     pub qm_4v4: Option<GameModeStats>,
-    /// Custom games. Rating is ELO.
-    pub custom: Option<GameModeStats>,
 }
 
 /// Statistics for a game mode.
@@ -359,15 +349,10 @@ mod tests {
                             drops_count: Some(0),
                         }),
                 ]) }),
-                rm_1v1: None,
-                rm_2v2: None,
-                rm_3v3: None,
-                rm_4v4: None,
                 qm_1v1: None,
                 qm_2v2: None,
                 qm_3v3: None,
                 qm_4v4: None,
-                custom: None,
             }),
         };
 
