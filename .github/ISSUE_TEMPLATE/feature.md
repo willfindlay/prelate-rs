@@ -1,6 +1,6 @@
 ---
 name: "🤔 Propose a New Feature"
-about: ""
+about: "Propose a new feature"
 title: "[FEATURE] <title>"
 labels: ["kind/feature"]
 
