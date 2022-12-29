@@ -1,11 +1,16 @@
-## prelate-rs
-
-`prelate-rs` is an idiomatic, asynchronous Rust wrapper around the [aoe4world API][api]. Very much a WIP at this stage.
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="./img/prelate-light.png" width="400">
+  <img src="./img/prelate-dark.png" width="400">
+</picture>
 
 [![Repository][crates-badge]][crates-url]
 [![Dual Apache-2.0 and MIT licensed][mit-apache-badge]][copyright-url]
 [![Checks and lints][check-and-lint-badge]][check-and-lint-url]
 [![Unit tests][unit-tests-badge]][unit-tests-url]
+
+`prelate-rs` is an idiomatic, asynchronous Rust wrapper around the [aoe4world API][api]. Very much a WIP at this stage.
+
+[prelate-logo]: ./img/prelate.png
 
 [crates-badge]: https://img.shields.io/crates/v/prelate-rs.svg
 [crates-url]: https://crates.io/crates/prelate-rs
@@ -15,6 +20,8 @@
 [check-and-lint-url]: https://github.com/willfindlay/prelate-rs/actions/workflows/check-and-lint.yaml
 [unit-tests-badge]: https://github.com/willfindlay/prelate-rs/actions/workflows/unit-tests.yaml/badge.svg
 [unit-tests-url]: https://github.com/willfindlay/prelate-rs/actions/workflows/unit-tests.yaml
+
+----
 
 ### Project Status
 
