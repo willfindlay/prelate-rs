@@ -217,6 +217,8 @@ impl Display for Leaderboard {
 pub enum GameResult {
     Win,
     Loss,
+    #[serde(rename = "noresult")]
+    NoResult,
     Unknown,
 }
 
