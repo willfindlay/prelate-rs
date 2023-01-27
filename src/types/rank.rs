@@ -38,12 +38,12 @@ impl<'de> Deserialize<'de> for RankLeague {
         // Split league and division strings at the _ character
         let (league, division) = s
             .split_once('_')
-            .ok_or_else(|| de::Error::custom(format!("invalid rank string: {}", s)))?;
+            .ok_or_else(|| de::Error::custom(format!("invalid rank string: {s}")))?;
 
         // Parse division as an integer and map it onto a ranked division
         let division = division
             .parse::<u32>()
-            .map_err(|e| de::Error::custom(format!("unable to parse division: {}", e)))?;
+            .map_err(|e| de::Error::custom(format!("unable to parse division: {e}")))?;
         let division = RankDivision::try_from(division).map_err(de::Error::custom)?;
 
         // Parse league
@@ -56,8 +56,7 @@ impl<'de> Deserialize<'de> for RankLeague {
             "conqueror" => Self::Conqueror(division),
             _ => {
                 return Err(de::Error::custom(format!(
-                    "invalid league string: {}",
-                    league
+                    "invalid league string: {league}"
                 )))
             }
         };
