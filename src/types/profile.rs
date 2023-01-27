@@ -2,10 +2,7 @@
 
 //! API response types for player and profile stats.
 
-use std::{
-    collections::HashMap,
-    ops::{Deref, DerefMut},
-};
+use std::{collections::HashMap, fmt::Display, ops::Deref};
 
 use anyhow::Result;
 use futures::Stream;
@@ -20,17 +17,15 @@ use crate::{games, profile, types::rank::RankLeague, Game, Leaderboard};
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct ProfileId(u64);
 
-impl Deref for ProfileId {
-    type Target = u64;
-
-    fn deref(&self) -> &Self::Target {
-        &self.0
+impl Display for ProfileId {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        self.0.fmt(f)
     }
 }
 
-impl DerefMut for ProfileId {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
+impl AsRef<u64> for ProfileId {
+    fn as_ref(&self) -> &u64 {
+        &self.0
     }
 }
 
@@ -49,7 +44,7 @@ impl From<ProfileId> for u64 {
 impl ProfileId {
     /// Get the profile for this ProfileId.
     pub async fn profile(&self) -> Result<Profile> {
-        profile(**self).await
+        profile(self.0).await
     }
 
     /// Get games for this ProfileId. Games are returned as an async stream.
@@ -65,7 +60,7 @@ impl ProfileId {
         opponent_id: Option<u64>,
         since: Option<chrono::DateTime<chrono::Utc>>,
     ) -> Result<impl Stream<Item = Result<Game>>> {
-        games(**self, leaderboard, opponent_id, since).await
+        games(self.0, leaderboard, opponent_id, since).await
     }
 }
 
