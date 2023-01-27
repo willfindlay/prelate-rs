@@ -24,7 +24,7 @@ pub mod arbitrary_with {
     pub fn url(u: &mut arbitrary::Unstructured) -> arbitrary::Result<url::Url> {
         let s = String::arbitrary(u)?;
         let s: String = s.chars().filter(|c| c.is_alphanumeric()).collect();
-        url::Url::parse(&format!("https://www.example.com/{}", s))
+        url::Url::parse(&format!("https://www.example.com/{s}"))
             .map_err(|_| arbitrary::Error::IncorrectFormat)
     }
 
@@ -41,9 +41,9 @@ pub mod arbitrary_with {
     ) -> impl Fn(&mut arbitrary::Unstructured) -> arbitrary::Result<Option<f64>> {
         move |u: &mut arbitrary::Unstructured| -> arbitrary::Result<Option<f64>> {
             let steps = u32::MAX;
-            let factor = (max - min) as f64 / (steps as f64);
+            let factor = (max - min) / (steps as f64);
             let random_int: u32 = u.int_in_range(0..=steps)?;
-            let random = min as f64 + factor * (random_int as f64);
+            let random = min + factor * (random_int as f64);
             Ok(Some(random))
         }
     }
