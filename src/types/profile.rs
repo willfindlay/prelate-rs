@@ -70,7 +70,7 @@ impl ProfileId {
 }
 
 /// Player profile and statistics.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Profile {
@@ -101,7 +101,7 @@ impl Deref for Profile {
 }
 
 /// Links to avatars used by the player.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Avatars {
@@ -117,7 +117,7 @@ pub struct Avatars {
 }
 
 /// Social information.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Social {
@@ -142,7 +142,7 @@ pub struct Social {
 }
 
 /// Statistics per game mode.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct GameModes {
@@ -161,7 +161,7 @@ pub struct GameModes {
 }
 
 /// Statistics for a game mode.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct GameModeStats {
@@ -200,7 +200,7 @@ pub struct GameModeStats {
 }
 
 /// An entry in the player's rating history.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct RatingHistoryEntry {

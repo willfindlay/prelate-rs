@@ -16,7 +16,7 @@ use crate::{
 };
 
 /// Filters for games returned by the API.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Filter {
@@ -49,7 +49,7 @@ impl Filter {
 }
 
 /// Games played and related statistics.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct GamesPlayed {
@@ -69,7 +69,7 @@ impl Paginated<Game> for GamesPlayed {
 }
 
 /// Information on a specific game.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Game {
@@ -224,7 +224,7 @@ pub enum GameResult {
 
 /// Wrapper around a Player. This is unfortunately needed due to the schema of the
 /// aoe4world API.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct PlayerWrapper {
@@ -246,7 +246,7 @@ impl From<PlayerWrapper> for Player {
 }
 
 /// A player in the game.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {
@@ -259,7 +259,7 @@ pub struct Player {
 }
 
 /// A player in the game.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct PlayerGameInfo {
