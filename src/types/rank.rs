@@ -98,6 +98,8 @@ pub enum RankDivision {
     Two,
     /// The highest division within a league (e.g. Conqueror III).
     Three,
+    /// A special "division" of Conqueror reserved for professional players.
+    Four,
 }
 
 impl<'de> Deserialize<'de> for RankDivision {
@@ -128,8 +130,9 @@ impl TryFrom<u32> for RankDivision {
             1 => Self::One,
             2 => Self::Two,
             3 => Self::Three,
+            4 => Self::Four,
             _ => anyhow::bail!(
-                "invalid rank division number: got {}, wanted 1 to 3 inclusive",
+                "invalid rank division number: got {}, wanted 1 to 4 inclusive",
                 value
             ),
         };
@@ -143,6 +146,7 @@ impl From<RankDivision> for u32 {
             RankDivision::One => 1,
             RankDivision::Two => 2,
             RankDivision::Three => 3,
+            RankDivision::Four => 4,
         }
     }
 }
