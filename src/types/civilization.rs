@@ -19,4 +19,10 @@ pub enum Civilization {
     DelhiSultanate,
     Ottomans,
     Malians,
+    Byzantines,
+    Japanese,
+    JeanneDarc,
+    Ayyubids,
+    ZhuXisLegacy,
+    OrderOfTheDragon,
 }
