@@ -150,6 +150,42 @@ pub enum GameKind {
     /// 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew")]
     Qm4v4Ew,
+    /// Console 1v1 ranked.
+    #[serde(rename = "rm_1v1_console")]
+    Rm1v1Console,
+    // /// Console 2v2 ranked.
+    // #[serde(rename = "rm_2v2_console")]
+    // Rm2v2Console,
+    // /// Console 3v3 ranked.
+    // #[serde(rename = "rm_3v3_console")]
+    // Rm3v3Console,
+    // /// Console 4v4 ranked.
+    // #[serde(rename = "rm_4v4_console")]
+    // Rm4v4Console,
+    /// Console 1v1 quick match.
+    #[serde(rename = "qm_1v1_console")]
+    Qm1v1Console,
+    /// Console 2v2 quick match.
+    #[serde(rename = "qm_2v2_console")]
+    Qm2v2Console,
+    /// Console 3v3 quick match.
+    #[serde(rename = "qm_3v3_console")]
+    Qm3v3Console,
+    /// Console 4v4 quick match.
+    #[serde(rename = "qm_4v4_console")]
+    Qm4v4Console,
+    /// Console 1v1 empire wars quick match.
+    #[serde(rename = "qm_1v1_ew_console")]
+    Qm1v1EwConsole,
+    /// Console 2v2 empire wars quick match.
+    #[serde(rename = "qm_2v2_ew_console")]
+    Qm2v2EwConsole,
+    /// Console 3v3 empire wars quick match.
+    #[serde(rename = "qm_3v3_ew_console")]
+    Qm3v3EwConsole,
+    /// Console 4v4 empire wars quick match.
+    #[serde(rename = "qm_4v4_ew_console")]
+    Qm4v4EwConsole,
     /// A custom game.
     #[serde(rename = "custom")]
     Custom,
@@ -210,6 +246,46 @@ pub enum Leaderboard {
     /// 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew")]
     Qm4v4Ew,
+    /// Console solo ranked.
+    #[serde(rename = "rm_1v1_console")]
+    #[serde(alias = "rm_1v1_console")]
+    RmSoloConsole,
+    // /// Console team ranked.
+    // #[serde(rename = "rm_team_console")]
+    // RmTeamConsole,
+    // /// Console 2v2 ranked.
+    // #[serde(rename = "rm_2v2_console")]
+    // Rm2v2Console,
+    // /// Console 3v3 ranked.
+    // #[serde(rename = "rm_3v3_console")]
+    // Rm3v3Console,
+    // /// Console 4v4 ranked.
+    // #[serde(rename = "rm_4v4_console")]
+    // Rm4v4Console,
+    /// Console 1v1 quick match.
+    #[serde(rename = "qm_1v1_console")]
+    Qm1v1Console,
+    /// Console 2v2 quick match.
+    #[serde(rename = "qm_2v2_console")]
+    Qm2v2Console,
+    /// Console 3v3 quick match.
+    #[serde(rename = "qm_3v3_console")]
+    Qm3v3Console,
+    /// Console 4v4 quick match.
+    #[serde(rename = "qm_4v4_console")]
+    Qm4v4Console,
+    /// Console 1v1 empire wars quick match.
+    #[serde(rename = "qm_1v1_ew_console")]
+    Qm1v1EwConsole,
+    /// Console 2v2 empire wars quick match.
+    #[serde(rename = "qm_2v2_ew_console")]
+    Qm2v2EwConsole,
+    /// Console 3v3 empire wars quick match.
+    #[serde(rename = "qm_3v3_ew_console")]
+    Qm3v3EwConsole,
+    /// Console 4v4 empire wars quick match.
+    #[serde(rename = "qm_4v4_ew_console")]
+    Qm4v4EwConsole,
     /// A custom game.
     #[serde(rename = "custom")]
     Custom,
