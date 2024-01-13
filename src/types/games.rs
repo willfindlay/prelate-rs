@@ -138,6 +138,18 @@ pub enum GameKind {
     /// 4v4 quick match.
     #[serde(rename = "qm_4v4")]
     Qm4v4,
+    /// 1v1 empire wars quick match.
+    #[serde(rename = "qm_1v1_ew")]
+    Qm1v1Ew,
+    /// 2v2 empire wars quick match.
+    #[serde(rename = "qm_2v2_ew")]
+    Qm2v2Ew,
+    /// 3v3 empire wars quick match.
+    #[serde(rename = "qm_3v3_ew")]
+    Qm3v3Ew,
+    /// 4v4 empire wars quick match.
+    #[serde(rename = "qm_4v4_ew")]
+    Qm4v4Ew,
     /// A custom game.
     #[serde(rename = "custom")]
     Custom,
@@ -186,6 +198,18 @@ pub enum Leaderboard {
     /// 4v4 quick match.
     #[serde(rename = "qm_4v4")]
     Qm4v4,
+    /// 1v1 empire wars quick match.
+    #[serde(rename = "qm_1v1_ew")]
+    Qm1v1Ew,
+    /// 2v2 empire wars quick match.
+    #[serde(rename = "qm_2v2_ew")]
+    Qm2v2Ew,
+    /// 3v3 empire wars quick match.
+    #[serde(rename = "qm_3v3_ew")]
+    Qm3v3Ew,
+    /// 4v4 empire wars quick match.
+    #[serde(rename = "qm_4v4_ew")]
+    Qm4v4Ew,
     /// A custom game.
     #[serde(rename = "custom")]
     Custom,
