@@ -33,7 +33,7 @@ We currently support the [following endpoints][api] (those that are ticked):
 - [x] `GET /api/v0/players/search`
 - [ ] `GET /api/v0/players/autocomplete`
 - [ ] `GET https://aoe4world.com/api/v0/leaderboards/:leaderboard`
-- [ ] `GET https://aoe4world.com/api/v0/games`
+- [x] `GET https://aoe4world.com/api/v0/games`
 - [ ] `GET https://aoe4world.com/api/v0/stats/qm_1v1/civilizations`
 - [ ] `GET https://aoe4world.com/api/v0/stats/qm_2v2/civilizations`
 - [ ] `GET https://aoe4world.com/api/v0/stats/qm_3v3/civilizations`
