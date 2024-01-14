@@ -247,7 +247,7 @@ pub enum Leaderboard {
     #[serde(rename = "qm_4v4_ew")]
     Qm4v4Ew,
     /// Console solo ranked.
-    #[serde(rename = "rm_1v1_console")]
+    #[serde(rename = "rm_solo_console")]
     #[serde(alias = "rm_1v1_console")]
     RmSoloConsole,
     // /// Console team ranked.
