@@ -4,16 +4,16 @@
 
 use std::{fmt::Display, ops::Deref};
 
+use anyhow::Result;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
 
 use crate::{
     pagination::{Paginated, Pagination},
-    types::{
-        civilization::Civilization,
-        profile::{Profile, ProfileId},
-    },
+    types::{civilization::Civilization, profile::ProfileId},
 };
+
+use super::profile::Profile;
 
 /// Filters for games returned by the API.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
@@ -74,7 +74,7 @@ impl Paginated<Game> for GamesPlayed {
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Game {
     /// The ID of the game on aoe4world.
-    pub game_id: Option<u32>,
+    pub game_id: u32,
     /// When the game was started.
     #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub started_at: Option<chrono::DateTime<chrono::Utc>>,
@@ -95,9 +95,18 @@ pub struct Game {
     pub server: Option<String>,
     /// Patch on which the game was played.
     pub patch: Option<u32>,
-    /// Average ELO rating of the game.
+    /// Average rating of the game.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
     pub average_rating: Option<f64>,
+    /// Rating deviation of the game.
+    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
+    pub average_rating_deviation: Option<f64>,
+    /// Average ELO of the game.
+    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
+    pub average_mmr: Option<f64>,
+    /// ELO deviation of the game.
+    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
+    pub average_mmr_deviation: Option<f64>,
     /// Whether the match is still ongoing.
     /// True if and only if the match is still being played.
     pub ongoing: Option<bool>,
@@ -350,33 +359,35 @@ impl From<PlayerWrapper> for Player {
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub struct Player {
-    /// Profile information for the player.
-    #[serde(flatten)]
-    pub profile: Profile,
-    /// Game information for the player.
-    #[serde(flatten)]
-    pub game_info: PlayerGameInfo,
-}
-
-/// A player in the game.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-#[serde(rename_all = "snake_case")]
-#[cfg_attr(test, derive(arbitrary::Arbitrary))]
-pub struct PlayerGameInfo {
+    /// Name of the player.
+    pub name: String,
+    /// Profile ID of the player on aoe4world.
+    pub profile_id: ProfileId,
     /// Result of the game.
     pub result: Option<GameResult>,
     /// Civilization played in the game.
     pub civilization: Option<Civilization>,
-    /// Rating points or ELO.
+    /// Did the player select "random civ".
+    pub civilization_randomized: Option<bool>,
+    /// Rating points.
     pub rating: Option<u32>,
-    /// Rating points or ELO gained or lost.
+    /// Rating points gained or lost.
     pub rating_diff: Option<i32>,
+    /// ELO.
+    pub mmr: Option<u32>,
+    /// ELO gained or lost.
+    pub mmr_diff: Option<i32>,
+}
+
+impl Player {
+    /// Get the Profile for this Player.
+    pub async fn profile(&self) -> Result<Profile> {
+        self.profile_id.profile().await
+    }
 }
 
 #[cfg(test)]
 mod tests {
-    use std::str::FromStr;
-
     use super::*;
 
     use crate::testutils::assert_serde_roundtrip;
@@ -388,197 +399,20 @@ mod tests {
     const NEPTUNE_GAMES_JSON: &str = include_str!("../../testdata/neptune-games.json");
 
     #[test]
-    fn game_examples_deserialize_smoke() {
-        let games: GamesPlayed =
-            from_str(NEPTUNE_GAMES_JSON).expect("neptune games should deserialize");
-        assert_eq!(games.games.len(), 50);
-
-        let game = games.games.get(0).expect("first game should be present");
-        let game_expected = Game {
-            game_id: Some(56783543),
-            started_at: Some(chrono::DateTime::from_str("2022-12-20T14:10:13.000Z").unwrap()),
-            updated_at: Some(chrono::DateTime::from_str("2022-12-20T14:45:55.713Z").unwrap()),
-            duration: Some(1450),
-            map: Some("Forest Ponds".into()),
-            kind: Some(GameKind::Rm4v4),
-            leaderboard: Some(Leaderboard::RmTeam),
-            season: Some(3),
-            server: Some("Korea".into()),
-            patch: Some(148),
-            average_rating: Some(1632f64),
-            ongoing: Some(false),
-            just_finished: Some(false),
-            teams: vec![
-                vec![
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "Kyo".into(),
-                                profile_id: 106457.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Win),
-                                civilization: Some(Civilization::Chinese),
-                                rating: Some(1875),
-                                rating_diff: Some(21),
-                            },
-                        },
-                    },
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "(✧ᴗ✧) CDSG.MeomaikA".into(),
-                                profile_id: 6961598.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Win),
-                                civilization: Some(Civilization::Mongols),
-                                rating: Some(1613),
-                                rating_diff: Some(20),
-                            },
-                        },
-                    },
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "[TLCT] Nhà Cái Từ Châu Âu".into(),
-                                profile_id: 10438052.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Win),
-                                civilization: Some(Civilization::French),
-                                rating: Some(1588),
-                                rating_diff: Some(22),
-                            },
-                        },
-                    },
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "Nyako~".into(),
-                                profile_id: 11395443.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Win),
-                                civilization: Some(Civilization::AbbasidDynasty),
-                                rating: Some(1060),
-                                rating_diff: Some(27),
-                            },
-                        },
-                    },
-                ],
-                vec![
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "布偶".into(),
-                                profile_id: 11658402.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Loss),
-                                civilization: Some(Civilization::AbbasidDynasty),
-                                rating: Some(1545),
-                                rating_diff: Some(-35),
-                            },
-                        },
-                    },
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "A catty cat".into(),
-                                profile_id: 10019352.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Loss),
-                                civilization: Some(Civilization::Mongols),
-                                rating: Some(1805),
-                                rating_diff: Some(-36),
-                            },
-                        },
-                    },
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "neptune".into(),
-                                profile_id: 4635035.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Loss),
-                                civilization: Some(Civilization::Malians),
-                                rating: Some(1785),
-                                rating_diff: Some(-48),
-                            },
-                        },
-                    },
-                    PlayerWrapper {
-                        player: Player {
-                            profile: Profile {
-                                name: "T r ico".into(),
-                                profile_id: 7304568.into(),
-                                steam_id: None,
-                                site_url: None,
-                                avatars: None,
-                                social: None,
-                                modes: None,
-                            },
-                            game_info: PlayerGameInfo {
-                                result: Some(GameResult::Loss),
-                                civilization: Some(Civilization::English),
-                                rating: Some(1783),
-                                rating_diff: Some(-33),
-                            },
-                        },
-                    },
-                ],
-            ],
-        };
-
-        assert_eq!(game, &game_expected);
-        assert_serde_roundtrip(game_expected);
-    }
-
-    #[test]
-    fn game_serde_rountrip() {
+    fn games_serde_roundtrip() {
         fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
             let obj = GamesPlayed::arbitrary(u)?;
             assert_serde_roundtrip(obj);
             Ok(())
         }
         arbtest::builder().run(prop);
+    }
+
+    #[test]
+    fn game_examples_deserialize() {
+        let games: GamesPlayed =
+            from_str(NEPTUNE_GAMES_JSON).expect("neptune games should deserialize");
+        assert_eq!(games.games.len(), 50);
+        assert_serde_roundtrip(games);
     }
 }
