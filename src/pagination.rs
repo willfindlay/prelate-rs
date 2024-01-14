@@ -29,7 +29,7 @@ pub(crate) struct Pagination {
     page: u32,
     per_page: u32,
     count: u32,
-    total_count: u32,
+    total_count: Option<u32>,
     offset: u32,
 }
 
@@ -96,7 +96,7 @@ impl<T: Send + Sync + DeserializeOwned + Paginated<U>, U: Send + Sync> PageTurne
             .await?;
         let pagination = res.pagination();
 
-        if pagination.count + pagination.offset < pagination.total_count {
+        if pagination.count + pagination.offset < pagination.total_count.unwrap_or(u32::MAX) {
             request.page += 1;
             Ok(TurnedPage::next(res.data(), request))
         } else {
@@ -127,7 +127,12 @@ impl<T: Send + Sync + DeserializeOwned + Paginated<U> + 'static, U: Send + Sync 
             .json()
             .await?;
         // Ceiling division to get total number of pages
-        let limit = ((res.total_count + res.per_page - 1) / res.per_page) as usize;
-        Ok(self.into_pages_ahead(DEFAULT_PAGES_CONCURRENCY, Limit::Pages(limit), request))
+        let limit = res
+            .total_count
+            .map(|total_count| {
+                Limit::Pages(((total_count + res.per_page - 1) / res.per_page) as usize)
+            })
+            .unwrap_or(Limit::None);
+        Ok(self.into_pages_ahead(DEFAULT_PAGES_CONCURRENCY, limit, request))
     }
 }
