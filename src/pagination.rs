@@ -26,11 +26,11 @@ const DEFAULT_COUNT_PER_PAGE: usize = 50;
 #[allow(dead_code)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 pub(crate) struct Pagination {
-    page: u32,
-    per_page: u32,
-    count: u32,
-    total_count: Option<u32>,
-    offset: u32,
+    pub page: u32,
+    pub per_page: u32,
+    pub count: u32,
+    pub total_count: Option<u32>,
+    pub offset: u32,
 }
 
 /// Implement this trait for paginated data so that we can transparently stream it.
