@@ -57,10 +57,10 @@ impl ProfileId {
     pub async fn games(
         &self,
         leaderboard: Option<Leaderboard>,
-        opponent_id: Option<u64>,
+        opponent_id: Option<ProfileId>,
         since: Option<chrono::DateTime<chrono::Utc>>,
     ) -> Result<impl Stream<Item = Result<Game>>> {
-        games(self.0, leaderboard, opponent_id, since).await
+        games(Some(self).cloned(), leaderboard, opponent_id, since).await
     }
 }
 
