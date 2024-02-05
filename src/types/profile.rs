@@ -2,6 +2,8 @@
 
 //! API response types for player and profile stats.
 
+pub use isocountry::CountryCode;
+
 use std::{collections::BTreeMap, fmt::Display, ops::Deref};
 
 use anyhow::Result;
@@ -84,6 +86,9 @@ pub struct Profile {
     pub avatars: Option<Avatars>,
     /// Social information.
     pub social: Option<Social>,
+    /// Country Code
+    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_country))]
+    pub country: Option<CountryCode>,
     /// Statistics per game mode.
     #[serde(alias = "leaderboards")]
     pub modes: Option<GameModes>,
