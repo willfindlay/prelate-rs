@@ -397,4 +397,6 @@ mod tests {
         "../../testdata/profile/housedhorse.json",
         housedhorse_profile
     );
+
+    test_json!(Profile, "../../testdata/profile/jigly.json", jigly_profile);
 }

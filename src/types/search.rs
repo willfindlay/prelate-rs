@@ -76,4 +76,10 @@ mod tests {
         "../../testdata/search/onlycams.json",
         onlycams_search
     );
+
+    test_json!(
+        SearchResults,
+        "../../testdata/search/jigly.json",
+        jigly_search
+    );
 }
