@@ -25,6 +25,7 @@ const DEFAULT_COUNT_PER_PAGE: usize = 50;
 #[serde(rename_all = "snake_case")]
 #[allow(dead_code)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub(crate) struct Pagination {
     pub page: u32,
     pub per_page: u32,

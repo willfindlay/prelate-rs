@@ -19,6 +19,7 @@ use super::civilization::Civilization;
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Copy)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct ProfileId(u64);
 
 impl Display for ProfileId {
@@ -72,6 +73,7 @@ impl ProfileId {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Profile {
     /// Name of the player.
     pub name: String,
@@ -106,6 +108,7 @@ impl Deref for Profile {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Avatars {
     /// Small size.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
@@ -122,6 +125,7 @@ pub struct Avatars {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Social {
     /// URL to the player's Twitch.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
@@ -147,6 +151,7 @@ pub struct Social {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct GameModes {
     /// Solo ranked stats. Rating is ranked points.
     pub rm_solo: Option<GameModeStats>,
@@ -166,6 +171,7 @@ pub struct GameModes {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct GameModeStats {
     /// Rating points or ELO.
     pub rating: Option<u32>,
@@ -215,6 +221,7 @@ pub struct GameModeStats {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct PreviousSeasonStats {
     /// Rating points or ELO.
     pub rating: Option<u32>,
@@ -248,6 +255,7 @@ pub struct PreviousSeasonStats {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct RatingHistoryEntry {
     /// Rating points or ELO.
     pub rating: Option<u32>,
@@ -267,6 +275,7 @@ pub struct RatingHistoryEntry {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct CivStats {
     /// The civilization.
     pub civilization: Option<Civilization>,
@@ -287,6 +296,7 @@ pub struct CivStats {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct CivGameLengthStats {
     /// Average duration in seconds.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]

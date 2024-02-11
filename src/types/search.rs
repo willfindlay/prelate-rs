@@ -14,6 +14,7 @@ use crate::{
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Filter {
     /// Search query.
     pub query: Option<String>,
@@ -38,6 +39,7 @@ impl Filter {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub(crate) struct SearchResults {
     #[serde(flatten)]
     pagination: Pagination,
