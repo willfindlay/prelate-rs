@@ -27,3 +27,12 @@ pub enum Civilization {
     ZhuXisLegacy,
     OrderOfTheDragon,
 }
+
+#[cfg(test)]
+mod test_super {
+    use crate::testutils::test_serde_roundtrip_prop;
+
+    use super::*;
+
+    test_serde_roundtrip_prop!(Civilization);
+}

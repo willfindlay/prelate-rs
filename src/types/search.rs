@@ -61,37 +61,19 @@ impl Paginated<Profile> for SearchResults {
 mod tests {
     use super::*;
 
-    use crate::testutils::assert_serde_roundtrip;
+    use crate::testutils::{test_json, test_serde_roundtrip_prop};
 
-    use arbitrary::Arbitrary;
-    use serde_json::from_str;
+    test_serde_roundtrip_prop!(SearchResults);
 
-    const SEARCH_RESULTS_JSON: &str = include_str!("../../testdata/search-results.json");
-    const ONLYCAMS_SEARCH_RESULTS_JSON: &str =
-        include_str!("../../testdata/onlycams-search-results.json");
+    test_json!(
+        SearchResults,
+        "../../testdata/search/barbecue.json",
+        barbecue_search
+    );
 
-    #[test]
-    fn search_serde_roundtrip() {
-        fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
-            let obj = SearchResults::arbitrary(u)?;
-            assert_serde_roundtrip(obj);
-            Ok(())
-        }
-        arbtest::builder().run(prop);
-    }
-
-    #[test]
-    fn search_examples_deserialize_smoke() {
-        let results: SearchResults =
-            from_str(SEARCH_RESULTS_JSON).expect("search results should deserialize");
-        assert_eq!(28, results.players.len());
-        assert_eq!(Some(28), results.pagination().total_count);
-        assert_serde_roundtrip(results);
-
-        let onlycams_results: SearchResults = from_str(ONLYCAMS_SEARCH_RESULTS_JSON)
-            .expect("OnlyCams search results should deserialize");
-        assert_eq!(1, onlycams_results.players.len());
-        assert_eq!(Some(1), onlycams_results.pagination().total_count);
-        assert_serde_roundtrip(onlycams_results);
-    }
+    test_json!(
+        SearchResults,
+        "../../testdata/search/onlycams.json",
+        onlycams_search
+    );
 }

@@ -371,33 +371,30 @@ pub struct CivGameLengthStats {
 
 #[cfg(test)]
 mod tests {
+    use crate::testutils::{test_json, test_serde_roundtrip_prop};
+
     use super::*;
 
-    use crate::testutils::assert_serde_roundtrip;
+    test_serde_roundtrip_prop!(ProfileId);
+    test_serde_roundtrip_prop!(Profile);
+    test_serde_roundtrip_prop!(Avatars);
+    test_serde_roundtrip_prop!(Social);
+    test_serde_roundtrip_prop!(GameModes);
+    test_serde_roundtrip_prop!(GameModeStats);
+    test_serde_roundtrip_prop!(PreviousSeasonStats);
+    test_serde_roundtrip_prop!(RatingHistoryEntry);
+    test_serde_roundtrip_prop!(CivStats);
+    test_serde_roundtrip_prop!(CivGameLengthStats);
 
-    use arbitrary::Arbitrary;
-    use serde_json::from_str;
+    test_json!(
+        Profile,
+        "../../testdata/profile/neptune.json",
+        neptune_profile
+    );
 
-    const NEPTUNE_JSON: &str = include_str!("../../testdata/neptune.json");
-    const HOUSEDHORSE_JSON: &str = include_str!("../../testdata/housedhorse.json");
-
-    #[test]
-    fn profile_serde_roundtrip() {
-        fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
-            let obj = Profile::arbitrary(u)?;
-            assert_serde_roundtrip(obj);
-            Ok(())
-        }
-        arbtest::builder().run(prop);
-    }
-
-    #[test]
-    fn profile_examples_deserialize() {
-        let neptune_profile: Profile = from_str(NEPTUNE_JSON).expect("neptune should deserialize");
-        assert_serde_roundtrip(neptune_profile);
-
-        let housedhorse_profile: Profile =
-            from_str(HOUSEDHORSE_JSON).expect("housedhorse should deserialize");
-        assert_serde_roundtrip(housedhorse_profile);
-    }
+    test_json!(
+        Profile,
+        "../../testdata/profile/housedhorse.json",
+        housedhorse_profile
+    );
 }
