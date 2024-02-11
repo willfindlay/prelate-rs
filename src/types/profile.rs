@@ -11,17 +11,16 @@ use std::{
     ops::Deref,
 };
 
-use anyhow::Result;
-use futures::Stream;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
-use crate::{games, profile, types::rank::RankLeague, Game};
-
-use super::{
-    civilization::Civilization,
-    games::{GameKind, GamesOrder},
+use crate::{
+    profile, profile_games,
+    query::{ProfileGamesQuery, ProfileQuery},
+    types::rank::RankLeague,
 };
+
+use super::civilization::Civilization;
 
 /// Player profile ID on aoe4world.
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Copy)]
@@ -55,37 +54,14 @@ impl From<ProfileId> for u64 {
 }
 
 impl ProfileId {
-    /// Get the profile for this ProfileId.
-    pub async fn profile(&self) -> Result<Profile> {
-        profile(self.0).await
+    /// Returns a [`ProfileQuery`]. Used to get profile for a player.
+    pub fn profile(&self) -> ProfileQuery {
+        profile(self.0)
     }
 
-    /// Get games for this ProfileId. Games are returned as an async stream.
-    ///
-    /// # Params
-    /// - `leaderboard` is an optional leaderboard to be searched against (e.g.
-    /// [`Leaderboard::RmTeam`]).
-    /// - `opponent_ids` is an optional opponent profile ID to search against.
-    /// - `since` is an optional datetime to search after.
-    pub async fn games(
-        &self,
-        game_kinds: Option<Vec<GameKind>>,
-        opponent_id: Option<ProfileId>,
-        profile_ids: Option<Vec<ProfileId>>,
-        opponent_profile_ids: Option<Vec<ProfileId>>,
-        since: Option<chrono::DateTime<chrono::Utc>>,
-        order: Option<GamesOrder>,
-    ) -> Result<impl Stream<Item = Result<Game>>> {
-        games(
-            Some(self).cloned(),
-            game_kinds,
-            opponent_id,
-            profile_ids,
-            opponent_profile_ids,
-            since,
-            order,
-        )
-        .await
+    /// Constructs a query for the `/players/{profile_id}/games` endpoint for this [`ProfileId`].
+    pub fn games(&self) -> ProfileGamesQuery {
+        profile_games(self.0)
     }
 }
 

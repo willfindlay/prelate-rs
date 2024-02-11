@@ -2,58 +2,16 @@
 
 //! Games played.
 
-use std::{fmt::Display, ops::Deref};
+use std::{collections::HashMap, fmt::Display, ops::Deref};
 
-use anyhow::Result;
-use itertools::join;
-use reqwest::Url;
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 use crate::{
     pagination::{Paginated, Pagination},
+    query::ProfileQuery,
     types::{civilization::Civilization, profile::ProfileId},
 };
-
-use super::profile::Profile;
-
-/// Filters for games returned by the API.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
-#[serde(rename_all = "snake_case")]
-#[cfg_attr(test, derive(arbitrary::Arbitrary))]
-#[cfg_attr(test, serde(deny_unknown_fields))]
-pub struct Filter {
-    /// Filter by game kind category.
-    #[serde(rename = "leaderboard")]
-    pub game_kinds: Option<Vec<GameKind>>,
-    /// Filter over an opponent's profile ID.
-    pub opponent_profile_id: Option<ProfileId>,
-    /// Filter over a list of profile IDs.
-    pub profile_ids: Option<Vec<ProfileId>>,
-    /// Filter over a list of opponent profile IDs.
-    pub opponent_profile_ids: Option<Vec<ProfileId>>,
-    /// Filter by time played since a specific date.
-    pub since: Option<chrono::DateTime<chrono::Utc>>,
-    /// Filter by time played since a specific date.
-    pub order: Option<GamesOrder>,
-}
-
-impl Filter {
-    pub(crate) fn query_params(&self, mut url: Url) -> Url {
-        if let Some(ref game_kinds) = self.game_kinds {
-            url.query_pairs_mut()
-                .extend_pairs(&[("leaderboard", join(game_kinds, ","))]);
-        }
-        if let Some(id) = self.opponent_profile_id {
-            url.query_pairs_mut()
-                .extend_pairs(&[("opponent_profile_id", id.to_string())]);
-        }
-        if let Some(since) = self.since {
-            url.query_pairs_mut()
-                .extend_pairs(&[("since", since.to_string())]);
-        }
-        url
-    }
-}
 
 /// Filters for games returned by the API.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
@@ -65,19 +23,43 @@ pub enum GamesOrder {
     UpdatedAt,
 }
 
-/// Games played and related statistics.
+/// Global games.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
-pub(crate) struct GamesPlayed {
+pub(crate) struct GlobalGames {
     #[serde(flatten)]
     pagination: Pagination,
     games: Vec<Game>,
-    filters: Option<Filter>,
+    #[cfg_attr(test, arbitrary(value = HashMap::default()))]
+    filters: HashMap<String, Value>,
 }
 
-impl Paginated<Game> for GamesPlayed {
+impl Paginated<Game> for GlobalGames {
+    fn pagination(&self) -> &Pagination {
+        &self.pagination
+    }
+
+    fn data(self) -> Vec<Game> {
+        self.games
+    }
+}
+
+/// Per-profile games.
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
+pub(crate) struct ProfileGames {
+    #[serde(flatten)]
+    pagination: Pagination,
+    games: Vec<Game>,
+    #[cfg_attr(test, arbitrary(value = HashMap::default()))]
+    filters: HashMap<String, Value>,
+}
+
+impl Paginated<Game> for ProfileGames {
     fn pagination(&self) -> &Pagination {
         &self.pagination
     }
@@ -403,9 +385,9 @@ pub struct Player {
 }
 
 impl Player {
-    /// Get the Profile for this Player.
-    pub async fn profile(&self) -> Result<Profile> {
-        self.profile_id.profile().await
+    /// Returns a [`ProfileQuery`]. Used to get profile for this [`Player`].
+    pub fn profile(&self) -> ProfileQuery {
+        self.profile_id.profile()
     }
 }
 
@@ -415,9 +397,9 @@ mod tests {
 
     use crate::testutils::{test_json, test_serde_roundtrip_prop};
 
-    test_serde_roundtrip_prop!(Filter);
     test_serde_roundtrip_prop!(GamesOrder);
-    test_serde_roundtrip_prop!(GamesPlayed);
+    test_serde_roundtrip_prop!(GlobalGames);
+    test_serde_roundtrip_prop!(ProfileGames);
     test_serde_roundtrip_prop!(Game);
     test_serde_roundtrip_prop!(GameKind);
     test_serde_roundtrip_prop!(Leaderboard);
@@ -426,14 +408,16 @@ mod tests {
     test_serde_roundtrip_prop!(Player);
 
     test_json!(
-        GamesPlayed,
+        ProfileGames,
         "../../testdata/games/neptune.json",
         neptune_games
     );
 
+    test_json!(ProfileGames, "../../testdata/games/jigly.json", jigly_games);
+
     test_json!(
-        GamesPlayed,
-        "../../testdata/games/jigly.json",
-        jigly_games
+        GlobalGames,
+        "../../testdata/games/global.json",
+        global_games
     );
 }

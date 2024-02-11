@@ -2,39 +2,15 @@
 
 //! Search for players.
 
-use reqwest::Url;
+use std::collections::HashMap;
+
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 use crate::{
     pagination::{Paginated, Pagination},
     types::profile::Profile,
 };
-
-/// Filters for players returned by the API.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
-#[serde(rename_all = "snake_case")]
-#[cfg_attr(test, derive(arbitrary::Arbitrary))]
-#[cfg_attr(test, serde(deny_unknown_fields))]
-pub struct Filter {
-    /// Search query.
-    pub query: Option<String>,
-    /// Should the results exactly match the query.
-    pub exact: Option<bool>,
-}
-
-impl Filter {
-    pub(crate) fn query_params(&self, mut url: Url) -> Url {
-        if let Some(query) = &self.query {
-            url.query_pairs_mut()
-                .extend_pairs(&[("query", query.to_string())]);
-        }
-        if let Some(exact) = self.exact {
-            url.query_pairs_mut()
-                .extend_pairs(&[("exact", exact.to_string())]);
-        }
-        url
-    }
-}
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
@@ -44,7 +20,8 @@ pub(crate) struct SearchResults {
     #[serde(flatten)]
     pagination: Pagination,
     players: Vec<Profile>,
-    filters: Option<Filter>,
+    #[cfg_attr(test, arbitrary(value = HashMap::default()))]
+    filters: HashMap<String, Value>,
 }
 
 impl Paginated<Profile> for SearchResults {
