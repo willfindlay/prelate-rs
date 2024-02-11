@@ -150,3 +150,13 @@ impl From<RankDivision> for u32 {
         }
     }
 }
+
+#[cfg(test)]
+mod test_super {
+    use crate::testutils::test_serde_roundtrip_prop;
+
+    use super::*;
+
+    test_serde_roundtrip_prop!(RankLeague);
+    test_serde_roundtrip_prop!(RankDivision);
+}

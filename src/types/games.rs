@@ -413,29 +413,21 @@ impl Player {
 mod tests {
     use super::*;
 
-    use crate::testutils::assert_serde_roundtrip;
+    use crate::testutils::{test_json, test_serde_roundtrip_prop};
 
-    use arbitrary::Arbitrary;
-    use pretty_assertions::assert_eq;
-    use serde_json::from_str;
+    test_serde_roundtrip_prop!(Filter);
+    test_serde_roundtrip_prop!(GamesOrder);
+    test_serde_roundtrip_prop!(GamesPlayed);
+    test_serde_roundtrip_prop!(Game);
+    test_serde_roundtrip_prop!(GameKind);
+    test_serde_roundtrip_prop!(Leaderboard);
+    test_serde_roundtrip_prop!(GameResult);
+    test_serde_roundtrip_prop!(PlayerWrapper);
+    test_serde_roundtrip_prop!(Player);
 
-    const NEPTUNE_GAMES_JSON: &str = include_str!("../../testdata/neptune-games.json");
-
-    #[test]
-    fn games_serde_roundtrip() {
-        fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
-            let obj = GamesPlayed::arbitrary(u)?;
-            assert_serde_roundtrip(obj);
-            Ok(())
-        }
-        arbtest::builder().run(prop);
-    }
-
-    #[test]
-    fn game_examples_deserialize() {
-        let games: GamesPlayed =
-            from_str(NEPTUNE_GAMES_JSON).expect("neptune games should deserialize");
-        assert_eq!(games.games.len(), 50);
-        assert_serde_roundtrip(games);
-    }
+    test_json!(
+        GamesPlayed,
+        "../../testdata/games/neptune.json",
+        neptune_games
+    );
 }

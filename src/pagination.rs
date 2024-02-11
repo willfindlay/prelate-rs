@@ -150,3 +150,12 @@ impl<T: Send + Sync + DeserializeOwned + Paginated<U> + 'static, U: Send + Sync 
         Ok(self.into_pages_ahead(DEFAULT_PAGES_CONCURRENCY, limit, request))
     }
 }
+
+#[cfg(test)]
+mod test_super {
+    use crate::testutils::test_serde_roundtrip_prop;
+
+    use super::*;
+
+    test_serde_roundtrip_prop!(Pagination);
+}

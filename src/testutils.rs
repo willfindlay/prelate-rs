@@ -9,6 +9,38 @@ use std::fmt::Debug;
 use pretty_assertions::assert_eq;
 use serde::{de::DeserializeOwned, Serialize};
 
+macro_rules! test_serde_roundtrip_prop {
+    ($t:ty) => {
+        paste::paste! {
+            #[test]
+            fn [<test_ $t:snake _serde_roundtrip_prop>]() {
+                use arbitrary::Arbitrary as _;
+                fn prop(u: &mut arbitrary::Unstructured<'_>) -> arbitrary::Result<()> {
+                    let obj = $t::arbitrary(u)?;
+                    crate::testutils::assert_serde_roundtrip(obj);
+                    Ok(())
+                }
+                arbtest::builder().run(prop);
+            }
+        }
+    };
+}
+pub(crate) use test_serde_roundtrip_prop;
+
+macro_rules! test_json {
+    ($t:ty, $file:expr, $testcase:ident) => {
+        paste::paste! {
+            #[test]
+            fn [<test_ $t:snake _ $testcase _json>]() {
+                let json_str = include_str!($file);
+                let obj: $t = serde_json::from_str(json_str).expect("should deserialize into $t");
+                crate::testutils::assert_serde_roundtrip(obj)
+            }
+        }
+    };
+}
+pub(crate) use test_json;
+
 pub fn assert_serde_roundtrip<T>(obj: T)
 where
     T: Serialize + DeserializeOwned + Debug + PartialEq,
