@@ -316,7 +316,7 @@ pub struct RatingHistoryEntry {
     pub drops_count: Option<u32>,
     /// How many games have been disputed.
     pub disputes_count: Option<u32>,
-    /// TODO: what is this?
+    /// This field is populated the player has decayed between this match and the previous one. It contains the original rating after the decay but before the match was played.
     pub orig_rating: Option<u32>,
 }
 
