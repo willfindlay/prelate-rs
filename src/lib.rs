@@ -19,7 +19,7 @@ use futures::Stream;
 
 use pagination::{PaginatedRequest, PaginationClient};
 use types::{
-    games::{self, Game, GamesPlayed, Leaderboard},
+    games::{self, Game, GameKind, GamesOrder, GamesPlayed},
     profile::{Profile, ProfileId},
     search::{self, SearchResults},
 };
@@ -51,9 +51,12 @@ pub async fn profile(profile_id: u64) -> Result<Profile> {
 /// - `since` is an optional datetime to search after.
 pub async fn games(
     profile_id: Option<ProfileId>,
-    leaderboard: Option<Leaderboard>,
+    game_kinds: Option<Vec<GameKind>>,
     opponent_profile_id: Option<ProfileId>,
+    profile_ids: Option<Vec<ProfileId>>,
+    opponent_profile_ids: Option<Vec<ProfileId>>,
     since: Option<chrono::DateTime<chrono::Utc>>,
+    order: Option<GamesOrder>,
 ) -> Result<impl Stream<Item = Result<Game>>> {
     let client = PaginationClient::<GamesPlayed, Game>::default();
     let url = if let Some(profile_id) = profile_id {
@@ -62,9 +65,12 @@ pub async fn games(
         "https://aoe4world.com/api/v0/games".parse()?
     };
     let filter = games::Filter {
-        leaderboard,
+        game_kinds,
         opponent_profile_id,
+        profile_ids,
+        opponent_profile_ids,
         since,
+        order,
     };
     let url = filter.query_params(url);
     let pages = client
@@ -118,20 +124,36 @@ mod tests {
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test(flavor = "multi_thread")]
     async fn player_games_api_smoke() {
-        let g: Vec<_> = games(Some(ONLY_CAMS_ID.into()), None, None, None)
-            .await
-            .expect("API call should succeed")
-            .collect()
-            .await;
+        let g: Vec<_> = games(
+            Some(ONLY_CAMS_ID.into()),
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+        )
+        .await
+        .expect("API call should succeed")
+        .collect()
+        .await;
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
         }
 
-        let g: Vec<_> = games(Some(HOUSEDHORSE_ID.into()), None, None, None)
-            .await
-            .expect("API call should succeed")
-            .collect()
-            .await;
+        let g: Vec<_> = games(
+            Some(HOUSEDHORSE_ID.into()),
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+        )
+        .await
+        .expect("API call should succeed")
+        .collect()
+        .await;
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
         }
@@ -140,7 +162,7 @@ mod tests {
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test(flavor = "multi_thread")]
     async fn global_games_api_smoke() {
-        let g: Vec<_> = games(None, None, None, None)
+        let g: Vec<_> = games(None, None, None, None, None, None, None)
             .await
             .expect("API call should succeed")
             .take(100)

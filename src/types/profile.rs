@@ -3,17 +3,25 @@
 //! API response types for player and profile stats.
 
 pub use isocountry::CountryCode;
+use serde_json::Value;
 
-use std::{collections::BTreeMap, fmt::Display, ops::Deref};
+use std::{
+    collections::{BTreeMap, HashMap},
+    fmt::Display,
+    ops::Deref,
+};
 
 use anyhow::Result;
 use futures::Stream;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
-use crate::{games, profile, types::rank::RankLeague, Game, Leaderboard};
+use crate::{games, profile, types::rank::RankLeague, Game};
 
-use super::civilization::Civilization;
+use super::{
+    civilization::Civilization,
+    games::{GameKind, GamesOrder},
+};
 
 /// Player profile ID on aoe4world.
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq, Clone, Copy)]
@@ -61,11 +69,23 @@ impl ProfileId {
     /// - `since` is an optional datetime to search after.
     pub async fn games(
         &self,
-        leaderboard: Option<Leaderboard>,
+        game_kinds: Option<Vec<GameKind>>,
         opponent_id: Option<ProfileId>,
+        profile_ids: Option<Vec<ProfileId>>,
+        opponent_profile_ids: Option<Vec<ProfileId>>,
         since: Option<chrono::DateTime<chrono::Utc>>,
+        order: Option<GamesOrder>,
     ) -> Result<impl Stream<Item = Result<Game>>> {
-        games(Some(self).cloned(), leaderboard, opponent_id, since).await
+        games(
+            Some(self).cloned(),
+            game_kinds,
+            opponent_id,
+            profile_ids,
+            opponent_profile_ids,
+            since,
+            order,
+        )
+        .await
     }
 }
 
@@ -94,6 +114,8 @@ pub struct Profile {
     /// Statistics per game mode.
     #[serde(alias = "leaderboards")]
     pub modes: Option<GameModes>,
+    /// [`chrono::DateTime`] when last game was played.
+    pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
 }
 
 impl Deref for Profile {
@@ -157,6 +179,20 @@ pub struct GameModes {
     pub rm_solo: Option<GameModeStats>,
     /// Team ranked stats. Rating is ranked points.
     pub rm_team: Option<GameModeStats>,
+    /// Deprecated.
+    #[deprecated = "Use rm_solo instead."]
+    pub rm_1v1: Option<GameModeStats>,
+    /// 1v1 ranked stats. Rating is ELO.
+    pub rm_1v1_elo: Option<GameModeStats>,
+    /// 2v2 ranked stats. Rating is ELO.
+    #[serde(alias = "rm_2v2")]
+    pub rm_2v2_elo: Option<GameModeStats>,
+    /// 3v3 ranked stats. Rating is ELO.
+    #[serde(alias = "rm_3v3")]
+    pub rm_3v3_elo: Option<GameModeStats>,
+    /// 4v4 ranked stats. Rating is ELO.
+    #[serde(alias = "rm_4v4")]
+    pub rm_4v4_elo: Option<GameModeStats>,
     /// 1v1 quick match stats. Rating is ELO.
     pub qm_1v1: Option<GameModeStats>,
     /// 2v2 quick match stats. Rating is ELO.
@@ -165,6 +201,16 @@ pub struct GameModes {
     pub qm_3v3: Option<GameModeStats>,
     /// 4v4 quick match stats. Rating is ELO.
     pub qm_4v4: Option<GameModeStats>,
+    /// 1v1 Empire Wars quick match stats. Rating is ELO.
+    pub qm_1v1_ew: Option<GameModeStats>,
+    /// 2v2 Empire Wars quick match stats. Rating is ELO.
+    pub qm_2v2_ew: Option<GameModeStats>,
+    /// 3v3 Empire Wars quick match stats. Rating is ELO.
+    pub qm_3v3_ew: Option<GameModeStats>,
+    /// 4v4 Empire Wars quick match stats. Rating is ELO.
+    pub qm_4v4_ew: Option<GameModeStats>,
+    /// Custom stats.
+    pub custom: Option<GameModeStats>,
 }
 
 /// Statistics for a game mode.
@@ -173,6 +219,9 @@ pub struct GameModes {
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct GameModeStats {
+    // Deprecation notice served by the API trips up our deny_unknown_fields attr during tests.
+    #[cfg(test)]
+    _notice_: Option<String>,
     /// Rating points or ELO.
     pub rating: Option<u32>,
     /// Max rating of all time.
@@ -196,7 +245,6 @@ pub struct GameModeStats {
     /// How many games have been dropped.
     pub drops_count: Option<u32>,
     /// When the last game was played.
-    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Win rate as a percentage out of 100.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
@@ -240,7 +288,6 @@ pub struct PreviousSeasonStats {
     /// How many games have been dropped.
     pub drops_count: Option<u32>,
     /// When the last game was played.
-    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub last_game_at: Option<chrono::DateTime<chrono::Utc>>,
     /// Win rate as a percentage out of 100.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
@@ -269,6 +316,8 @@ pub struct RatingHistoryEntry {
     pub drops_count: Option<u32>,
     /// How many games have been disputed.
     pub disputes_count: Option<u32>,
+    /// TODO: what is this?
+    pub orig_rating: Option<u32>,
 }
 
 /// Per-Civilization stats.
@@ -288,8 +337,7 @@ pub struct CivStats {
     /// Number of games played with this civ.
     pub games_count: Option<u32>,
     /// Game length stats.
-    pub games_length: Option<CivGameLengthStats>,
-    // FIXME: add support for breakdown buckets
+    pub game_length: Option<CivGameLengthStats>,
 }
 
 /// Per-Civilization game length stats.
@@ -316,6 +364,9 @@ pub struct CivGameLengthStats {
     /// Median duration for losses in seconds.
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
     pub losses_median: Option<f64>,
+    // TODO: support this field properly
+    #[cfg_attr(test, arbitrary(value = Vec::default()))]
+    breakdown: Vec<HashMap<String, Value>>,
 }
 
 #[cfg(test)]
