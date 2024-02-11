@@ -44,6 +44,7 @@ pub(crate) struct SearchResults {
     #[serde(flatten)]
     pagination: Pagination,
     players: Vec<Profile>,
+    filters: Option<Filter>,
 }
 
 impl Paginated<Profile> for SearchResults {

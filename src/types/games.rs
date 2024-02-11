@@ -5,6 +5,7 @@
 use std::{fmt::Display, ops::Deref};
 
 use anyhow::Result;
+use itertools::join;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
 
@@ -21,21 +22,26 @@ use super::profile::Profile;
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Filter {
-    /// Filter by leaderboard category.
-    pub leaderboard: Option<Leaderboard>,
+    /// Filter by game kind category.
+    #[serde(rename = "leaderboard")]
+    pub game_kinds: Option<Vec<GameKind>>,
     /// Filter over an opponent's profile ID.
-    #[serde(default)]
     pub opponent_profile_id: Option<ProfileId>,
+    /// Filter over a list of profile IDs.
+    pub profile_ids: Option<Vec<ProfileId>>,
+    /// Filter over a list of opponent profile IDs.
+    pub opponent_profile_ids: Option<Vec<ProfileId>>,
     /// Filter by time played since a specific date.
-    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub since: Option<chrono::DateTime<chrono::Utc>>,
+    /// Filter by time played since a specific date.
+    pub order: Option<GamesOrder>,
 }
 
 impl Filter {
     pub(crate) fn query_params(&self, mut url: Url) -> Url {
-        if let Some(ref leaderboard) = self.leaderboard {
+        if let Some(ref game_kinds) = self.game_kinds {
             url.query_pairs_mut()
-                .extend_pairs(&[("leaderboard", leaderboard.to_string())]);
+                .extend_pairs(&[("leaderboard", join(game_kinds, ","))]);
         }
         if let Some(id) = self.opponent_profile_id {
             url.query_pairs_mut()
@@ -49,6 +55,16 @@ impl Filter {
     }
 }
 
+/// Filters for games returned by the API.
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
+pub enum GamesOrder {
+    StartedAt,
+    UpdatedAt,
+}
+
 /// Games played and related statistics.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
@@ -58,6 +74,7 @@ pub(crate) struct GamesPlayed {
     #[serde(flatten)]
     pagination: Pagination,
     games: Vec<Game>,
+    filters: Option<Filter>,
 }
 
 impl Paginated<Game> for GamesPlayed {
@@ -79,10 +96,8 @@ pub struct Game {
     /// The ID of the game on aoe4world.
     pub game_id: u32,
     /// When the game was started.
-    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub started_at: Option<chrono::DateTime<chrono::Utc>>,
     /// When the state of the game was last updated.
-    #[cfg_attr(test, arbitrary(value = Some(chrono::Utc::now())))]
     pub updated_at: Option<chrono::DateTime<chrono::Utc>>,
     /// How long the game lasted in seconds.
     pub duration: Option<u32>,
