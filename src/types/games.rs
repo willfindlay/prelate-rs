@@ -19,6 +19,7 @@ use super::profile::Profile;
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Filter {
     /// Filter by leaderboard category.
     pub leaderboard: Option<Leaderboard>,
@@ -52,6 +53,7 @@ impl Filter {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub(crate) struct GamesPlayed {
     #[serde(flatten)]
     pagination: Pagination,
@@ -72,6 +74,7 @@ impl Paginated<Game> for GamesPlayed {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Game {
     /// The ID of the game on aoe4world.
     pub game_id: u32,
@@ -122,6 +125,7 @@ pub struct Game {
 /// `RmTeam`.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum GameKind {
     /// 1v1 ranked.
     #[serde(rename = "rm_1v1")]
@@ -214,6 +218,7 @@ impl Display for GameKind {
 /// addition of `RmSolo` and `RmTeam`.
 #[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum Leaderboard {
     /// Solo ranked.
     #[serde(rename = "rm_solo")]
@@ -323,6 +328,7 @@ impl Display for Leaderboard {
 #[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum GameResult {
     Win,
     Loss,
@@ -336,6 +342,7 @@ pub enum GameResult {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct PlayerWrapper {
     pub player: Player,
 }
@@ -358,6 +365,7 @@ impl From<PlayerWrapper> for Player {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Player {
     /// Name of the player.
     pub name: String,

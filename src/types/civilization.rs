@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum Civilization {
     English,
     French,
