@@ -1,0 +1,660 @@
+{
+  "total_count": 4,
+  "page": 1,
+  "per_page": 50,
+  "count": 4,
+  "offset": 0,
+  "filters": {
+    "query": "jigly",
+    "exact": false
+  },
+  "players": [
+    {
+      "name": "[DEBILS] jiglypuf62",
+      "profile_id": 230532,
+      "steam_id": "76561198006563875",
+      "avatars": {
+        "small": "https://avatars.akamai.steamstatic.com/0e6124e0aaa735f4c54979a859cae9428ee51750.jpg",
+        "medium": "https://avatars.akamai.steamstatic.com/0e6124e0aaa735f4c54979a859cae9428ee51750_medium.jpg",
+        "full": "https://avatars.akamai.steamstatic.com/0e6124e0aaa735f4c54979a859cae9428ee51750_full.jpg"
+      },
+      "country": "us",
+      "social": {
+        "twitch": "https://www.twitch.tv/jiglypuf622"
+      },
+      "last_game_at": "2024-02-11T17:23:52.000Z",
+      "leaderboards": {
+        "rm_solo": {
+          "rating": 1400,
+          "rank": 1841,
+          "rank_level": "conqueror_1",
+          "streak": 6,
+          "games_count": 7,
+          "wins_count": 6,
+          "losses_count": 1,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2023-11-28T16:58:23.000Z",
+          "win_rate": 85.7,
+          "season": 6,
+          "previous_seasons": [
+            {
+              "rating": 1410,
+              "rank": 1008,
+              "rank_level": "conqueror_1",
+              "streak": 5,
+              "games_count": 8,
+              "wins_count": 7,
+              "losses_count": 1,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-07-11T21:14:51.000Z",
+              "win_rate": 87.5,
+              "season": 5
+            },
+            {
+              "rating": 1346,
+              "rank": 1443,
+              "rank_level": "diamond_2",
+              "streak": 2,
+              "games_count": 70,
+              "wins_count": 35,
+              "losses_count": 35,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-02-06T00:11:35.000Z",
+              "win_rate": 50.0,
+              "season": 3
+            },
+            {
+              "rating": 1200,
+              "rank": 3190,
+              "rank_level": "diamond_1",
+              "streak": 7,
+              "games_count": 12,
+              "wins_count": 11,
+              "losses_count": 1,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2022-10-20T18:29:28.000Z",
+              "win_rate": 91.7,
+              "season": 2
+            }
+          ]
+        },
+        "rm_team": {
+          "rating": 2169,
+          "rank": 16,
+          "rank_level": "conqueror_3",
+          "streak": 35,
+          "games_count": 339,
+          "wins_count": 316,
+          "losses_count": 23,
+          "disputes_count": 1,
+          "drops_count": 1,
+          "last_game_at": "2024-02-11T17:23:52.000Z",
+          "win_rate": 93.2,
+          "season": 6,
+          "previous_seasons": [
+            {
+              "rating": 2076,
+              "rank": 14,
+              "rank_level": "conqueror_3",
+              "streak": 15,
+              "games_count": 779,
+              "wins_count": 717,
+              "losses_count": 62,
+              "disputes_count": 3,
+              "drops_count": 0,
+              "last_game_at": "2023-11-10T00:37:21.000Z",
+              "win_rate": 92.0,
+              "season": 5
+            },
+            {
+              "rating": 1733,
+              "rank": 54,
+              "rank_level": "conqueror_3",
+              "streak": 7,
+              "games_count": 138,
+              "wins_count": 116,
+              "losses_count": 22,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-06-13T23:18:31.000Z",
+              "win_rate": 84.1,
+              "season": 4
+            },
+            {
+              "rating": 1787,
+              "rank": 30,
+              "rank_level": "conqueror_3",
+              "streak": 4,
+              "games_count": 186,
+              "wins_count": 161,
+              "losses_count": 25,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-02-01T22:04:34.000Z",
+              "win_rate": 86.6,
+              "season": 3
+            }
+          ]
+        },
+        "rm_1v1_elo": {
+          "rating": 1567,
+          "rank": 1074,
+          "rank_level": null,
+          "streak": 6,
+          "games_count": 99,
+          "wins_count": 61,
+          "losses_count": 38,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2023-11-28T16:58:23.000Z",
+          "win_rate": 61.6
+        },
+        "rm_2v2_elo": {
+          "rating": 2024,
+          "rank": 12,
+          "rank_level": null,
+          "streak": 78,
+          "games_count": 475,
+          "wins_count": 437,
+          "losses_count": 38,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2024-02-09T19:10:53.000Z",
+          "win_rate": 92.0
+        },
+        "rm_3v3_elo": {
+          "rating": 2008,
+          "rank": 1,
+          "rank_level": null,
+          "streak": 47,
+          "games_count": 614,
+          "wins_count": 555,
+          "losses_count": 59,
+          "disputes_count": 1,
+          "drops_count": 1,
+          "last_game_at": "2024-02-11T15:44:55.000Z",
+          "win_rate": 90.4
+        },
+        "rm_4v4_elo": {
+          "rating": 1993,
+          "rank": 14,
+          "rank_level": null,
+          "streak": 10,
+          "games_count": 354,
+          "wins_count": 319,
+          "losses_count": 35,
+          "disputes_count": 3,
+          "drops_count": 0,
+          "last_game_at": "2024-02-11T17:23:51.000Z",
+          "win_rate": 90.1
+        },
+        "qm_1v1": {
+          "rating": 1269,
+          "rank": 5284,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 33,
+          "wins_count": 21,
+          "losses_count": 12,
+          "disputes_count": 0,
+          "drops_count": 1,
+          "last_game_at": "2023-06-16T15:50:47.000Z",
+          "win_rate": 63.6
+        },
+        "qm_2v2": {
+          "rating": 1543,
+          "rank": 731,
+          "rank_level": null,
+          "streak": 4,
+          "games_count": 138,
+          "wins_count": 98,
+          "losses_count": 40,
+          "disputes_count": 1,
+          "drops_count": 1,
+          "last_game_at": "2023-11-15T01:29:24.000Z",
+          "win_rate": 71.0
+        },
+        "qm_3v3": {
+          "rating": 1717,
+          "rank": 137,
+          "rank_level": null,
+          "streak": 7,
+          "games_count": 564,
+          "wins_count": 376,
+          "losses_count": 188,
+          "disputes_count": 1,
+          "drops_count": 4,
+          "last_game_at": "2023-11-15T16:16:25.000Z",
+          "win_rate": 66.7
+        },
+        "qm_4v4": {
+          "rating": 1861,
+          "rank": 133,
+          "rank_level": null,
+          "streak": 41,
+          "games_count": 261,
+          "wins_count": 203,
+          "losses_count": 58,
+          "disputes_count": 1,
+          "drops_count": 2,
+          "last_game_at": "2023-11-15T16:42:21.000Z",
+          "win_rate": 77.8
+        }
+      }
+    },
+    {
+      "name": "[DEBILS] jiglyturd622",
+      "profile_id": 11365763,
+      "steam_id": "76561199403871112",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "country": "de",
+      "social": {},
+      "last_game_at": "2024-02-11T00:50:03.000Z",
+      "leaderboards": {
+        "rm_team": {
+          "rating": 1949,
+          "rank": 28,
+          "rank_level": "conqueror_3",
+          "streak": 11,
+          "games_count": 288,
+          "wins_count": 241,
+          "losses_count": 47,
+          "disputes_count": 0,
+          "drops_count": 1,
+          "last_game_at": "2024-02-11T00:50:03.000Z",
+          "win_rate": 83.7,
+          "season": 6,
+          "previous_seasons": [
+            {
+              "rating": 1942,
+              "rank": 30,
+              "rank_level": "conqueror_3",
+              "streak": 33,
+              "games_count": 210,
+              "wins_count": 188,
+              "losses_count": 22,
+              "disputes_count": 2,
+              "drops_count": 1,
+              "last_game_at": "2023-11-05T22:59:17.000Z",
+              "win_rate": 89.5,
+              "season": 5
+            },
+            {
+              "rating": 1719,
+              "rank": 61,
+              "rank_level": "conqueror_3",
+              "streak": 1,
+              "games_count": 148,
+              "wins_count": 119,
+              "losses_count": 29,
+              "disputes_count": 1,
+              "drops_count": 1,
+              "last_game_at": "2023-06-11T16:33:23.000Z",
+              "win_rate": 80.4,
+              "season": 4
+            },
+            {
+              "rating": 1558,
+              "rank": 253,
+              "rank_level": "conqueror_2",
+              "streak": -1,
+              "games_count": 253,
+              "wins_count": 172,
+              "losses_count": 81,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-02-12T21:07:59.000Z",
+              "win_rate": 68.0,
+              "season": 3
+            }
+          ]
+        },
+        "rm_solo": {
+          "rank_level": "unranked",
+          "streak": 0,
+          "games_count": 0,
+          "wins_count": 0,
+          "losses_count": 0,
+          "season": 6,
+          "previous_seasons": [
+            {
+              "rating": 1478,
+              "rank": 576,
+              "rank_level": "conqueror_1",
+              "streak": 4,
+              "games_count": 26,
+              "wins_count": 21,
+              "losses_count": 5,
+              "disputes_count": 0,
+              "drops_count": 1,
+              "last_game_at": "2023-09-12T15:10:46.000Z",
+              "win_rate": 80.8,
+              "season": 5
+            },
+            {
+              "rating": 1354,
+              "rank": 1414,
+              "rank_level": "diamond_3",
+              "streak": -3,
+              "games_count": 18,
+              "wins_count": 15,
+              "losses_count": 3,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-02-07T17:26:11.000Z",
+              "win_rate": 83.3,
+              "season": 3
+            }
+          ]
+        },
+        "rm_1v1_elo": {
+          "rating": 1610,
+          "rank": 763,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 48,
+          "wins_count": 38,
+          "losses_count": 10,
+          "disputes_count": 0,
+          "drops_count": 1,
+          "last_game_at": "2024-02-08T19:05:28.000Z",
+          "win_rate": 79.2
+        },
+        "rm_2v2_elo": {
+          "rating": 1850,
+          "rank": 24,
+          "rank_level": null,
+          "streak": 13,
+          "games_count": 280,
+          "wins_count": 230,
+          "losses_count": 50,
+          "disputes_count": 0,
+          "drops_count": 1,
+          "last_game_at": "2024-02-11T00:50:03.000Z",
+          "win_rate": 82.1
+        },
+        "rm_3v3_elo": {
+          "rating": 1810,
+          "rank": 26,
+          "rank_level": null,
+          "streak": 19,
+          "games_count": 380,
+          "wins_count": 296,
+          "losses_count": 84,
+          "disputes_count": 1,
+          "drops_count": 1,
+          "last_game_at": "2024-02-08T20:35:18.000Z",
+          "win_rate": 77.9
+        },
+        "rm_4v4_elo": {
+          "rating": 1898,
+          "rank": 30,
+          "rank_level": null,
+          "streak": 1,
+          "games_count": 239,
+          "wins_count": 194,
+          "losses_count": 45,
+          "disputes_count": 2,
+          "drops_count": 1,
+          "last_game_at": "2024-02-08T21:20:10.000Z",
+          "win_rate": 81.2
+        },
+        "qm_1v1": {
+          "rating": 1527,
+          "rank": 630,
+          "rank_level": null,
+          "streak": 16,
+          "games_count": 16,
+          "wins_count": 16,
+          "losses_count": 0,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2023-11-22T01:02:39.000Z",
+          "win_rate": 100.0
+        },
+        "qm_2v2": {
+          "rating": 1671,
+          "rank": 162,
+          "rank_level": null,
+          "streak": 5,
+          "games_count": 58,
+          "wins_count": 50,
+          "losses_count": 8,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2024-01-13T05:15:11.000Z",
+          "win_rate": 86.2
+        },
+        "qm_3v3": {
+          "rating": 1596,
+          "rank": 496,
+          "rank_level": null,
+          "streak": -1,
+          "games_count": 130,
+          "wins_count": 93,
+          "losses_count": 37,
+          "disputes_count": 2,
+          "drops_count": 1,
+          "last_game_at": "2023-12-11T02:23:06.000Z",
+          "win_rate": 71.5
+        },
+        "qm_4v4": {
+          "rating": 1861,
+          "rank": 132,
+          "rank_level": null,
+          "streak": 3,
+          "games_count": 135,
+          "wins_count": 107,
+          "losses_count": 28,
+          "disputes_count": 1,
+          "drops_count": 1,
+          "last_game_at": "2024-02-04T10:03:01.000Z",
+          "win_rate": 79.3
+        }
+      }
+    },
+    {
+      "name": "Jiglyturd",
+      "profile_id": 17425384,
+      "steam_id": "76561199564734279",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "country": "us",
+      "social": {},
+      "last_game_at": "2024-02-10T03:17:10.000Z",
+      "leaderboards": {
+        "rm_solo": {
+          "rating": 1278,
+          "rank": 3285,
+          "rank_level": "diamond_1",
+          "streak": 10,
+          "games_count": 10,
+          "wins_count": 10,
+          "losses_count": 0,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2023-12-13T03:24:27.000Z",
+          "win_rate": 100.0,
+          "season": 6
+        },
+        "rm_team": {
+          "rating": 1844,
+          "rank": 65,
+          "rank_level": "conqueror_3",
+          "streak": 8,
+          "games_count": 345,
+          "wins_count": 292,
+          "losses_count": 53,
+          "disputes_count": 3,
+          "drops_count": 1,
+          "last_game_at": "2024-02-10T03:17:09.000Z",
+          "win_rate": 84.6,
+          "season": 6,
+          "previous_seasons": [
+            {
+              "rating": 1265,
+              "rank": 6444,
+              "rank_level": "diamond_1",
+              "streak": 1,
+              "games_count": 35,
+              "wins_count": 26,
+              "losses_count": 9,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-11-07T00:51:28.000Z",
+              "win_rate": 74.3,
+              "season": 5
+            }
+          ]
+        },
+        "rm_1v1_elo": {
+          "rating": 1412,
+          "rank": 3992,
+          "rank_level": null,
+          "streak": 10,
+          "games_count": 10,
+          "wins_count": 10,
+          "losses_count": 0,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2023-12-13T03:24:26.000Z",
+          "win_rate": 100.0
+        },
+        "rm_2v2_elo": {
+          "rating": 1733,
+          "rank": 81,
+          "rank_level": null,
+          "streak": 5,
+          "games_count": 149,
+          "wins_count": 120,
+          "losses_count": 29,
+          "disputes_count": 1,
+          "drops_count": 0,
+          "last_game_at": "2024-02-10T03:17:10.000Z",
+          "win_rate": 80.5
+        },
+        "rm_3v3_elo": {
+          "rating": 1733,
+          "rank": 49,
+          "rank_level": null,
+          "streak": 14,
+          "games_count": 163,
+          "wins_count": 141,
+          "losses_count": 22,
+          "disputes_count": 2,
+          "drops_count": 1,
+          "last_game_at": "2024-02-09T01:58:53.000Z",
+          "win_rate": 86.5
+        },
+        "rm_4v4_elo": {
+          "rating": 1537,
+          "rank": 1100,
+          "rank_level": null,
+          "streak": 3,
+          "games_count": 68,
+          "wins_count": 57,
+          "losses_count": 11,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2024-01-27T21:59:12.000Z",
+          "win_rate": 83.8
+        }
+      }
+    },
+    {
+      "name": "Jigly d'Puff",
+      "profile_id": 15757044,
+      "steam_id": "76561199528033900",
+      "avatars": {
+        "small": null,
+        "medium": null,
+        "full": null
+      },
+      "country": "us",
+      "social": {},
+      "last_game_at": "2024-02-09T22:44:09.000Z",
+      "leaderboards": {
+        "rm_team": {
+          "rating": 1738,
+          "rank": 125,
+          "rank_level": "conqueror_3",
+          "streak": 39,
+          "games_count": 135,
+          "wins_count": 121,
+          "losses_count": 14,
+          "disputes_count": 1,
+          "drops_count": 0,
+          "last_game_at": "2024-02-09T22:44:09.000Z",
+          "win_rate": 89.6,
+          "season": 6,
+          "previous_seasons": [
+            {
+              "rating": 1446,
+              "rank": 1150,
+              "rank_level": "conqueror_1",
+              "streak": 10,
+              "games_count": 46,
+              "wins_count": 41,
+              "losses_count": 5,
+              "disputes_count": 0,
+              "drops_count": 0,
+              "last_game_at": "2023-10-24T02:58:07.000Z",
+              "win_rate": 89.1,
+              "season": 5
+            }
+          ]
+        },
+        "rm_2v2_elo": {
+          "rating": 1631,
+          "rank": 230,
+          "rank_level": null,
+          "streak": 12,
+          "games_count": 44,
+          "wins_count": 41,
+          "losses_count": 3,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2024-02-09T22:44:09.000Z",
+          "win_rate": 93.2
+        },
+        "rm_3v3_elo": {
+          "rating": 1614,
+          "rank": 208,
+          "rank_level": null,
+          "streak": 27,
+          "games_count": 84,
+          "wins_count": 76,
+          "losses_count": 8,
+          "disputes_count": 0,
+          "drops_count": 0,
+          "last_game_at": "2024-02-09T20:14:07.000Z",
+          "win_rate": 90.5
+        },
+        "rm_4v4_elo": {
+          "rating": 1493,
+          "rank": 1697,
+          "rank_level": null,
+          "streak": 10,
+          "games_count": 53,
+          "wins_count": 45,
+          "losses_count": 8,
+          "disputes_count": 1,
+          "drops_count": 0,
+          "last_game_at": "2024-02-09T19:50:20.000Z",
+          "win_rate": 84.9
+        }
+      }
+    }
+  ]
+}

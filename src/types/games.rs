@@ -430,4 +430,10 @@ mod tests {
         "../../testdata/games/neptune.json",
         neptune_games
     );
+
+    test_json!(
+        GamesPlayed,
+        "../../testdata/games/jigly.json",
+        jigly_games
+    );
 }
