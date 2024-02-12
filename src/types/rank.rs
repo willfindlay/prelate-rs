@@ -2,6 +2,8 @@
 
 //! Types related to a player's rank league.
 
+use std::fmt::Display;
+
 use serde::{de, Deserialize, Serialize};
 
 /// A player's rank league and division (e.g. Conq III).
@@ -88,6 +90,14 @@ impl Serialize for RankLeague {
     }
 }
 
+impl Display for RankLeague {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let s = serde_json::to_string(self).map_err(|_| std::fmt::Error)?;
+        let s = s.replace("\"", "");
+        write!(f, "{}", s)
+    }
+}
+
 /// A player's division within their rank league.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
@@ -151,6 +161,12 @@ impl From<RankDivision> for u32 {
     }
 }
 
+impl Display for RankDivision {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", u32::from(*self))
+    }
+}
+
 #[cfg(test)]
 mod test_super {
     use crate::testutils::test_serde_roundtrip_prop;
@@ -159,4 +175,17 @@ mod test_super {
 
     test_serde_roundtrip_prop!(RankLeague);
     test_serde_roundtrip_prop!(RankDivision);
+
+    #[test]
+    fn test_rank_league_to_string() {
+        assert_eq!("unranked", RankLeague::Unranked.to_string());
+        assert_eq!(
+            "conqueror_4",
+            RankLeague::Conqueror(RankDivision::Four).to_string()
+        );
+        assert_eq!(
+            "bronze_1",
+            RankLeague::Bronze(RankDivision::One).to_string()
+        );
+    }
 }

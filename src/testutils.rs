@@ -41,6 +41,26 @@ macro_rules! test_json {
 }
 pub(crate) use test_json;
 
+macro_rules! test_enum_to_string {
+    ($t:ident) => {
+        paste::paste! {
+            #[test]
+            fn [<test_ $t:snake _to_string>]() {
+                for variant in $t::VARIANTS {
+                    let serialized = serde_json::to_string(variant).expect("should serialize");
+                    let serialized = serialized.replace("\"", "");
+                    assert_eq!(
+                        serialized,
+                        variant.to_string(),
+                        "$t: {variant} string representation should match JSON serialization"
+                    );
+                }
+            }
+        }
+    };
+}
+pub(crate) use test_enum_to_string;
+
 pub fn assert_serde_roundtrip<T>(obj: T)
 where
     T: Serialize + DeserializeOwned + Debug + PartialEq,

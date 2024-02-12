@@ -270,7 +270,7 @@ pub mod query {
             }
             if let Some(ref order) = self.order {
                 url.query_pairs_mut()
-                    .append_pair("order", serde_json::to_string(order).unwrap().as_str());
+                    .append_pair("order", order.to_string().as_str());
             }
             url
         }

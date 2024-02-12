@@ -2,7 +2,7 @@
 
 //! Games played.
 
-use std::{collections::HashMap, fmt::Display, ops::Deref};
+use std::{collections::HashMap, ops::Deref};
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -14,8 +14,11 @@ use crate::{
 };
 
 /// Filters for games returned by the API.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
+#[derive(
+    Serialize, Deserialize, Debug, PartialEq, Eq, Clone, strum::VariantArray, strum::Display,
+)]
 #[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum GamesOrder {
@@ -124,48 +127,63 @@ pub struct Game {
 
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
 /// `RmTeam`.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(
+    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::Display, strum::VariantArray,
+)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum GameKind {
     /// 1v1 ranked.
     #[serde(rename = "rm_1v1")]
+    #[strum(serialize = "rm_1v1")]
     Rm1v1,
     /// 2v2 ranked.
     #[serde(rename = "rm_2v2")]
+    #[strum(serialize = "rm_2v2")]
     Rm2v2,
     /// 3v3 ranked.
     #[serde(rename = "rm_3v3")]
+    #[strum(serialize = "rm_3v3")]
     Rm3v3,
     /// 4v4 ranked.
     #[serde(rename = "rm_4v4")]
+    #[strum(serialize = "rm_4v4")]
     Rm4v4,
     /// 1v1 quick match.
     #[serde(rename = "qm_1v1")]
+    #[strum(serialize = "qm_1v1")]
     Qm1v1,
     /// 2v2 quick match.
     #[serde(rename = "qm_2v2")]
+    #[strum(serialize = "qm_2v2")]
     Qm2v2,
     /// 3v3 quick match.
     #[serde(rename = "qm_3v3")]
+    #[strum(serialize = "qm_3v3")]
     Qm3v3,
     /// 4v4 quick match.
     #[serde(rename = "qm_4v4")]
+    #[strum(serialize = "qm_4v4")]
     Qm4v4,
     /// 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew")]
+    #[strum(serialize = "qm_1v1_ew")]
     Qm1v1Ew,
     /// 2v2 empire wars quick match.
     #[serde(rename = "qm_2v2_ew")]
+    #[strum(serialize = "qm_2v2_ew")]
     Qm2v2Ew,
     /// 3v3 empire wars quick match.
     #[serde(rename = "qm_3v3_ew")]
+    #[strum(serialize = "qm_3v3_ew")]
     Qm3v3Ew,
     /// 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew")]
+    #[strum(serialize = "qm_4v4_ew")]
     Qm4v4Ew,
     /// Console 1v1 ranked.
     #[serde(rename = "rm_1v1_console")]
+    #[strum(serialize = "rm_1v1_console")]
     Rm1v1Console,
     // /// Console 2v2 ranked.
     // #[serde(rename = "rm_2v2_console")]
@@ -178,110 +196,130 @@ pub enum GameKind {
     // Rm4v4Console,
     /// Console 1v1 quick match.
     #[serde(rename = "qm_1v1_console")]
+    #[strum(serialize = "qm_1v1_console")]
     Qm1v1Console,
     /// Console 2v2 quick match.
     #[serde(rename = "qm_2v2_console")]
+    #[strum(serialize = "qm_2v2_console")]
     Qm2v2Console,
     /// Console 3v3 quick match.
     #[serde(rename = "qm_3v3_console")]
+    #[strum(serialize = "qm_3v3_console")]
     Qm3v3Console,
     /// Console 4v4 quick match.
     #[serde(rename = "qm_4v4_console")]
+    #[strum(serialize = "qm_4v4_console")]
     Qm4v4Console,
     /// Console 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew_console")]
+    #[strum(serialize = "qm_1v1_ew_console")]
     Qm1v1EwConsole,
     /// Console 2v2 empire wars quick match.
     #[serde(rename = "qm_2v2_ew_console")]
+    #[strum(serialize = "qm_2v2_ew_console")]
     Qm2v2EwConsole,
     /// Console 3v3 empire wars quick match.
     #[serde(rename = "qm_3v3_ew_console")]
+    #[strum(serialize = "qm_3v3_ew_console")]
     Qm3v3EwConsole,
     /// Console 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew_console")]
+    #[strum(serialize = "qm_4v4_ew_console")]
     Qm4v4EwConsole,
     /// A custom game.
     #[serde(rename = "custom")]
+    #[strum(serialize = "custom")]
     Custom,
-}
-
-impl Display for GameKind {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "{}",
-            &serde_json::to_string(self).map_err(|_| std::fmt::Error)?
-        )
-    }
 }
 
 /// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
 /// addition of `RmSolo` and `RmTeam`.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(
+    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::Display, strum::VariantArray,
+)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum Leaderboard {
     /// Solo ranked.
     #[serde(rename = "rm_solo")]
     #[serde(alias = "rm_1v1")]
+    #[strum(serialize = "rm_solo")]
     RmSolo,
     /// Team ranked.
     #[serde(rename = "rm_team")]
+    #[strum(serialize = "rm_team")]
     RmTeam,
     /// 1v1 quick match.
     #[serde(rename = "qm_1v1")]
+    #[strum(serialize = "qm_1v1")]
     Qm1v1,
     /// 2v2 quick match.
     #[serde(rename = "qm_2v2")]
+    #[strum(serialize = "qm_2v2")]
     Qm2v2,
     /// 3v3 quick match.
     #[serde(rename = "qm_3v3")]
+    #[strum(serialize = "qm_3v3")]
     Qm3v3,
     /// 4v4 quick match.
     #[serde(rename = "qm_4v4")]
+    #[strum(serialize = "qm_4v4")]
     Qm4v4,
     /// 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew")]
+    #[strum(serialize = "qm_1v1_ew")]
     Qm1v1Ew,
     /// 2v2 empire wars quick match.
     #[serde(rename = "qm_2v2_ew")]
+    #[strum(serialize = "qm_2v2_ew")]
     Qm2v2Ew,
     /// 3v3 empire wars quick match.
     #[serde(rename = "qm_3v3_ew")]
+    #[strum(serialize = "qm_3v3_ew")]
     Qm3v3Ew,
     /// 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew")]
+    #[strum(serialize = "qm_4v4_ew")]
     Qm4v4Ew,
     /// Console solo ranked.
     #[serde(rename = "rm_solo_console")]
     #[serde(alias = "rm_1v1_console")]
+    #[strum(serialize = "rm_solo_console")]
     RmSoloConsole,
     // /// Console team ranked.
     // #[serde(rename = "rm_team_console")]
     // RmTeamConsole,
     /// Console 1v1 quick match.
     #[serde(rename = "qm_1v1_console")]
+    #[strum(serialize = "qm_1v1_console")]
     Qm1v1Console,
     /// Console 2v2 quick match.
     #[serde(rename = "qm_2v2_console")]
+    #[strum(serialize = "qm_2v2_console")]
     Qm2v2Console,
     /// Console 3v3 quick match.
     #[serde(rename = "qm_3v3_console")]
+    #[strum(serialize = "qm_3v3_console")]
     Qm3v3Console,
     /// Console 4v4 quick match.
     #[serde(rename = "qm_4v4_console")]
+    #[strum(serialize = "qm_4v4_console")]
     Qm4v4Console,
     /// Console 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew_console")]
+    #[strum(serialize = "qm_1v1_ew_console")]
     Qm1v1EwConsole,
     /// Console 2v2 empire wars quick match.
     #[serde(rename = "qm_2v2_ew_console")]
+    #[strum(serialize = "qm_2v2_ew_console")]
     Qm2v2EwConsole,
     /// Console 3v3 empire wars quick match.
     #[serde(rename = "qm_3v3_ew_console")]
+    #[strum(serialize = "qm_3v3_ew_console")]
     Qm3v3EwConsole,
     /// Console 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew_console")]
+    #[strum(serialize = "qm_4v4_ew_console")]
     Qm4v4EwConsole,
 }
 
@@ -291,28 +329,22 @@ impl Leaderboard {
     pub const Rm1v1: Leaderboard = Leaderboard::RmSolo;
 }
 
-impl Display for Leaderboard {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "{}",
-            &serde_json::to_string(self).map_err(|_| std::fmt::Error)?
-        )
-    }
-}
-
 /// The result of a match. Either a win or a loss.
 ///
 /// No-Result outcomes are not currently supported by the aoe4world API, but this may
 /// change in the future.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(
+    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::VariantArray, strum::Display,
+)]
 #[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum GameResult {
     Win,
     Loss,
     #[serde(rename = "noresult")]
+    #[strum(serialize = "noresult")]
     NoResult,
     Unknown,
 }
@@ -376,9 +408,11 @@ impl Player {
 
 #[cfg(test)]
 mod tests {
+    use strum::VariantArray;
+
     use super::*;
 
-    use crate::testutils::{test_json, test_serde_roundtrip_prop};
+    use crate::testutils::{test_enum_to_string, test_json, test_serde_roundtrip_prop};
 
     test_serde_roundtrip_prop!(GamesOrder);
     test_serde_roundtrip_prop!(GlobalGames);
@@ -409,4 +443,9 @@ mod tests {
         "../../testdata/games/games_negative_mmr.json",
         negative_mmr
     );
+
+    test_enum_to_string!(GameKind);
+    test_enum_to_string!(Leaderboard);
+    test_enum_to_string!(GamesOrder);
+    test_enum_to_string!(GameResult);
 }

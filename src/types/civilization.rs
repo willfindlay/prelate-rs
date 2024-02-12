@@ -5,8 +5,11 @@
 use serde::{Deserialize, Serialize};
 
 /// A civilization in AoEIV.
-#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(
+    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::Display, strum::VariantArray,
+)]
 #[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum Civilization {
@@ -30,9 +33,13 @@ pub enum Civilization {
 
 #[cfg(test)]
 mod test_super {
-    use crate::testutils::test_serde_roundtrip_prop;
+    use crate::testutils::{test_enum_to_string, test_serde_roundtrip_prop};
+
+    use strum::VariantArray;
 
     use super::*;
 
     test_serde_roundtrip_prop!(Civilization);
+
+    test_enum_to_string!(Civilization);
 }
