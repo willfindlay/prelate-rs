@@ -377,11 +377,11 @@ pub struct Player {
     /// Rating points.
     pub rating: Option<u32>,
     /// Rating points gained or lost.
-    pub rating_diff: Option<i32>,
+    pub rating_diff: Option<i64>,
     /// ELO.
-    pub mmr: Option<u32>,
+    pub mmr: Option<i64>,
     /// ELO gained or lost.
-    pub mmr_diff: Option<i32>,
+    pub mmr_diff: Option<i64>,
 }
 
 impl Player {
@@ -419,5 +419,11 @@ mod tests {
         GlobalGames,
         "../../testdata/games/global.json",
         global_games
+    );
+
+    test_json!(
+        GlobalGames,
+        "../../testdata/games/games_negative_mmr.json",
+        negative_mmr
     );
 }

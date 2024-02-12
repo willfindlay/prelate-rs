@@ -39,6 +39,30 @@ pub fn profile_games(profile_id: impl Into<ProfileId>) -> ProfileGamesQuery {
 }
 
 /// Returns a [`GlobalGamesQuery`]. Used to query the `/games` endpoint.
+///
+/// # Examples
+///
+/// ## List Ranked 1v1 Games
+///
+/// In the following example, we collect the 100 most recent ranked 1v1 games into a [`Vec`]:
+/// ```rust
+/// # #[cfg(feature = "test-api")]
+/// # tokio_test::block_on(async {
+/// use prelate_rs::{futures::StreamExt, games, types::games::GameKind};
+///
+/// let stream = games()
+///     .with_leaderboard(Some(vec![GameKind::Rm1v1]))
+///     .get()
+///     .await
+///     .expect("query should succeed");
+/// let games = stream.take(100).collect::<Vec<_>>().await;
+///
+/// for game in games {
+///     // Do something with each game.
+/// # game.expect("game should be valid");
+/// }
+/// # })
+/// ```
 pub fn games() -> GlobalGamesQuery {
     GlobalGamesQuery::default()
 }
@@ -49,6 +73,54 @@ pub fn games() -> GlobalGamesQuery {
 ///
 /// # Params
 /// - `query` is a search query (e.g. a player's username or part of a username).
+///
+/// # Examples
+///
+/// ## Fuzzy Search
+///
+/// In the following example, we collect the first 10 players who match the
+/// search query `"jiglypuf"` into a [`Vec`]:
+/// ```rust
+/// # #[cfg(feature = "test-api")]
+/// # tokio_test::block_on(async {
+/// use prelate_rs::{futures::StreamExt, search};
+///
+/// let stream = search("jiglypuf")
+///     .get()
+///     .await
+///     .expect("query should succeed");
+/// let profiles = stream.take(10).collect::<Vec<_>>().await;
+///
+/// for profile in profiles {
+///     // Do something with each profile.
+/// # profile.expect("profile should be valid");
+/// }
+/// # })
+/// ```
+///
+/// ## Exact Search
+///
+/// In the following example, we search for the player who matches exactly the
+/// search query `"[DEBILS] HousedHorse"`:
+/// ```rust
+/// # #[cfg(feature = "test-api")]
+/// # tokio_test::block_on(async {
+/// use prelate_rs::{futures::StreamExt, search};
+///
+/// let mut stream = search("[DEBILS] HousedHorse")
+///     .with_exact(Some(true))
+///     .get()
+///     .await
+///     .expect("query should succeed");
+/// let profile = stream
+///     .next()
+///     .await
+///     .expect("there should be at least 1 matching profile");
+///
+/// // Do something with the profile.
+/// # profile.expect("profile should be valid");
+/// # })
+/// ```
 pub fn search(query: impl AsRef<str>) -> SearchQuery {
     SearchQuery::default().with_query(Some(query.as_ref().to_string()))
 }
@@ -233,8 +305,11 @@ pub mod query {
             if self.query.is_none() {
                 bail!("missing search query");
             }
-            if self.query.as_slice().len() < 3 {
-                bail!("search query must contain at least 3 characters");
+            if self.query.as_ref().unwrap().len() < 3 {
+                bail!(
+                    "search query must contain at least 3 characters, got {}",
+                    self.query.as_ref().unwrap().len()
+                );
             }
 
             let client = PaginationClient::<SearchResults, Profile>::default();

@@ -209,7 +209,7 @@ pub struct GameModeStats {
     /// Position on the leaderboard.
     pub rank: Option<u32>,
     /// How many games have been won or lost in a row.
-    pub streak: Option<i32>,
+    pub streak: Option<i64>,
     /// How many games have been played.
     pub games_count: Option<u32>,
     /// How many games have been won.
@@ -252,7 +252,7 @@ pub struct PreviousSeasonStats {
     /// Position on the leaderboard.
     pub rank: Option<u32>,
     /// How many games have been won or lost in a row.
-    pub streak: Option<i32>,
+    pub streak: Option<i64>,
     /// How many games have been played.
     pub games_count: Option<u32>,
     /// How many games have been won.
@@ -283,7 +283,7 @@ pub struct RatingHistoryEntry {
     /// Rating points or ELO.
     pub rating: Option<u32>,
     /// How many games have been won or lost in a row.
-    pub streak: Option<i32>,
+    pub streak: Option<i64>,
     /// How many games have been played.
     pub games_count: Option<u32>,
     /// How many games have been won.
