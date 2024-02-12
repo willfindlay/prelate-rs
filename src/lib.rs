@@ -52,10 +52,10 @@ pub fn profile_games(profile_id: impl Into<ProfileId>) -> ProfileGamesQuery {
 ///
 /// let stream = games()
 ///     .with_leaderboard(Some(vec![GameKind::Rm1v1]))
-///     .get()
+///     .get(100)
 ///     .await
 ///     .expect("query should succeed");
-/// let games = stream.take(100).collect::<Vec<_>>().await;
+/// let games = stream.collect::<Vec<_>>().await;
 ///
 /// for game in games {
 ///     // Do something with each game.
@@ -86,10 +86,10 @@ pub fn games() -> GlobalGamesQuery {
 /// use prelate_rs::{futures::StreamExt, search};
 ///
 /// let stream = search("jiglypuf")
-///     .get()
+///     .get(10)
 ///     .await
 ///     .expect("query should succeed");
-/// let profiles = stream.take(10).collect::<Vec<_>>().await;
+/// let profiles = stream.collect::<Vec<_>>().await;
 ///
 /// for profile in profiles {
 ///     // Do something with each profile.
@@ -109,7 +109,7 @@ pub fn games() -> GlobalGamesQuery {
 ///
 /// let mut stream = search("[DEBILS] HousedHorse")
 ///     .with_exact(Some(true))
-///     .get()
+///     .get(1)
 ///     .await
 ///     .expect("query should succeed");
 /// let profile = stream
@@ -170,7 +170,7 @@ pub mod query {
 
     impl ProfileGamesQuery {
         /// Get the games for this profile.
-        pub async fn get(self) -> Result<impl Stream<Item = Result<Game>>> {
+        pub async fn get(self, limit: usize) -> Result<impl Stream<Item = Result<Game>>> {
             if self.profile_id.is_none() {
                 bail!("missing profile_id")
             }
@@ -184,7 +184,7 @@ pub mod query {
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url))
+                .into_pages_concurrent(PaginatedRequest::new(url), limit)
                 .await?;
             Ok(pages.items())
         }
@@ -231,14 +231,14 @@ pub mod query {
 
     impl GlobalGamesQuery {
         /// Get the games.
-        pub async fn get(self) -> Result<impl Stream<Item = Result<Game>>> {
+        pub async fn get(self, limit: usize) -> Result<impl Stream<Item = Result<Game>>> {
             let client = PaginationClient::<GlobalGames, Game>::default();
 
             let url = "https://aoe4world.com/api/v0/games".parse()?;
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url))
+                .into_pages_concurrent(PaginatedRequest::new(url), limit)
                 .await?;
             Ok(pages.items())
         }
@@ -308,7 +308,7 @@ pub mod query {
 
     impl SearchQuery {
         /// Get the search results.
-        pub async fn get(self) -> Result<impl Stream<Item = Result<Profile>>> {
+        pub async fn get(self, limit: usize) -> Result<impl Stream<Item = Result<Profile>>> {
             if self.query.is_none() {
                 bail!("missing search query");
             }
@@ -325,7 +325,7 @@ pub mod query {
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url))
+                .into_pages_concurrent(PaginatedRequest::new(url), limit)
                 .await?;
             Ok(pages.items())
         }
@@ -373,21 +373,23 @@ mod tests {
     #[tokio::test(flavor = "multi_thread")]
     async fn player_games_api_smoke() {
         let g: Vec<_> = profile_games(ONLY_CAMS_ID)
-            .get()
+            .get(100)
             .await
             .expect("API call should succeed")
             .collect()
             .await;
+        assert_eq!(100, g.len());
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
         }
 
         let g: Vec<_> = profile_games(HOUSEDHORSE_ID)
-            .get()
+            .get(100)
             .await
             .expect("API call should succeed")
             .collect()
             .await;
+        assert_eq!(100, g.len());
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
         }
@@ -397,12 +399,12 @@ mod tests {
     #[tokio::test(flavor = "multi_thread")]
     async fn global_games_api_smoke() {
         let g: Vec<_> = games()
-            .get()
+            .get(100)
             .await
             .expect("API call should succeed")
-            .take(100)
             .collect()
             .await;
+        assert_eq!(100, g.len());
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
         }
@@ -413,22 +415,24 @@ mod tests {
     async fn search_api_smoke() {
         let profiles: Vec<_> = search(ONLY_CAMS_NAME)
             .with_exact(Some(true))
-            .get()
+            .get(100)
             .await
             .expect("API call should succeed")
             .collect()
             .await;
+        assert!(profiles.len() <= 100);
         for (i, profile) in profiles.iter().enumerate() {
             assert!(profile.is_ok(), "profile {i} not ok: {profile:?}")
         }
 
         let profiles: Vec<_> = search(DEBILS_NAME)
             .with_exact(Some(false))
-            .get()
+            .get(100)
             .await
             .expect("API call should succeed")
             .collect()
             .await;
+        assert!(profiles.len() <= 100);
         for (i, profile) in profiles.iter().enumerate() {
             assert!(profile.is_ok(), "profile {i} not ok: {profile:?}")
         }
