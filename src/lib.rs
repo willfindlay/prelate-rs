@@ -15,7 +15,7 @@ mod pagination;
 mod testutils;
 
 use query::{GlobalGamesQuery, LeaderboardQuery, ProfileGamesQuery, ProfileQuery, SearchQuery};
-use types::{games::Leaderboard, profile::ProfileId};
+use types::{leaderboards::Leaderboard, profile::ProfileId};
 
 // Rexports
 pub use chrono;
@@ -150,8 +150,8 @@ pub mod query {
     use crate::{
         pagination::{PaginatedRequest, PaginationClient},
         types::{
-            games::{Game, GameKind, GamesOrder, GlobalGames, Leaderboard, ProfileGames},
-            leaderboards::{LeaderboardEntry, LeaderboardPages},
+            games::{Game, GameKind, GamesOrder, GlobalGames, ProfileGames},
+            leaderboards::{Leaderboard, LeaderboardEntry, LeaderboardPages},
             profile::{Profile, ProfileId},
             search::SearchResults,
         },
