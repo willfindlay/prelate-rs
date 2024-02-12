@@ -48,7 +48,7 @@ macro_rules! test_enum_to_string {
             fn [<test_ $t:snake _to_string>]() {
                 for variant in $t::VARIANTS {
                     let serialized = serde_json::to_string(variant).expect("should serialize");
-                    let serialized = serialized.replace("\"", "");
+                    let serialized = serialized.replace('"', "");
                     assert_eq!(
                         serialized,
                         variant.to_string(),
