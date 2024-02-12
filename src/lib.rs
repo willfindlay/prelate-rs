@@ -131,6 +131,9 @@ pub mod query {
     //! Using these directly is possible, but it may be more ergonomic to use
     //! the provided functions at the top-level of the library.
 
+    // Clippy complains about needless update in derived setters.
+    #![allow(clippy::needless_update)]
+
     use anyhow::{bail, Result};
     use derive_setters::Setters;
     use futures::Stream;
