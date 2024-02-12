@@ -2,7 +2,7 @@
 
 //! Abstractions over pagination.
 
-use std::{collections::HashMap, marker::PhantomData};
+use std::marker::PhantomData;
 
 use anyhow::Result;
 use async_trait::async_trait;
@@ -10,7 +10,6 @@ use derive_new::new;
 use page_turner::prelude::*;
 use reqwest::Url;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
-use serde_json::Value;
 
 /// Default concurrency to use when making paginated requests.
 const DEFAULT_PAGES_CONCURRENCY: usize = 8;
@@ -115,38 +114,11 @@ impl<T: Send + Sync + DeserializeOwned + Paginated<U> + 'static, U: Send + Sync 
     /// how much data we actually have.
     pub(crate) async fn into_pages_concurrent(
         self,
-        mut request: PaginatedRequest,
+        request: PaginatedRequest,
+        count: usize,
     ) -> Result<PagesStream<'static, U, anyhow::Error>> {
-        request
-            .url
-            .query_pairs_mut()
-            .extend_pairs(&[("limit", "1"), ("page", "1")]);
-
-        #[derive(Debug, Deserialize, Serialize, PartialEq, Eq, Clone)]
-        #[serde(rename_all = "snake_case")]
-        struct PaginationDummy {
-            #[serde(flatten)]
-            pagination: Pagination,
-            #[serde(flatten)]
-            rest: HashMap<String, Value>,
-        }
-
-        // Grab initial information about pagination
-        let res: PaginationDummy = reqwest::get(request.url.clone())
-            .await?
-            .error_for_status()?
-            .json()
-            .await?;
-        let res = res.pagination;
-
         // Ceiling division to get total number of pages
-        let limit = res
-            .total_count
-            .map(|total_count| {
-                Limit::Pages(((total_count + res.per_page - 1) / res.per_page) as usize)
-            })
-            .unwrap_or(Limit::None);
-
+        let limit = Limit::Pages((count + DEFAULT_COUNT_PER_PAGE - 1) / DEFAULT_COUNT_PER_PAGE);
         Ok(self.into_pages_ahead(DEFAULT_PAGES_CONCURRENCY, limit, request))
     }
 }
