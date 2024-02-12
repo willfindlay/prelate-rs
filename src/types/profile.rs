@@ -16,7 +16,7 @@ use serde::{Deserialize, Serialize};
 use crate::{
     profile, profile_games,
     query::{ProfileGamesQuery, ProfileQuery},
-    types::rank::RankLeague,
+    types::rank::League,
 };
 
 use super::civilization::Civilization;
@@ -215,7 +215,7 @@ pub struct GameModeStats {
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
     pub win_rate: Option<f64>,
     /// The player's league and division.
-    pub rank_level: Option<RankLeague>,
+    pub rank_level: Option<League>,
     /// The player's rating history. Maps Game ID to RatingHistoryEntry.
     #[serde(default)]
     pub rating_history: BTreeMap<String, RatingHistoryEntry>,
@@ -258,7 +258,7 @@ pub struct PreviousSeasonStats {
     #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::clamped_option_f64(0.0, 100.0)))]
     pub win_rate: Option<f64>,
     /// The player's league and division.
-    pub rank_level: Option<RankLeague>,
+    pub rank_level: Option<League>,
     /// Which season the stats are from.
     pub season: Option<u32>,
 }

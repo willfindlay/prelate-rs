@@ -2,190 +2,96 @@
 
 //! Types related to a player's rank league.
 
-use std::fmt::Display;
-
-use serde::{de, Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 
 /// A player's rank league and division (e.g. Conq III).
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(
+    Debug,
+    Clone,
+    Copy,
+    PartialEq,
+    Eq,
+    PartialOrd,
+    Ord,
+    Serialize,
+    Deserialize,
+    strum::Display,
+    strum::VariantArray,
+    strum::EnumString,
+)]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
-pub enum RankLeague {
+pub enum League {
     /// No rank.
+    #[serde(rename = "unranked")]
+    #[strum(serialize = "unranked")]
     Unranked,
-    /// Bronze X.
-    Bronze(RankDivision),
-    /// Silver X.
-    Silver(RankDivision),
-    /// Gold X.
-    Gold(RankDivision),
-    /// Plat X.
-    Platinum(RankDivision),
-    /// Diamond X.
-    Diamond(RankDivision),
-    /// Conq X.
-    Conqueror(RankDivision),
-}
-
-impl<'de> Deserialize<'de> for RankLeague {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: serde::Deserializer<'de>,
-    {
-        let s = String::deserialize(deserializer)?;
-
-        if s.is_empty() || s == "unranked" {
-            return Ok(Self::Unranked);
-        }
-
-        // Split league and division strings at the _ character
-        let (league, division) = s
-            .split_once('_')
-            .ok_or_else(|| de::Error::custom(format!("invalid rank string: {s}")))?;
-
-        // Parse division as an integer and map it onto a ranked division
-        let division = division
-            .parse::<u32>()
-            .map_err(|e| de::Error::custom(format!("unable to parse division: {e}")))?;
-        let division = RankDivision::try_from(division).map_err(de::Error::custom)?;
-
-        // Parse league
-        let rank = match league {
-            "bronze" => Self::Bronze(division),
-            "silver" => Self::Silver(division),
-            "gold" => Self::Gold(division),
-            "platinum" => Self::Platinum(division),
-            "diamond" => Self::Diamond(division),
-            "conqueror" => Self::Conqueror(division),
-            _ => {
-                return Err(de::Error::custom(format!(
-                    "invalid league string: {league}"
-                )))
-            }
-        };
-
-        Ok(rank)
-    }
-}
-
-impl Serialize for RankLeague {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
-    {
-        let (league, div) = match self {
-            RankLeague::Unranked => return serializer.serialize_str("unranked"),
-            RankLeague::Bronze(div) => ("bronze", div),
-            RankLeague::Silver(div) => ("silver", div),
-            RankLeague::Gold(div) => ("gold", div),
-            RankLeague::Platinum(div) => ("platinum", div),
-            RankLeague::Diamond(div) => ("diamond", div),
-            RankLeague::Conqueror(div) => ("conqueror", div),
-        };
-        serializer.serialize_str(&format!(
-            "{}_{}",
-            league,
-            serde_json::to_string(div)
-                .map_err(|_| serde::ser::Error::custom("invalid division"))?
-        ))
-    }
-}
-
-impl Display for RankLeague {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let s = serde_json::to_string(self).map_err(|_| std::fmt::Error)?;
-        let s = s.replace('"', "");
-        write!(f, "{}", s)
-    }
-}
-
-/// A player's division within their rank league.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-#[cfg_attr(test, derive(arbitrary::Arbitrary))]
-pub enum RankDivision {
-    /// The lowest division within a league (e.g. Conqueror I).
-    One,
-    /// The middle division within a league (e.g. Conqueror II).
-    Two,
-    /// The highest division within a league (e.g. Conqueror III).
-    Three,
-    /// A special "division" of Conqueror reserved for professional players.
-    Four,
-}
-
-impl<'de> Deserialize<'de> for RankDivision {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: serde::Deserializer<'de>,
-    {
-        let n = u32::deserialize(deserializer)?;
-        RankDivision::try_from(n).map_err(de::Error::custom)
-    }
-}
-
-impl Serialize for RankDivision {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
-    {
-        let n: u32 = u32::from(*self);
-        serializer.serialize_u32(n)
-    }
-}
-
-impl TryFrom<u32> for RankDivision {
-    type Error = anyhow::Error;
-
-    fn try_from(value: u32) -> Result<Self, Self::Error> {
-        let division = match value {
-            1 => Self::One,
-            2 => Self::Two,
-            3 => Self::Three,
-            4 => Self::Four,
-            _ => anyhow::bail!(
-                "invalid rank division number: got {}, wanted 1 to 4 inclusive",
-                value
-            ),
-        };
-        Ok(division)
-    }
-}
-
-impl From<RankDivision> for u32 {
-    fn from(div: RankDivision) -> Self {
-        match div {
-            RankDivision::One => 1,
-            RankDivision::Two => 2,
-            RankDivision::Three => 3,
-            RankDivision::Four => 4,
-        }
-    }
-}
-
-impl Display for RankDivision {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", u32::from(*self))
-    }
+    #[serde(rename = "bronze_1")]
+    #[strum(serialize = "bronze_1")]
+    Bronze1,
+    #[serde(rename = "bronze_2")]
+    #[strum(serialize = "bronze_2")]
+    Bronze2,
+    #[serde(rename = "bronze_3")]
+    #[strum(serialize = "bronze_3")]
+    Bronze3,
+    #[serde(rename = "silver_1")]
+    #[strum(serialize = "silver_1")]
+    Silver1,
+    #[serde(rename = "silver_2")]
+    #[strum(serialize = "silver_2")]
+    Silver2,
+    #[serde(rename = "silver_3")]
+    #[strum(serialize = "silver_3")]
+    Silver3,
+    #[serde(rename = "gold_1")]
+    #[strum(serialize = "gold_1")]
+    Gold1,
+    #[serde(rename = "gold_2")]
+    #[strum(serialize = "gold_2")]
+    Gold2,
+    #[serde(rename = "gold_3")]
+    #[strum(serialize = "gold_3")]
+    Gold3,
+    #[serde(rename = "platinum_1")]
+    #[strum(serialize = "platinum_1")]
+    Platinum1,
+    #[serde(rename = "platinum_2")]
+    #[strum(serialize = "platinum_2")]
+    Platinum2,
+    #[serde(rename = "platinum_3")]
+    #[strum(serialize = "platinum_3")]
+    Platinum3,
+    #[serde(rename = "diamond_1")]
+    #[strum(serialize = "diamond_1")]
+    Diamond1,
+    #[serde(rename = "diamond_2")]
+    #[strum(serialize = "diamond_2")]
+    Diamond2,
+    #[serde(rename = "diamond_3")]
+    #[strum(serialize = "diamond_3")]
+    Diamond3,
+    #[serde(rename = "conqueror_1")]
+    #[strum(serialize = "conqueror_1")]
+    Conqueror1,
+    #[serde(rename = "conqueror_2")]
+    #[strum(serialize = "conqueror_2")]
+    Conqueror2,
+    #[serde(rename = "conqueror_3")]
+    #[strum(serialize = "conqueror_3")]
+    Conqueror3,
+    /// Reserved for professional players.
+    #[serde(rename = "conqueror_4")]
+    #[strum(serialize = "conqueror_4")]
+    Conqueror4,
 }
 
 #[cfg(test)]
 mod test_super {
-    use crate::testutils::test_serde_roundtrip_prop;
+    use crate::testutils::{test_enum_to_string, test_serde_roundtrip_prop};
 
     use super::*;
 
-    test_serde_roundtrip_prop!(RankLeague);
-    test_serde_roundtrip_prop!(RankDivision);
+    test_serde_roundtrip_prop!(League);
 
-    #[test]
-    fn test_rank_league_to_string() {
-        assert_eq!("unranked", RankLeague::Unranked.to_string());
-        assert_eq!(
-            "conqueror_4",
-            RankLeague::Conqueror(RankDivision::Four).to_string()
-        );
-        assert_eq!(
-            "bronze_1",
-            RankLeague::Bronze(RankDivision::One).to_string()
-        );
-    }
+    test_enum_to_string!(League);
 }

@@ -443,8 +443,6 @@ impl Player {
 
 #[cfg(test)]
 mod tests {
-    use strum::VariantArray;
-
     use super::*;
 
     use crate::testutils::{test_enum_to_string, test_json, test_serde_roundtrip_prop};
