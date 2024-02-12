@@ -15,7 +15,15 @@ use crate::{
 
 /// Filters for games returned by the API.
 #[derive(
-    Serialize, Deserialize, Debug, PartialEq, Eq, Clone, strum::VariantArray, strum::Display,
+    Serialize,
+    Deserialize,
+    Debug,
+    PartialEq,
+    Eq,
+    Clone,
+    strum::VariantArray,
+    strum::Display,
+    strum::EnumString,
 )]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -128,7 +136,16 @@ pub struct Game {
 /// Type of game being played. Equivalent to [`Leaderboard`] but without `RmSolo` and
 /// `RmTeam`.
 #[derive(
-    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::Display, strum::VariantArray,
+    Serialize,
+    Deserialize,
+    Debug,
+    Clone,
+    Copy,
+    PartialEq,
+    Eq,
+    strum::Display,
+    strum::VariantArray,
+    strum::EnumString,
 )]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
@@ -235,7 +252,16 @@ pub enum GameKind {
 /// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
 /// addition of `RmSolo` and `RmTeam`.
 #[derive(
-    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::Display, strum::VariantArray,
+    Serialize,
+    Deserialize,
+    Debug,
+    Clone,
+    Copy,
+    PartialEq,
+    Eq,
+    strum::Display,
+    strum::VariantArray,
+    strum::EnumString,
 )]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
@@ -334,7 +360,16 @@ impl Leaderboard {
 /// No-Result outcomes are not currently supported by the aoe4world API, but this may
 /// change in the future.
 #[derive(
-    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::VariantArray, strum::Display,
+    Serialize,
+    Deserialize,
+    Debug,
+    Clone,
+    Copy,
+    PartialEq,
+    Eq,
+    strum::VariantArray,
+    strum::Display,
+    strum::EnumString,
 )]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -448,4 +483,7 @@ mod tests {
     test_enum_to_string!(Leaderboard);
     test_enum_to_string!(GamesOrder);
     test_enum_to_string!(GameResult);
+
+    #[test]
+    fn test_foo() {}
 }
