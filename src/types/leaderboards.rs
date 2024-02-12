@@ -13,7 +13,7 @@ use crate::pagination::{Paginated, Pagination};
 use super::{
     games::Leaderboard,
     profile::{Avatars, ProfileId, Social},
-    rank::RankLeague,
+    rank::League,
 };
 
 /// Global games.
@@ -98,7 +98,7 @@ pub struct LeaderboardEntry {
     /// Position on the leaderboard.
     pub rank: Option<u32>,
     /// The player's league and division.
-    pub rank_level: Option<RankLeague>,
+    pub rank_level: Option<League>,
     /// How many games have been won or lost in a row.
     pub streak: Option<i64>,
     /// How many games have been played.

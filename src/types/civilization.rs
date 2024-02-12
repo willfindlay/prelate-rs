@@ -35,8 +35,6 @@ pub enum Civilization {
 mod test_super {
     use crate::testutils::{test_enum_to_string, test_serde_roundtrip_prop};
 
-    use strum::VariantArray;
-
     use super::*;
 
     test_serde_roundtrip_prop!(Civilization);

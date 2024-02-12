@@ -46,6 +46,8 @@ macro_rules! test_enum_to_string {
         paste::paste! {
             #[test]
             fn [<test_ $t:snake _to_string>]() {
+                use strum::VariantArray;
+                use std::str::FromStr;
                 for variant in $t::VARIANTS {
                     let serialized = serde_json::to_string(variant).expect("should serialize");
                     let serialized = serialized.replace('"', "");
@@ -54,6 +56,7 @@ macro_rules! test_enum_to_string {
                         variant.to_string(),
                         "$t: {variant} string representation should match JSON serialization"
                     );
+                    $t::from_str(variant.to_string().as_str()).expect("must convert back to enum value");
                 }
             }
         }
