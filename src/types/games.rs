@@ -13,6 +13,8 @@ use crate::{
     types::{civilization::Civilization, profile::ProfileId},
 };
 
+use super::leaderboards::Leaderboard;
+
 /// Filters for games returned by the API.
 #[derive(
     Serialize,
@@ -249,112 +251,6 @@ pub enum GameKind {
     Custom,
 }
 
-/// Which leaderboard a game was played on. Equivalent to [`GameKind`] but with the
-/// addition of `RmSolo` and `RmTeam`.
-#[derive(
-    Serialize,
-    Deserialize,
-    Debug,
-    Clone,
-    Copy,
-    PartialEq,
-    Eq,
-    strum::Display,
-    strum::VariantArray,
-    strum::EnumString,
-)]
-#[cfg_attr(test, derive(arbitrary::Arbitrary))]
-#[cfg_attr(test, serde(deny_unknown_fields))]
-pub enum Leaderboard {
-    /// Solo ranked.
-    #[serde(rename = "rm_solo")]
-    #[serde(alias = "rm_1v1")]
-    #[strum(serialize = "rm_solo")]
-    RmSolo,
-    /// Team ranked.
-    #[serde(rename = "rm_team")]
-    #[strum(serialize = "rm_team")]
-    RmTeam,
-    /// 1v1 quick match.
-    #[serde(rename = "qm_1v1")]
-    #[strum(serialize = "qm_1v1")]
-    Qm1v1,
-    /// 2v2 quick match.
-    #[serde(rename = "qm_2v2")]
-    #[strum(serialize = "qm_2v2")]
-    Qm2v2,
-    /// 3v3 quick match.
-    #[serde(rename = "qm_3v3")]
-    #[strum(serialize = "qm_3v3")]
-    Qm3v3,
-    /// 4v4 quick match.
-    #[serde(rename = "qm_4v4")]
-    #[strum(serialize = "qm_4v4")]
-    Qm4v4,
-    /// 1v1 empire wars quick match.
-    #[serde(rename = "qm_1v1_ew")]
-    #[strum(serialize = "qm_1v1_ew")]
-    Qm1v1Ew,
-    /// 2v2 empire wars quick match.
-    #[serde(rename = "qm_2v2_ew")]
-    #[strum(serialize = "qm_2v2_ew")]
-    Qm2v2Ew,
-    /// 3v3 empire wars quick match.
-    #[serde(rename = "qm_3v3_ew")]
-    #[strum(serialize = "qm_3v3_ew")]
-    Qm3v3Ew,
-    /// 4v4 empire wars quick match.
-    #[serde(rename = "qm_4v4_ew")]
-    #[strum(serialize = "qm_4v4_ew")]
-    Qm4v4Ew,
-    /// Console solo ranked.
-    #[serde(rename = "rm_solo_console")]
-    #[serde(alias = "rm_1v1_console")]
-    #[strum(serialize = "rm_solo_console")]
-    RmSoloConsole,
-    // /// Console team ranked.
-    // #[serde(rename = "rm_team_console")]
-    // RmTeamConsole,
-    /// Console 1v1 quick match.
-    #[serde(rename = "qm_1v1_console")]
-    #[strum(serialize = "qm_1v1_console")]
-    Qm1v1Console,
-    /// Console 2v2 quick match.
-    #[serde(rename = "qm_2v2_console")]
-    #[strum(serialize = "qm_2v2_console")]
-    Qm2v2Console,
-    /// Console 3v3 quick match.
-    #[serde(rename = "qm_3v3_console")]
-    #[strum(serialize = "qm_3v3_console")]
-    Qm3v3Console,
-    /// Console 4v4 quick match.
-    #[serde(rename = "qm_4v4_console")]
-    #[strum(serialize = "qm_4v4_console")]
-    Qm4v4Console,
-    /// Console 1v1 empire wars quick match.
-    #[serde(rename = "qm_1v1_ew_console")]
-    #[strum(serialize = "qm_1v1_ew_console")]
-    Qm1v1EwConsole,
-    /// Console 2v2 empire wars quick match.
-    #[serde(rename = "qm_2v2_ew_console")]
-    #[strum(serialize = "qm_2v2_ew_console")]
-    Qm2v2EwConsole,
-    /// Console 3v3 empire wars quick match.
-    #[serde(rename = "qm_3v3_ew_console")]
-    #[strum(serialize = "qm_3v3_ew_console")]
-    Qm3v3EwConsole,
-    /// Console 4v4 empire wars quick match.
-    #[serde(rename = "qm_4v4_ew_console")]
-    #[strum(serialize = "qm_4v4_ew_console")]
-    Qm4v4EwConsole,
-}
-
-impl Leaderboard {
-    /// Alias for [`Leaderboard::RmSolo`].
-    #[allow(non_upper_case_globals)]
-    pub const Rm1v1: Leaderboard = Leaderboard::RmSolo;
-}
-
 /// The result of a match. Either a win or a loss.
 ///
 /// No-Result outcomes are not currently supported by the aoe4world API, but this may
@@ -452,7 +348,6 @@ mod tests {
     test_serde_roundtrip_prop!(ProfileGames);
     test_serde_roundtrip_prop!(Game);
     test_serde_roundtrip_prop!(GameKind);
-    test_serde_roundtrip_prop!(Leaderboard);
     test_serde_roundtrip_prop!(GameResult);
     test_serde_roundtrip_prop!(PlayerWrapper);
     test_serde_roundtrip_prop!(Player);

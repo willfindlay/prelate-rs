@@ -6,7 +6,16 @@ use serde::{Deserialize, Serialize};
 
 /// A civilization in AoEIV.
 #[derive(
-    Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, strum::Display, strum::VariantArray, strum::EnumString,
+    Serialize,
+    Deserialize,
+    Debug,
+    Clone,
+    Copy,
+    PartialEq,
+    Eq,
+    strum::Display,
+    strum::VariantArray,
+    strum::EnumString,
 )]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
