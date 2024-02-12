@@ -23,6 +23,7 @@ page-turner = "0.8.2"
 reqwest = { version = "0.11.13", features = ["json"] }
 serde = { version = "1.0.150", features = ["derive"] }
 serde_json = { version = "1.0.91", features = ["float_roundtrip"] }
+strum = { version = "0.26.1", features = ["derive"] }
 tokio-test = "0.4.3"
 url = { version = "2.3.1", features = ["serde"] }
 
