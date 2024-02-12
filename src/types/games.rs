@@ -228,15 +228,6 @@ pub enum Leaderboard {
     /// Team ranked.
     #[serde(rename = "rm_team")]
     RmTeam,
-    /// 2v2 ranked.
-    #[serde(rename = "rm_2v2")]
-    Rm2v2,
-    /// 3v3 ranked.
-    #[serde(rename = "rm_3v3")]
-    Rm3v3,
-    /// 4v4 ranked.
-    #[serde(rename = "rm_4v4")]
-    Rm4v4,
     /// 1v1 quick match.
     #[serde(rename = "qm_1v1")]
     Qm1v1,
@@ -268,15 +259,6 @@ pub enum Leaderboard {
     // /// Console team ranked.
     // #[serde(rename = "rm_team_console")]
     // RmTeamConsole,
-    // /// Console 2v2 ranked.
-    // #[serde(rename = "rm_2v2_console")]
-    // Rm2v2Console,
-    // /// Console 3v3 ranked.
-    // #[serde(rename = "rm_3v3_console")]
-    // Rm3v3Console,
-    // /// Console 4v4 ranked.
-    // #[serde(rename = "rm_4v4_console")]
-    // Rm4v4Console,
     /// Console 1v1 quick match.
     #[serde(rename = "qm_1v1_console")]
     Qm1v1Console,
@@ -301,9 +283,6 @@ pub enum Leaderboard {
     /// Console 4v4 empire wars quick match.
     #[serde(rename = "qm_4v4_ew_console")]
     Qm4v4EwConsole,
-    /// A custom game.
-    #[serde(rename = "custom")]
-    Custom,
 }
 
 impl Leaderboard {
