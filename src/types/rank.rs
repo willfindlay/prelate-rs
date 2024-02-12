@@ -85,6 +85,68 @@ pub enum League {
     Conqueror4,
 }
 
+impl League {
+    /// Is the league unranked?
+    pub fn is_unranked(&self) -> bool {
+        matches!(self, League::Unranked)
+    }
+
+    /// Is the league bronze?
+    pub fn is_bronze(&self) -> bool {
+        matches!(self, League::Bronze1 | League::Bronze2 | League::Bronze3)
+    }
+
+    /// Is the league silver?
+    pub fn is_silver(&self) -> bool {
+        matches!(self, League::Silver1 | League::Silver2 | League::Silver3)
+    }
+
+    /// Is the league gold?
+    pub fn is_gold(&self) -> bool {
+        matches!(self, League::Gold1 | League::Gold2 | League::Gold3)
+    }
+
+    /// Is the league platinum?
+    pub fn is_platinum(&self) -> bool {
+        matches!(
+            self,
+            League::Platinum1 | League::Platinum2 | League::Platinum3
+        )
+    }
+
+    /// Is the league diamond?
+    pub fn is_diamond(&self) -> bool {
+        matches!(self, League::Diamond1 | League::Diamond2 | League::Diamond3)
+    }
+
+    /// Is the league conqueror?
+    pub fn is_conqueror(&self) -> bool {
+        matches!(
+            self,
+            League::Conqueror1 | League::Conqueror2 | League::Conqueror3 | League::Conqueror4
+        )
+    }
+
+    /// Is this a metal league?
+    pub fn is_metal(&self) -> bool {
+        matches!(
+            self,
+            League::Bronze1
+                | League::Bronze2
+                | League::Bronze3
+                | League::Silver1
+                | League::Silver2
+                | League::Silver3
+                | League::Gold1
+                | League::Gold2
+                | League::Gold3
+                | League::Platinum1
+                | League::Platinum2
+                | League::Platinum3
+        )
+    }
+}
+
 #[cfg(test)]
 mod test_super {
     use crate::testutils::{test_enum_to_string, test_serde_roundtrip_prop};
