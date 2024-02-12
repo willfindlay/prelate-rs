@@ -152,6 +152,7 @@ pub mod query {
     /// Constructs a query for the `/players/{profile_id}/games` endpoint.
     #[derive(Setters, Default)]
     #[setters(prefix = "with_")]
+    #[setters(into)]
     pub struct ProfileGamesQuery {
         /// [`ProfileId`] to query.
         profile_id: Option<ProfileId>,
@@ -212,6 +213,7 @@ pub mod query {
     /// Constructs a query for the `/games` endpoint.
     #[derive(Setters, Default)]
     #[setters(prefix = "with_")]
+    #[setters(into)]
     pub struct GlobalGamesQuery {
         /// Filter by game kind category.
         ///
@@ -269,6 +271,7 @@ pub mod query {
     /// Constructs a query for the `/players/{profile_id}` endpoint.
     #[derive(Setters, Default)]
     #[setters(prefix = "with_")]
+    #[setters(into)]
     pub struct ProfileQuery {
         /// [`ProfileId`] to query.
         profile_id: Option<ProfileId>,
@@ -295,6 +298,7 @@ pub mod query {
     /// Constructs a query for the `/players/search` endpoint.
     #[derive(Setters, Default)]
     #[setters(prefix = "with_")]
+    #[setters(into)]
     pub struct SearchQuery {
         /// Search query.
         pub query: Option<String>,
