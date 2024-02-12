@@ -12,7 +12,6 @@ use std::{
 };
 
 use serde::{Deserialize, Serialize};
-use url::Url;
 
 use crate::{
     profile, profile_games,
@@ -78,8 +77,7 @@ pub struct Profile {
     /// Steam ID of the player.
     pub steam_id: Option<String>,
     /// URL of the profile on aoe4world.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub site_url: Option<Url>,
+    pub site_url: Option<String>,
     /// Links to avatars used by the player.
     pub avatars: Option<Avatars>,
     /// Social information.
@@ -109,14 +107,11 @@ impl Deref for Profile {
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Avatars {
     /// Small size.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub small: Option<Url>,
+    pub small: Option<String>,
     /// Medium size.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub medium: Option<Url>,
+    pub medium: Option<String>,
     /// Full size.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub full: Option<Url>,
+    pub full: Option<String>,
 }
 
 /// Social information.
@@ -126,23 +121,17 @@ pub struct Avatars {
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub struct Social {
     /// URL to the player's Twitch.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub twitch: Option<Url>,
+    pub twitch: Option<String>,
     /// URL to the player's YouTube.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub youtube: Option<Url>,
+    pub youtube: Option<String>,
     /// URL to the player's Liquipedia page.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub liquipedia: Option<Url>,
+    pub liquipedia: Option<String>,
     /// URL to the player's Twitter.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub twitter: Option<Url>,
+    pub twitter: Option<String>,
     /// URL to the player's Reddit.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub reddit: Option<Url>,
+    pub reddit: Option<String>,
     /// URL to the player's Instagram.
-    #[cfg_attr(test, arbitrary(with = crate::testutils::arbitrary_with::option_url))]
-    pub instagram: Option<Url>,
+    pub instagram: Option<String>,
 }
 
 /// Statistics per game mode.
@@ -199,13 +188,13 @@ pub struct GameModeStats {
     #[cfg(test)]
     _notice_: Option<String>,
     /// Rating points or ELO.
-    pub rating: Option<u32>,
+    pub rating: Option<i64>,
     /// Max rating of all time.
-    pub max_rating: Option<u32>,
+    pub max_rating: Option<i64>,
     /// Max rating within the last 7 days.
-    pub max_rating_7d: Option<u32>,
+    pub max_rating_7d: Option<i64>,
     /// Max rating within the last month.
-    pub max_rating_1m: Option<u32>,
+    pub max_rating_1m: Option<i64>,
     /// Position on the leaderboard.
     pub rank: Option<u32>,
     /// How many games have been won or lost in a row.

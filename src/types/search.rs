@@ -19,7 +19,9 @@ use crate::{
 pub(crate) struct SearchResults {
     #[serde(flatten)]
     pagination: Pagination,
+    #[serde(default)]
     players: Vec<Profile>,
+    #[serde(default)]
     #[cfg_attr(test, arbitrary(value = HashMap::default()))]
     filters: HashMap<String, Value>,
 }

@@ -20,7 +20,6 @@ use types::profile::ProfileId;
 // Rexports
 pub use chrono;
 pub use futures;
-pub use url;
 
 /// Returns a [`ProfileQuery`]. Used to get profile for a player.
 ///

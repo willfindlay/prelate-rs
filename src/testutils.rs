@@ -51,22 +51,7 @@ where
 }
 
 pub mod arbitrary_with {
-    use arbitrary::Arbitrary;
     use isocountry::CountryCode;
-
-    pub fn url(u: &mut arbitrary::Unstructured) -> arbitrary::Result<url::Url> {
-        let s = String::arbitrary(u)?;
-        let s: String = s.chars().filter(|c| c.is_alphanumeric()).collect();
-        url::Url::parse(&format!("https://www.example.com/{s}"))
-            .map_err(|_| arbitrary::Error::IncorrectFormat)
-    }
-
-    pub fn option_url(u: &mut arbitrary::Unstructured) -> arbitrary::Result<Option<url::Url>> {
-        if u.int_in_range(0..=1)? == 1 {
-            return Ok(None);
-        }
-        Ok(Some(url(u)?))
-    }
 
     pub fn option_country(
         u: &mut arbitrary::Unstructured,

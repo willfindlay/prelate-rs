@@ -31,7 +31,9 @@ pub enum GamesOrder {
 pub(crate) struct GlobalGames {
     #[serde(flatten)]
     pagination: Pagination,
+    #[serde(default)]
     games: Vec<Game>,
+    #[serde(default)]
     #[cfg_attr(test, arbitrary(value = HashMap::default()))]
     filters: HashMap<String, Value>,
 }
@@ -54,7 +56,9 @@ impl Paginated<Game> for GlobalGames {
 pub(crate) struct ProfileGames {
     #[serde(flatten)]
     pagination: Pagination,
+    #[serde(default)]
     games: Vec<Game>,
+    #[serde(default)]
     #[cfg_attr(test, arbitrary(value = HashMap::default()))]
     filters: HashMap<String, Value>,
 }
