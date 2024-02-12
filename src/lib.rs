@@ -14,8 +14,8 @@ mod pagination;
 #[cfg(test)]
 mod testutils;
 
-use query::{GlobalGamesQuery, ProfileGamesQuery, ProfileQuery, SearchQuery};
-use types::profile::ProfileId;
+use query::{GlobalGamesQuery, LeaderboardQuery, ProfileGamesQuery, ProfileQuery, SearchQuery};
+use types::{games::Leaderboard, profile::ProfileId};
 
 // Rexports
 pub use chrono;
@@ -124,6 +124,14 @@ pub fn search(query: impl AsRef<str>) -> SearchQuery {
     SearchQuery::default().with_query(Some(query.as_ref().to_string()))
 }
 
+/// Returns a [`ProfileGamesQuery`]. Used to query the `/leaderboards/{leaderboard}` endpoint.
+///
+/// # Params
+/// - `leaderboard` is the leaderboard to fetch.
+pub fn leaderboard(leaderboard: impl Into<Leaderboard>) -> LeaderboardQuery {
+    LeaderboardQuery::default().with_leaderboard(Some(leaderboard.into()))
+}
+
 pub mod query {
     //! Contains query builders to interact with the aoe4world API.
     //!
@@ -142,7 +150,8 @@ pub mod query {
     use crate::{
         pagination::{PaginatedRequest, PaginationClient},
         types::{
-            games::{Game, GameKind, GamesOrder, GlobalGames, ProfileGames},
+            games::{Game, GameKind, GamesOrder, GlobalGames, Leaderboard, ProfileGames},
+            leaderboards::{LeaderboardEntry, LeaderboardPages},
             profile::{Profile, ProfileId},
             search::SearchResults,
         },
@@ -217,15 +226,15 @@ pub mod query {
         /// Filter by game kind category.
         ///
         /// NOTE: this is named `leaderboard` but uses the [`GameKind`] enum.
-        pub leaderboard: Option<Vec<GameKind>>,
+        leaderboard: Option<Vec<GameKind>>,
         /// Filter over an opponent's profile ID.
-        pub opponent_profile_id: Option<ProfileId>,
+        opponent_profile_id: Option<ProfileId>,
         /// Filter over a list of profile IDs.
-        pub profile_ids: Option<Vec<ProfileId>>,
+        profile_ids: Option<Vec<ProfileId>>,
         /// Filter by time played since a specific date.
-        pub since: Option<chrono::DateTime<chrono::Utc>>,
+        since: Option<chrono::DateTime<chrono::Utc>>,
         /// Filter by time played since a specific date.
-        pub order: Option<GamesOrder>,
+        order: Option<GamesOrder>,
     }
 
     impl GlobalGamesQuery {
@@ -300,9 +309,9 @@ pub mod query {
     #[setters(into)]
     pub struct SearchQuery {
         /// Search query.
-        pub query: Option<String>,
+        query: Option<String>,
         /// Should the results exactly match the query.
-        pub exact: Option<bool>,
+        exact: Option<bool>,
     }
 
     impl SearchQuery {
@@ -337,6 +346,57 @@ pub mod query {
             if let Some(exact) = self.exact {
                 url.query_pairs_mut()
                     .append_pair("exact", exact.to_string().as_str());
+            }
+            url
+        }
+    }
+
+    /// Constructs a query for the `/leaderboards/leaderboard` endpoint.
+    #[derive(Setters, Default)]
+    #[setters(prefix = "with_")]
+    #[setters(into)]
+    pub struct LeaderboardQuery {
+        /// [`ProfileId`] to query.
+        leaderboard: Option<Leaderboard>,
+        /// [`ProfileId`] to query.
+        profile_id: Option<ProfileId>,
+        /// Search query.
+        query: Option<String>,
+    }
+
+    impl LeaderboardQuery {
+        /// Get the leaderboard data. Returns a stream of [`LeaderboardEntry`].
+        pub async fn get(
+            self,
+            limit: usize,
+        ) -> Result<impl Stream<Item = Result<LeaderboardEntry>>> {
+            if self.leaderboard.is_none() {
+                bail!("missing leaderboard");
+            }
+
+            let client = PaginationClient::<LeaderboardPages, LeaderboardEntry>::default();
+
+            let url = format!(
+                "https://aoe4world.com/api/v0/leaderboards/{}",
+                self.leaderboard.unwrap()
+            )
+            .parse()?;
+            let url = self.query_params(url);
+
+            let pages = client
+                .into_pages_concurrent(PaginatedRequest::new(url), limit)
+                .await?;
+            Ok(pages.items())
+        }
+
+        fn query_params(&self, mut url: Url) -> Url {
+            if let Some(query) = &self.query {
+                url.query_pairs_mut()
+                    .append_pair("query", query.to_string().as_str());
+            }
+            if let Some(profile_id) = self.profile_id {
+                url.query_pairs_mut()
+                    .append_pair("profile_id", profile_id.to_string().as_str());
             }
             url
         }
@@ -434,6 +494,33 @@ mod tests {
         assert!(profiles.len() <= 100);
         for (i, profile) in profiles.iter().enumerate() {
             assert!(profile.is_ok(), "profile {i} not ok: {profile:?}")
+        }
+    }
+
+    #[cfg_attr(not(feature = "test-api"), ignore)]
+    #[tokio::test(flavor = "multi_thread")]
+    async fn leaderboard_api_smoke() {
+        let entries: Vec<_> = leaderboard(Leaderboard::RmSolo)
+            .get(100)
+            .await
+            .expect("RmSolo leaderboard")
+            .collect()
+            .await;
+        println!("{entries:?}");
+        assert_eq!(100, entries.len(), "RmSolo len");
+        for (i, entry) in entries.iter().enumerate() {
+            assert!(entry.is_ok(), "RmSolo entry {i} not ok: {entry:?}")
+        }
+
+        let entries: Vec<_> = leaderboard(Leaderboard::RmTeam)
+            .get(100)
+            .await
+            .expect("RmTeam leaderboard")
+            .collect()
+            .await;
+        assert_eq!(100, entries.len(), "RmTeam len");
+        for (i, entry) in entries.iter().enumerate() {
+            assert!(entry.is_ok(), "RmTeam entry {i} not ok: {entry:?}")
         }
     }
 }

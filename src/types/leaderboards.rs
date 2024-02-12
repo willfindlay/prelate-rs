@@ -8,9 +8,10 @@ use isocountry::CountryCode;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-use crate::pagination::Pagination;
+use crate::pagination::{Paginated, Pagination};
 
 use super::{
+    games::Leaderboard,
     profile::{Avatars, ProfileId, Social},
     rank::RankLeague,
 };
@@ -24,7 +25,7 @@ pub(crate) struct LeaderboardPages {
     #[serde(flatten)]
     pagination: Pagination,
     #[serde(flatten)]
-    leaderboard: Leaderboard,
+    info: LeaderboardInfo,
     #[serde(default)]
     players: Vec<LeaderboardEntry>,
     #[serde(default)]
@@ -32,16 +33,26 @@ pub(crate) struct LeaderboardPages {
     filters: HashMap<String, Value>,
 }
 
+impl Paginated<LeaderboardEntry> for LeaderboardPages {
+    fn pagination(&self) -> &Pagination {
+        &self.pagination
+    }
+
+    fn data(self) -> Vec<LeaderboardEntry> {
+        self.players
+    }
+}
+
 /// A ranked leaderboard.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
-pub struct Leaderboard {
+pub(crate) struct LeaderboardInfo {
+    /// [`Leaderboard`] type.
+    pub key: Option<Leaderboard>,
     /// Query used when fetching the leaderboard.
     pub query: Option<String>,
-    /// Snake case leaderboard name, used as a key in other places.
-    pub key: Option<String>,
     /// Name of the leaderboard.
     pub name: Option<String>,
     /// Short name of the leaderboard.
