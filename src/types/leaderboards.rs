@@ -42,7 +42,7 @@ impl Paginated<LeaderboardEntry> for LeaderboardPages {
     }
 }
 
-/// Which leaderboard a game was played on. Similar to [`crate::games::GameKind`] but with the
+/// Which leaderboard a game was played on. Similar to [`crate::types::games::GameKind`] but with the
 /// addition of `RmSolo` and `RmTeam`.
 #[derive(
     Serialize,
