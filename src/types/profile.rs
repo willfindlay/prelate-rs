@@ -52,6 +52,18 @@ impl From<ProfileId> for u64 {
     }
 }
 
+impl From<&u64> for ProfileId {
+    fn from(value: &u64) -> Self {
+        ProfileId(*value)
+    }
+}
+
+impl From<&ProfileId> for u64 {
+    fn from(value: &ProfileId) -> Self {
+        value.0
+    }
+}
+
 impl ProfileId {
     /// Returns a [`ProfileQuery`]. Used to get profile for a player.
     pub fn profile(&self) -> ProfileQuery {
