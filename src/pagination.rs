@@ -4,7 +4,7 @@
 
 use std::marker::PhantomData;
 
-use anyhow::Result;
+use anyhow::{bail, Result};
 use async_trait::async_trait;
 use derive_new::new;
 use page_turner::prelude::*;
@@ -60,13 +60,15 @@ impl RequestAhead for PaginatedRequest {
 
 /// A dummy client for paginated data.
 pub(crate) struct PaginationClient<T, U> {
+    count: usize,
     _dummy1: PhantomData<T>,
     _dummy2: PhantomData<U>,
 }
 
-impl<T, U> Default for PaginationClient<T, U> {
-    fn default() -> Self {
+impl<T, U> PaginationClient<T, U> {
+    pub fn with_limit(limit: usize) -> Self {
         Self {
+            count: limit,
             _dummy1: Default::default(),
             _dummy2: Default::default(),
         }
@@ -85,7 +87,7 @@ impl<T: Send + Sync + DeserializeOwned + Paginated<U>, U: Send + Sync> PageTurne
         mut request: PaginatedRequest,
     ) -> PageTurnerOutput<Self, PaginatedRequest> {
         request.url.query_pairs_mut().extend_pairs(&[
-            ("limit", DEFAULT_COUNT_PER_PAGE.to_string()),
+            ("limit", DEFAULT_COUNT_PER_PAGE.min(self.count).to_string()),
             ("page", request.page.to_string()),
         ]);
 
@@ -115,10 +117,13 @@ impl<T: Send + Sync + DeserializeOwned + Paginated<U> + 'static, U: Send + Sync 
     pub(crate) async fn into_pages_concurrent(
         self,
         request: PaginatedRequest,
-        count: usize,
     ) -> Result<PagesStream<'static, U, anyhow::Error>> {
+        let per_page = DEFAULT_COUNT_PER_PAGE.min(self.count);
+        if per_page == 0 {
+            bail!("count must be > 0");
+        }
         // Ceiling division to get total number of pages
-        let limit = Limit::Pages((count + DEFAULT_COUNT_PER_PAGE - 1) / DEFAULT_COUNT_PER_PAGE);
+        let limit = Limit::Pages((self.count + per_page - 1) / per_page);
         Ok(self.into_pages_ahead(DEFAULT_PAGES_CONCURRENCY, limit, request))
     }
 }
