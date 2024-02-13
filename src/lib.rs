@@ -184,7 +184,7 @@ pub mod query {
                 bail!("missing profile_id")
             }
 
-            let client = PaginationClient::<ProfileGames, Game>::default();
+            let client = PaginationClient::<ProfileGames, Game>::with_limit(limit);
             let url = format!(
                 "https://aoe4world.com/api/v0/players/{}/games",
                 self.profile_id.unwrap()
@@ -193,7 +193,7 @@ pub mod query {
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url), limit)
+                .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
             Ok(pages.items())
         }
@@ -241,13 +241,13 @@ pub mod query {
     impl GlobalGamesQuery {
         /// Get the games.
         pub async fn get(self, limit: usize) -> Result<impl Stream<Item = Result<Game>>> {
-            let client = PaginationClient::<GlobalGames, Game>::default();
+            let client = PaginationClient::<GlobalGames, Game>::with_limit(limit);
 
             let url = "https://aoe4world.com/api/v0/games".parse()?;
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url), limit)
+                .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
             Ok(pages.items())
         }
@@ -328,13 +328,13 @@ pub mod query {
                 );
             }
 
-            let client = PaginationClient::<SearchResults, Profile>::default();
+            let client = PaginationClient::<SearchResults, Profile>::with_limit(limit);
 
             let url = "https://aoe4world.com/api/v0/players/search".parse()?;
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url), limit)
+                .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
             Ok(pages.items())
         }
@@ -375,7 +375,7 @@ pub mod query {
                 bail!("missing leaderboard");
             }
 
-            let client = PaginationClient::<LeaderboardPages, LeaderboardEntry>::default();
+            let client = PaginationClient::<LeaderboardPages, LeaderboardEntry>::with_limit(limit);
 
             let url = format!(
                 "https://aoe4world.com/api/v0/leaderboards/{}",
@@ -385,7 +385,7 @@ pub mod query {
             let url = self.query_params(url);
 
             let pages = client
-                .into_pages_concurrent(PaginatedRequest::new(url), limit)
+                .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
             Ok(pages.items())
         }
@@ -450,6 +450,17 @@ mod tests {
             .collect()
             .await;
         assert_eq!(100, g.len());
+        for (i, game) in g.iter().enumerate() {
+            assert!(game.is_ok(), "game {i} not ok: {game:?}")
+        }
+
+        let g: Vec<_> = profile_games(HOUSEDHORSE_ID)
+            .get(1)
+            .await
+            .expect("API call should succeed")
+            .collect()
+            .await;
+        assert_eq!(1, g.len());
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
         }
