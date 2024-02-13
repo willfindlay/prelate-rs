@@ -20,6 +20,7 @@ use types::{leaderboards::Leaderboard, profile::ProfileId};
 // Rexports
 pub use chrono;
 pub use futures;
+pub use strum;
 
 /// Returns a [`ProfileQuery`]. Used to get profile for a player.
 ///
