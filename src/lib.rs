@@ -48,9 +48,9 @@ pub fn profile_games(profile_id: impl Into<ProfileId>) -> ProfileGamesQuery {
 /// ```rust
 /// # #[cfg(feature = "test-api")]
 /// # tokio_test::block_on(async {
-/// use prelate_rs::{futures::StreamExt, games, types::games::GameKind};
+/// use prelate_rs::{futures::StreamExt, global_games, types::games::GameKind};
 ///
-/// let stream = games()
+/// let stream = global_games()
 ///     .with_leaderboard(Some(vec![GameKind::Rm1v1]))
 ///     .get(100)
 ///     .await
@@ -63,7 +63,7 @@ pub fn profile_games(profile_id: impl Into<ProfileId>) -> ProfileGamesQuery {
 /// }
 /// # })
 /// ```
-pub fn games() -> GlobalGamesQuery {
+pub fn global_games() -> GlobalGamesQuery {
     GlobalGamesQuery::default()
 }
 
@@ -480,7 +480,7 @@ mod tests {
     #[cfg_attr(not(feature = "test-api"), ignore)]
     #[tokio::test(flavor = "multi_thread")]
     async fn global_games_api_smoke() {
-        let g: Vec<_> = games()
+        let g: Vec<_> = global_games()
             .get(100)
             .await
             .expect("API call should succeed")
