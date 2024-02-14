@@ -165,10 +165,10 @@ pub mod query {
     pub struct ProfileGamesQuery {
         /// [`ProfileId`] to query.
         profile_id: Option<ProfileId>,
-        /// Filter by game kind category.
-        ///
-        /// NOTE: this is named `leaderboard` but uses the [`GameKind`] enum.
-        leaderboard: Option<Vec<GameKind>>,
+        /// Filter by [`Leaderboard`] .
+        game_kind: Option<Vec<GameKind>>,
+        /// Filter by [`Leaderboard`]. Same as [`GameKind`] but supports [`Leaderboard::RmSolo`] and [`Leaderboard::RmTeam`].
+        leaderboard: Option<Vec<Leaderboard>>,
         /// Filter over an opponent's profile ID.
         opponent_profile_id: Option<ProfileId>,
         /// Filter over a list of opponent profile IDs.
@@ -199,9 +199,20 @@ pub mod query {
         }
 
         fn query_params(&self, mut url: Url) -> Url {
+            let mut leaderboards = vec![];
             if let Some(ref leaderboard) = self.leaderboard {
+                for g in leaderboard.iter().map(|g| g.to_string()) {
+                    leaderboards.push(g)
+                }
+            }
+            if let Some(ref game_kind) = self.game_kind {
+                for g in game_kind.iter().map(|g| g.to_string()) {
+                    leaderboards.push(g)
+                }
+            }
+            if !leaderboards.is_empty() {
                 url.query_pairs_mut()
-                    .append_pair("leaderboard", join(leaderboard, ",").as_str());
+                    .append_pair("leaderboard", join(leaderboards, ",").as_str());
             }
             if let Some(ref id) = self.opponent_profile_id {
                 url.query_pairs_mut()
