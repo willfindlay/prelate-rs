@@ -13,7 +13,7 @@ use crate::{
     types::{civilization::Civilization, profile::ProfileId},
 };
 
-use super::leaderboards::Leaderboard;
+use super::{leaderboards::Leaderboard, maps::Map};
 
 /// Filters for games returned by the API.
 #[derive(
@@ -101,7 +101,7 @@ pub struct Game {
     /// How long the game lasted in seconds.
     pub duration: Option<u32>,
     /// Map on which the game was played.
-    pub map: Option<String>,
+    pub map: Option<Map>,
     /// The kind of game.
     pub kind: Option<GameKind>,
     /// Leaderboard the game counts towards.
