@@ -40,6 +40,18 @@ pub enum Civilization {
     OrderOfTheDragon,
 }
 
+impl PartialOrd for Civilization {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.to_string().cmp(&other.to_string()))
+    }
+}
+
+impl Ord for Civilization {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+
 #[cfg(test)]
 mod test_super {
     use crate::testutils::{test_enum_to_string, test_serde_roundtrip_prop};

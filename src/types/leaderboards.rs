@@ -55,6 +55,8 @@ impl Paginated<LeaderboardEntry> for LeaderboardPages {
     strum::Display,
     strum::VariantArray,
     strum::EnumString,
+    PartialOrd,
+    Ord,
 )]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]

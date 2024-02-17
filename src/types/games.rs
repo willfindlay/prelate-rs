@@ -148,6 +148,8 @@ pub struct Game {
     strum::Display,
     strum::VariantArray,
     strum::EnumString,
+    PartialOrd,
+    Ord,
 )]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
@@ -266,18 +268,20 @@ pub enum GameKind {
     strum::VariantArray,
     strum::Display,
     strum::EnumString,
+    PartialOrd,
+    Ord,
 )]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum GameResult {
-    Win,
-    Loss,
+    Unknown,
     #[serde(rename = "noresult")]
     #[strum(serialize = "noresult")]
     NoResult,
-    Unknown,
+    Loss,
+    Win,
 }
 
 /// Wrapper around a Player. This is unfortunately needed due to the schema of the
