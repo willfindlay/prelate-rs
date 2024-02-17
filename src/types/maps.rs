@@ -160,6 +160,18 @@ pub enum Map {
     Unknown(String),
 }
 
+impl PartialOrd for Map {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.to_string().cmp(&other.to_string()))
+    }
+}
+
+impl Ord for Map {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+
 impl VariantArray for Map {
     const VARIANTS: &'static [Self] = &[
         Self::CraftedMap,
@@ -283,6 +295,8 @@ impl Map {
     strum::Display,
     strum::EnumString,
     strum::VariantArray,
+    PartialOrd,
+    Ord,
 )]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
