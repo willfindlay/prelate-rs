@@ -486,6 +486,7 @@ mod tests {
             .expect("API call should succeed")
             .collect()
             .await;
+        println!("{:#?}", g);
         assert_eq!(100, g.len());
         for (i, game) in g.iter().enumerate() {
             assert!(game.is_ok(), "game {i} not ok: {game:?}")
