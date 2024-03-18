@@ -104,8 +104,10 @@ pub struct Game {
     pub map: Option<Map>,
     /// The kind of game.
     pub kind: Option<GameKind>,
-    /// Leaderboard the game counts towards.
+    /// Leaderboard of the game.
     pub leaderboard: Option<Leaderboard>,
+    /// Leaderboard used to determine MMR for this game.
+    pub mmr_leaderboard: Option<Leaderboard>,
     /// Season in which the game was played.
     pub season: Option<u32>,
     /// Server on which the game was played.
@@ -170,6 +172,7 @@ pub enum GameKind {
     #[serde(rename = "rm_4v4")]
     #[strum(serialize = "rm_4v4")]
     Rm4v4,
+
     /// 1v1 quick match.
     #[serde(rename = "qm_1v1")]
     #[strum(serialize = "qm_1v1")]
@@ -186,6 +189,24 @@ pub enum GameKind {
     #[serde(rename = "qm_4v4")]
     #[strum(serialize = "qm_4v4")]
     Qm4v4,
+
+    /// 1v1 nomad quick match.
+    #[serde(rename = "qm_1v1_nomad")]
+    #[strum(serialize = "qm_1v1_nomad")]
+    Qm1v1Nomad,
+    /// 2v2 nomad quick match.
+    #[serde(rename = "qm_2v2_nomad")]
+    #[strum(serialize = "qm_2v2_nomad")]
+    Qm2v2Nomad,
+    /// 3v3 nomad quick match.
+    #[serde(rename = "qm_3v3_nomad")]
+    #[strum(serialize = "qm_3v3_nomad")]
+    Qm3v3Nomad,
+    /// 4v4 nomad quick match.
+    #[serde(rename = "qm_4v4_nomad")]
+    #[strum(serialize = "qm_4v4_nomad")]
+    Qm4v4Nomad,
+
     /// 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew")]
     #[strum(serialize = "qm_1v1_ew")]
@@ -202,19 +223,24 @@ pub enum GameKind {
     #[serde(rename = "qm_4v4_ew")]
     #[strum(serialize = "qm_4v4_ew")]
     Qm4v4Ew,
+
     /// Console 1v1 ranked.
     #[serde(rename = "rm_1v1_console")]
     #[strum(serialize = "rm_1v1_console")]
     Rm1v1Console,
-    // /// Console 2v2 ranked.
-    // #[serde(rename = "rm_2v2_console")]
-    // Rm2v2Console,
-    // /// Console 3v3 ranked.
-    // #[serde(rename = "rm_3v3_console")]
-    // Rm3v3Console,
-    // /// Console 4v4 ranked.
-    // #[serde(rename = "rm_4v4_console")]
-    // Rm4v4Console,
+    /// Console 2v2 ranked.
+    #[serde(rename = "rm_2v2_console")]
+    #[strum(serialize = "rm_2v2_console")]
+    Rm2v2Console,
+    /// Console 3v3 ranked.
+    #[serde(rename = "rm_3v3_console")]
+    #[strum(serialize = "rm_3v3_console")]
+    Rm3v3Console,
+    /// Console 4v4 ranked.
+    #[serde(rename = "rm_4v4_console")]
+    #[strum(serialize = "rm_4v4_console")]
+    Rm4v4Console,
+
     /// Console 1v1 quick match.
     #[serde(rename = "qm_1v1_console")]
     #[strum(serialize = "qm_1v1_console")]
@@ -231,6 +257,24 @@ pub enum GameKind {
     #[serde(rename = "qm_4v4_console")]
     #[strum(serialize = "qm_4v4_console")]
     Qm4v4Console,
+
+    /// Console 1v1 nomad quick match.
+    #[serde(rename = "qm_1v1_nomad_console")]
+    #[strum(serialize = "qm_1v1_nomad_console")]
+    Qm1v1NomadConsole,
+    /// Console 2v2 nomad quick match.
+    #[serde(rename = "qm_2v2_nomad_console")]
+    #[strum(serialize = "qm_2v2_nomad_console")]
+    Qm2v2NomadConsole,
+    /// Console 3v3 nomad quick match.
+    #[serde(rename = "qm_3v3_nomad_console")]
+    #[strum(serialize = "qm_3v3_nomad_console")]
+    Qm3v3NomadConsole,
+    /// Console 4v4 nomad quick match.
+    #[serde(rename = "qm_4v4_nomad_console")]
+    #[strum(serialize = "qm_4v4_nomad_console")]
+    Qm4v4NomadConsole,
+
     /// Console 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew_console")]
     #[strum(serialize = "qm_1v1_ew_console")]
@@ -247,7 +291,34 @@ pub enum GameKind {
     #[serde(rename = "qm_4v4_ew_console")]
     #[strum(serialize = "qm_4v4_ew_console")]
     Qm4v4EwConsole,
-    /// A custom game.
+
+    /// FFA quick match.
+    #[serde(rename = "qm_ffa")]
+    #[strum(serialize = "qm_ffa")]
+    QmFfa,
+    /// Empires Wars FFA quick match.
+    #[serde(rename = "qm_ffa_ew")]
+    #[strum(serialize = "qm_ffa_ew")]
+    QmFfaEw,
+    /// Nomad FFA quick match.
+    #[serde(rename = "qm_ffa_nomad")]
+    #[strum(serialize = "qm_ffa_nomad")]
+    QmFfaNomad,
+
+    /// Console FFA quick match.
+    #[serde(rename = "qm_ffa_console")]
+    #[strum(serialize = "qm_ffa_console")]
+    QmFfaConsole,
+    /// Console Empires Wars FFA quick match.
+    #[serde(rename = "qm_ffa_ew_console")]
+    #[strum(serialize = "qm_ffa_ew_console")]
+    QmFfaEwConsole,
+    /// Console Nomad FFA quick match.
+    #[serde(rename = "qm_ffa_nomad_console")]
+    #[strum(serialize = "qm_ffa_nomad_console")]
+    QmFfaNomadConsole,
+
+    /// Console A custom game.
     #[serde(rename = "custom")]
     #[strum(serialize = "custom")]
     Custom,
@@ -308,6 +379,27 @@ impl From<PlayerWrapper> for Player {
     }
 }
 
+/// Input type for a player.
+#[derive(
+    Serialize,
+    Deserialize,
+    Debug,
+    PartialEq,
+    Eq,
+    Clone,
+    strum::VariantArray,
+    strum::Display,
+    strum::EnumString,
+)]
+#[serde(rename_all = "snake_case")]
+#[strum(serialize_all = "snake_case")]
+#[cfg_attr(test, derive(arbitrary::Arbitrary))]
+#[cfg_attr(test, serde(deny_unknown_fields))]
+pub enum InputType {
+    Keyboard,
+    Controller,
+}
+
 /// A player in the game.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 #[serde(rename_all = "snake_case")]
@@ -332,6 +424,8 @@ pub struct Player {
     pub mmr: Option<i64>,
     /// ELO gained or lost.
     pub mmr_diff: Option<i64>,
+    /// Input type (keyboard or controller).
+    pub input_type: Option<InputType>,
 }
 
 impl Player {
@@ -368,6 +462,12 @@ mod tests {
         GlobalGames,
         "../../testdata/games/global.json",
         global_games
+    );
+
+    test_json!(
+        GlobalGames,
+        "../../testdata/games/global_2024_03_18.json",
+        global_games_2024_03_18
     );
 
     test_json!(

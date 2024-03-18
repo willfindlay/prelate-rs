@@ -70,6 +70,37 @@ pub enum Leaderboard {
     #[serde(rename = "rm_team")]
     #[strum(serialize = "rm_team")]
     RmTeam,
+
+    // FIXME: Remove all of these. They were added to aoe4world by accident.
+    /// 2v2 ranked.
+    #[serde(rename = "rm_2v2")]
+    #[strum(serialize = "rm_2v2")]
+    Rm2v2,
+    /// 3v3 ranked.
+    #[serde(rename = "rm_3v3")]
+    #[strum(serialize = "rm_3v3")]
+    Rm3v3,
+    /// 4v4 ranked.
+    #[serde(rename = "rm_4v4")]
+    #[strum(serialize = "rm_4v4")]
+    Rm4v4,
+    /// Console 2v2 ranked.
+    #[serde(rename = "rm_2v2_console")]
+    #[strum(serialize = "rm_2v2_console")]
+    Rm2v2Console,
+    /// Console 3v3 ranked.
+    #[serde(rename = "rm_3v3_console")]
+    #[strum(serialize = "rm_3v3_console")]
+    Rm3v3Console,
+    /// Console 4v4 ranked.
+    #[serde(rename = "rm_4v4_console")]
+    #[strum(serialize = "rm_4v4_console")]
+    Rm4v4Console,
+
+    /// FFA quick match.
+    #[serde(rename = "qm_ffa")]
+    #[strum(serialize = "qm_ffa")]
+    QmFfa,
     /// 1v1 quick match.
     #[serde(rename = "qm_1v1")]
     #[strum(serialize = "qm_1v1")]
@@ -86,6 +117,7 @@ pub enum Leaderboard {
     #[serde(rename = "qm_4v4")]
     #[strum(serialize = "qm_4v4")]
     Qm4v4,
+
     /// 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew")]
     #[strum(serialize = "qm_1v1_ew")]
@@ -102,14 +134,21 @@ pub enum Leaderboard {
     #[serde(rename = "qm_4v4_ew")]
     #[strum(serialize = "qm_4v4_ew")]
     Qm4v4Ew,
+
     /// Console solo ranked.
     #[serde(rename = "rm_solo_console")]
     #[serde(alias = "rm_1v1_console")]
     #[strum(serialize = "rm_solo_console")]
     RmSoloConsole,
-    // /// Console team ranked.
-    // #[serde(rename = "rm_team_console")]
-    // RmTeamConsole,
+    /// Console team ranked.
+    #[serde(rename = "rm_team_console")]
+    #[strum(serialize = "rm_team_console")]
+    RmTeamConsole,
+
+    /// Console FFA quick match.
+    #[serde(rename = "qm_ffa_console")]
+    #[strum(serialize = "qm_ffa_console")]
+    QmFfaConsole,
     /// Console 1v1 quick match.
     #[serde(rename = "qm_1v1_console")]
     #[strum(serialize = "qm_1v1_console")]
@@ -126,6 +165,7 @@ pub enum Leaderboard {
     #[serde(rename = "qm_4v4_console")]
     #[strum(serialize = "qm_4v4_console")]
     Qm4v4Console,
+
     /// Console 1v1 empire wars quick match.
     #[serde(rename = "qm_1v1_ew_console")]
     #[strum(serialize = "qm_1v1_ew_console")]
