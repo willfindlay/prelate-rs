@@ -20,6 +20,7 @@ use types::{leaderboards::Leaderboard, profile::ProfileId};
 // Rexports
 pub use chrono;
 pub use futures;
+pub use isocountry::CountryCode;
 pub use strum;
 
 /// Returns a [`ProfileQuery`]. Used to get profile for a player.
@@ -144,7 +145,8 @@ pub mod query {
 
     use anyhow::{bail, Result};
     use derive_setters::Setters;
-    use futures::Stream;
+    use futures::{Stream, StreamExt};
+    use isocountry::CountryCode;
     use itertools::join;
     use url::Url;
 
@@ -195,7 +197,7 @@ pub mod query {
             let pages = client
                 .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
-            Ok(pages.items())
+            Ok(pages.items().take(limit))
         }
 
         fn query_params(&self, mut url: Url) -> Url {
@@ -260,7 +262,7 @@ pub mod query {
             let pages = client
                 .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
-            Ok(pages.items())
+            Ok(pages.items().take(limit))
         }
 
         fn query_params(&self, mut url: Url) -> Url {
@@ -347,7 +349,7 @@ pub mod query {
             let pages = client
                 .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
-            Ok(pages.items())
+            Ok(pages.items().take(limit))
         }
 
         fn query_params(&self, mut url: Url) -> Url {
@@ -374,6 +376,8 @@ pub mod query {
         profile_id: Option<ProfileId>,
         /// Search query.
         query: Option<String>,
+        /// Search by country.
+        country: Option<CountryCode>,
     }
 
     impl LeaderboardQuery {
@@ -398,7 +402,7 @@ pub mod query {
             let pages = client
                 .into_pages_concurrent(PaginatedRequest::new(url))
                 .await?;
-            Ok(pages.items())
+            Ok(pages.items().take(limit))
         }
 
         fn query_params(&self, mut url: Url) -> Url {
@@ -409,6 +413,10 @@ pub mod query {
             if let Some(profile_id) = self.profile_id {
                 url.query_pairs_mut()
                     .append_pair("profile_id", profile_id.to_string().as_str());
+            }
+            if let Some(country) = self.country {
+                url.query_pairs_mut()
+                    .append_pair("country", country.alpha2().to_lowercase().as_str());
             }
             url
         }
@@ -545,6 +553,18 @@ mod tests {
         assert_eq!(100, entries.len(), "RmTeam len");
         for (i, entry) in entries.iter().enumerate() {
             assert!(entry.is_ok(), "RmTeam entry {i} not ok: {entry:?}")
+        }
+
+        let entries: Vec<_> = leaderboard(Leaderboard::RmTeam)
+            .with_country(CountryCode::CAN)
+            .get(10)
+            .await
+            .expect("RmTeam leaderboard Canada")
+            .collect()
+            .await;
+        assert_eq!(10, entries.len(), "RmTeam Canada len");
+        for (i, entry) in entries.iter().enumerate() {
+            assert!(entry.is_ok(), "RmTeam Canada entry {i} not ok: {entry:?}")
         }
     }
 }
