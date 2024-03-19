@@ -396,6 +396,7 @@ impl From<PlayerWrapper> for Player {
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
 #[cfg_attr(test, serde(deny_unknown_fields))]
 pub enum InputType {
+    Unknown,
     Keyboard,
     Controller,
 }
