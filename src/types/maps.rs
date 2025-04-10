@@ -154,6 +154,12 @@ pub enum Map {
     #[serde(rename = "Hidden Valley")]
     #[strum(serialize = "Hidden Valley")]
     HiddenValley,
+    #[serde(rename = "Waterholes")]
+    #[strum(serialize = "Waterholes")]
+    Waterholes,
+    #[serde(rename = "Land MegaRandom")]
+    #[strum(serialize = "Land MegaRandom")]
+    LandMegaRandom,
     #[serde(untagged)]
     #[strum(default)]
     #[cfg(not(test))]
@@ -278,6 +284,8 @@ impl Map {
             Map::Himeyama => MapType::Land,
             Map::Forts => MapType::Hybrid,
             Map::HiddenValley => MapType::Land,
+            Map::Waterholes => MapType::Hybrid,
+            Map::LandMegaRandom => MapType::Land,
             #[cfg(not(test))]
             Map::Unknown(_) => MapType::Unknown,
         }

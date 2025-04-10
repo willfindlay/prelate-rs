@@ -477,6 +477,12 @@ mod tests {
         negative_mmr
     );
 
+    test_json!(
+        ProfileGames,
+        "../../testdata/games/hauntedhouse.json",
+        hauntedhouse_games
+    );
+
     test_enum_to_string!(GameKind);
     test_enum_to_string!(Leaderboard);
     test_enum_to_string!(GamesOrder);
