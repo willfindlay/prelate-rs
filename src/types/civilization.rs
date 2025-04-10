@@ -38,6 +38,8 @@ pub enum Civilization {
     Ayyubids,
     ZhuXisLegacy,
     OrderOfTheDragon,
+    KnightsTemplar,
+    HouseOfLancaster,
 }
 
 impl PartialOrd for Civilization {
