@@ -40,6 +40,10 @@ pub enum Civilization {
     OrderOfTheDragon,
     KnightsTemplar,
     HouseOfLancaster,
+    GoldenHorde,
+    MacedonianDynasty,
+    SengokuDaimyo,
+    TughlaqDynasty,
 }
 
 impl PartialOrd for Civilization {
