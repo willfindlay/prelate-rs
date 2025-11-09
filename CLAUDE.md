@@ -173,10 +173,35 @@ When the aoe4world API adds new data:
        // ... existing variants
        GoldenHorde,        // Maps to "golden_horde"
        MacedonianDynasty,  // Maps to "macedonian_dynasty"
+
+       // IMPORTANT: Always include Unknown variant for forward compatibility
+       #[serde(untagged)]
+       #[strum(default)]
+       #[cfg(not(test))]
+       Unknown(String),
    }
    ```
 
-4. **Run tests to verify:**
+4. **For enums with Unknown variant, manually implement VariantArray:**
+   ```rust
+   impl strum::VariantArray for Civilization {
+       const VARIANTS: &'static [Self] = &[
+           Self::English,
+           Self::French,
+           // ... all known variants
+           // Note: Unknown variant intentionally excluded
+       ];
+   }
+   ```
+
+5. **Important notes about Unknown variants:**
+   - Enums with `Unknown(String)` cannot derive `Copy` (String is not Copy)
+   - Use `.clone()` when moving enum values
+   - Unknown variant only exists in non-test builds (`#[cfg(not(test))]`)
+   - Tests validate against strict known variants
+   - Production builds gracefully handle new API values
+
+6. **Run tests to verify:**
    ```bash
    cargo test --lib
    ```

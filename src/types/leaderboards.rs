@@ -49,11 +49,9 @@ impl Paginated<LeaderboardEntry> for LeaderboardPages {
     Deserialize,
     Debug,
     Clone,
-    Copy,
     PartialEq,
     Eq,
     strum::Display,
-    strum::VariantArray,
     strum::EnumString,
     PartialOrd,
     Ord,
@@ -182,6 +180,46 @@ pub enum Leaderboard {
     #[serde(rename = "qm_4v4_ew_console")]
     #[strum(serialize = "qm_4v4_ew_console")]
     Qm4v4EwConsole,
+
+    /// Unknown leaderboard.
+    #[serde(untagged)]
+    #[strum(default)]
+    #[cfg(not(test))]
+    Unknown(String),
+}
+
+impl strum::VariantArray for Leaderboard {
+    const VARIANTS: &'static [Self] = &[
+        Self::RmSolo,
+        Self::RmTeam,
+        Self::Rm2v2,
+        Self::Rm3v3,
+        Self::Rm4v4,
+        Self::Rm2v2Console,
+        Self::Rm3v3Console,
+        Self::Rm4v4Console,
+        Self::QmFfa,
+        Self::Qm1v1,
+        Self::Qm2v2,
+        Self::Qm3v3,
+        Self::Qm4v4,
+        Self::Qm1v1Ew,
+        Self::Qm2v2Ew,
+        Self::Qm3v3Ew,
+        Self::Qm4v4Ew,
+        Self::RmSoloConsole,
+        Self::RmTeamConsole,
+        Self::QmFfaConsole,
+        Self::Qm1v1Console,
+        Self::Qm2v2Console,
+        Self::Qm3v3Console,
+        Self::Qm4v4Console,
+        Self::Qm1v1EwConsole,
+        Self::Qm2v2EwConsole,
+        Self::Qm3v3EwConsole,
+        Self::Qm4v4EwConsole,
+        // Note: Unknown variant intentionally excluded
+    ];
 }
 
 impl Leaderboard {

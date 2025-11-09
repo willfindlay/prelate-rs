@@ -8,7 +8,6 @@ use serde::{Deserialize, Serialize};
 #[derive(
     Debug,
     Clone,
-    Copy,
     PartialEq,
     Eq,
     PartialOrd,
@@ -16,7 +15,6 @@ use serde::{Deserialize, Serialize};
     Serialize,
     Deserialize,
     strum::Display,
-    strum::VariantArray,
     strum::EnumString,
 )]
 #[cfg_attr(test, derive(arbitrary::Arbitrary))]
@@ -83,6 +81,38 @@ pub enum League {
     #[serde(rename = "conqueror_4")]
     #[strum(serialize = "conqueror_4")]
     Conqueror4,
+
+    /// Unknown league.
+    #[serde(untagged)]
+    #[strum(default)]
+    #[cfg(not(test))]
+    Unknown(String),
+}
+
+impl strum::VariantArray for League {
+    const VARIANTS: &'static [Self] = &[
+        Self::Unranked,
+        Self::Bronze1,
+        Self::Bronze2,
+        Self::Bronze3,
+        Self::Silver1,
+        Self::Silver2,
+        Self::Silver3,
+        Self::Gold1,
+        Self::Gold2,
+        Self::Gold3,
+        Self::Platinum1,
+        Self::Platinum2,
+        Self::Platinum3,
+        Self::Diamond1,
+        Self::Diamond2,
+        Self::Diamond3,
+        Self::Conqueror1,
+        Self::Conqueror2,
+        Self::Conqueror3,
+        Self::Conqueror4,
+        // Note: Unknown variant intentionally excluded
+    ];
 }
 
 impl League {

@@ -17,15 +17,7 @@ use super::{leaderboards::Leaderboard, maps::Map};
 
 /// Filters for games returned by the API.
 #[derive(
-    Serialize,
-    Deserialize,
-    Debug,
-    PartialEq,
-    Eq,
-    Clone,
-    strum::VariantArray,
-    strum::Display,
-    strum::EnumString,
+    Serialize, Deserialize, Debug, PartialEq, Eq, Clone, strum::Display, strum::EnumString,
 )]
 #[serde(rename_all = "snake_case")]
 #[strum(serialize_all = "snake_case")]
@@ -34,6 +26,18 @@ use super::{leaderboards::Leaderboard, maps::Map};
 pub enum GamesOrder {
     StartedAt,
     UpdatedAt,
+    #[serde(untagged)]
+    #[strum(default)]
+    #[cfg(not(test))]
+    Unknown(String),
+}
+
+impl strum::VariantArray for GamesOrder {
+    const VARIANTS: &'static [Self] = &[
+        Self::StartedAt,
+        Self::UpdatedAt,
+        // Note: Unknown variant intentionally excluded
+    ];
 }
 
 /// Global games.
@@ -144,11 +148,9 @@ pub struct Game {
     Deserialize,
     Debug,
     Clone,
-    Copy,
     PartialEq,
     Eq,
     strum::Display,
-    strum::VariantArray,
     strum::EnumString,
     PartialOrd,
     Ord,
@@ -322,6 +324,57 @@ pub enum GameKind {
     #[serde(rename = "custom")]
     #[strum(serialize = "custom")]
     Custom,
+
+    /// Unknown game kind.
+    #[serde(untagged)]
+    #[strum(default)]
+    #[cfg(not(test))]
+    Unknown(String),
+}
+
+impl strum::VariantArray for GameKind {
+    const VARIANTS: &'static [Self] = &[
+        Self::Rm1v1,
+        Self::Rm2v2,
+        Self::Rm3v3,
+        Self::Rm4v4,
+        Self::Qm1v1,
+        Self::Qm2v2,
+        Self::Qm3v3,
+        Self::Qm4v4,
+        Self::Qm1v1Nomad,
+        Self::Qm2v2Nomad,
+        Self::Qm3v3Nomad,
+        Self::Qm4v4Nomad,
+        Self::Qm1v1Ew,
+        Self::Qm2v2Ew,
+        Self::Qm3v3Ew,
+        Self::Qm4v4Ew,
+        Self::Rm1v1Console,
+        Self::Rm2v2Console,
+        Self::Rm3v3Console,
+        Self::Rm4v4Console,
+        Self::Qm1v1Console,
+        Self::Qm2v2Console,
+        Self::Qm3v3Console,
+        Self::Qm4v4Console,
+        Self::Qm1v1NomadConsole,
+        Self::Qm2v2NomadConsole,
+        Self::Qm3v3NomadConsole,
+        Self::Qm4v4NomadConsole,
+        Self::Qm1v1EwConsole,
+        Self::Qm2v2EwConsole,
+        Self::Qm3v3EwConsole,
+        Self::Qm4v4EwConsole,
+        Self::QmFfa,
+        Self::QmFfaEw,
+        Self::QmFfaNomad,
+        Self::QmFfaConsole,
+        Self::QmFfaEwConsole,
+        Self::QmFfaNomadConsole,
+        Self::Custom,
+        // Note: Unknown variant intentionally excluded
+    ];
 }
 
 /// The result of a match. Either a win or a loss.
@@ -490,4 +543,60 @@ mod tests {
 
     #[test]
     fn test_foo() {}
+
+    /// Test that we can deserialize a Player with an unknown civilization.
+    /// This test is only meaningful in non-test builds where the Unknown variant exists,
+    /// but we keep it here to document the expected behavior.
+    #[test]
+    #[cfg(not(test))]
+    fn test_player_with_unknown_civilization() {
+        let json = r#"{
+            "name": "AlienPlayer",
+            "profile_id": 12345,
+            "result": "win",
+            "civilization": "martians",
+            "civilization_randomized": false,
+            "rating": 1500,
+            "rating_diff": 25,
+            "mmr": 1600,
+            "mmr_diff": 30,
+            "input_type": "keyboard"
+        }"#;
+
+        let player: Player = serde_json::from_str(json).unwrap();
+        assert_eq!(player.name, "AlienPlayer");
+        assert_eq!(player.profile_id, 12345.into());
+
+        // Verify the civilization is captured as Unknown
+        match player.civilization {
+            Some(crate::types::civilization::Civilization::Unknown(ref name)) => {
+                assert_eq!(name, "martians");
+            }
+            _ => panic!("Expected Unknown civilization variant"),
+        }
+    }
+
+    /// Test that known civilizations still work correctly
+    #[test]
+    fn test_player_with_known_civilization() {
+        let json = r#"{
+            "name": "TestPlayer",
+            "profile_id": 54321,
+            "result": "win",
+            "civilization": "english",
+            "civilization_randomized": false,
+            "rating": 1500,
+            "rating_diff": 25,
+            "mmr": 1600,
+            "mmr_diff": 30,
+            "input_type": "keyboard"
+        }"#;
+
+        let player: Player = serde_json::from_str(json).unwrap();
+        assert_eq!(player.name, "TestPlayer");
+        assert_eq!(
+            player.civilization,
+            Some(crate::types::civilization::Civilization::English)
+        );
+    }
 }

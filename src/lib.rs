@@ -394,7 +394,7 @@ pub mod query {
 
             let url = format!(
                 "https://aoe4world.com/api/v0/leaderboards/{}",
-                self.leaderboard.unwrap()
+                self.leaderboard.clone().unwrap()
             )
             .parse()?;
             let url = self.query_params(url);
